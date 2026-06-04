@@ -470,7 +470,24 @@
             gap: 30px;
         }
 
-        .service-card, .translator-card, .form-card {
+        .service-card {
+            background: #F9FAFB;
+            border-radius: 20px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid #E5E7EB;
+        }
+
+        /* АНИМАЦИЯ ПРИ НАВЕДЕНИИ НА КАРТОЧКИ УСЛУГ */
+        .service-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            border-color: #2A6DFF;
+        }
+
+        .translator-card, .form-card {
             background: #F9FAFB;
             border-radius: 20px;
             padding: 25px;
@@ -478,6 +495,12 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 1px solid #E5E7EB;
+        }
+
+        .translator-card:hover, .form-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-color: #2A6DFF;
         }
 
         .service-icon {
@@ -490,6 +513,13 @@
             justify-content: center;
             margin: 0 auto 15px;
             font-size: 28px;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: #2A6DFF;
+            color: white;
+            transform: scale(1.05);
         }
 
         .service-price {
@@ -507,6 +537,11 @@
             font-size: 12px;
         }
 
+        .service-card:hover .service-time {
+            background: #2A6DFF;
+            color: white;
+        }
+
         .avatar {
             width: 80px;
             height: 80px;
@@ -518,6 +553,12 @@
             margin: 0 auto 15px;
             font-size: 40px;
             color: white;
+            transition: all 0.3s;
+        }
+
+        .translator-card:hover .avatar {
+            transform: scale(1.05);
+            background: #1A4FCC;
         }
 
         .community {
@@ -666,6 +707,10 @@
 
             .social-icons {
                 justify-content: center;
+            }
+
+            .service-card:hover {
+                transform: translateY(-5px) scale(1.01);
             }
         }
     </style>
