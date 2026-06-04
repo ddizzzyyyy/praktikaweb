@@ -58,7 +58,7 @@
             color: #2A6DFF;
         }
 
-        /* Бургер-кнопка */
+        /* Бургер-кнопка (только на телефоне) */
         .burger {
             display: none;
             flex-direction: column;
@@ -72,10 +72,9 @@
             height: 3px;
             background: #2A6DFF;
             border-radius: 3px;
-            transition: all 0.3s;
         }
 
-        /* Меню (десктоп) */
+        /* Меню */
         .menu {
             display: flex;
             gap: 40px;
@@ -95,7 +94,7 @@
             color: #2A6DFF;
         }
 
-        /* Выпадающее меню для десктопа */
+        /* ВЫПАДАЮЩЕЕ МЕНЮ ДЛЯ ПК (при наведении) */
         .dropdown {
             position: absolute;
             top: 35px;
@@ -161,7 +160,7 @@
             color: #2A6DFF;
         }
 
-        /* Кнопки входа */
+        /* Кнопки входа/регистрации */
         .auth-buttons {
             display: flex;
             gap: 12px;
@@ -198,7 +197,7 @@
             background: #1A4FCC;
         }
 
-        /* ===== МОДАЛЬНОЕ ОКНО ===== */
+        /* ===== МОДАЛЬНОЕ ОКНО (ВХОД/РЕГИСТРАЦИЯ) ===== */
         .auth-modal {
             display: none;
             position: fixed;
@@ -326,13 +325,13 @@
             display: block;
         }
 
-        /* Тест перевода */
+        /* ТЕСТ ПЕРЕВОДА ПРИ РЕГИСТРАЦИИ */
         .test-screen {
-            display: none;
+            display: block;
         }
 
-        .test-screen.active {
-            display: block;
+        .test-screen.hidden {
+            display: none;
         }
 
         .progress-bar {
@@ -379,6 +378,16 @@
             padding: 10px;
             text-align: center;
             cursor: pointer;
+        }
+
+        .option-correct {
+            background: #D1FAE5;
+            border-color: #10B981;
+        }
+
+        .option-wrong {
+            background: #FEE2E2;
+            border-color: #EF4444;
         }
 
         .register-fields {
@@ -477,11 +486,6 @@
             cursor: pointer;
             transition: all 0.3s;
             border: 1px solid #E5E7EB;
-        }
-
-        .service-card:hover, .translator-card:hover, .form-card:hover {
-            transform: translateY(-5px);
-            border-color: #2A6DFF;
         }
 
         .service-icon {
@@ -609,7 +613,7 @@
             font-size: 13px;
         }
 
-        /* Адаптация под телефон */
+        /* ===== АДАПТАЦИЯ ПОД ТЕЛЕФОН ===== */
         @media (max-width: 768px) {
             .burger {
                 display: flex;
@@ -629,7 +633,8 @@
                 display: flex;
             }
 
-            .dropdown, .subdropdown {
+            /* Для телефона: выпадающее меню открывается по клику */
+            .dropdown {
                 position: static;
                 box-shadow: none;
                 padding-left: 20px;
@@ -637,6 +642,15 @@
                 visibility: visible;
                 display: none;
                 width: 100%;
+                margin-top: 10px;
+            }
+
+            .subdropdown {
+                position: static;
+                padding-left: 20px;
+                opacity: 1;
+                visibility: visible;
+                display: none;
             }
 
             .menu-item.active .dropdown {
@@ -688,46 +702,46 @@
                 <div class="dropdown-item" id="writtenMenuItem">
                     📄 Письменный перевод
                     <div class="subdropdown" id="writtenSubmenu">
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Технический перевод</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Юридический перевод</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Медицинский перевод</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Экономический перевод</div>
+                        <div class="subdropdown-item" onclick="alert('Технический перевод')">Технический перевод</div>
+                        <div class="subdropdown-item" onclick="alert('Юридический перевод')">Юридический перевод</div>
+                        <div class="subdropdown-item" onclick="alert('Медицинский перевод')">Медицинский перевод</div>
+                        <div class="subdropdown-item" onclick="alert('Экономический перевод')">Экономический перевод</div>
                     </div>
                 </div>
                 <div class="dropdown-item" id="oralMenuItem">
                     🎤 Устный перевод
                     <div class="subdropdown" id="oralSubmenu">
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Последовательный</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Синхронный</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Переговоры</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Сопровождение</div>
+                        <div class="subdropdown-item" onclick="alert('Последовательный перевод')">Последовательный</div>
+                        <div class="subdropdown-item" onclick="alert('Синхронный перевод')">Синхронный</div>
+                        <div class="subdropdown-item" onclick="alert('Перевод переговоров')">Переговоры</div>
+                        <div class="subdropdown-item" onclick="alert('Сопровождение')">Сопровождение</div>
                     </div>
                 </div>
                 <div class="dropdown-item" id="localizationMenuItem">
                     💻 Локализация
                     <div class="subdropdown" id="localizationSubmenu">
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация ПО</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация игр</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация сайтов</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация приложений</div>
+                        <div class="subdropdown-item" onclick="alert('Локализация ПО')">Локализация ПО</div>
+                        <div class="subdropdown-item" onclick="alert('Локализация игр')">Локализация игр</div>
+                        <div class="subdropdown-item" onclick="alert('Локализация сайтов')">Локализация сайтов</div>
+                        <div class="subdropdown-item" onclick="alert('Локализация приложений')">Локализация приложений</div>
                     </div>
                 </div>
                 <div class="dropdown-item" id="notarialMenuItem">
                     ✅ Нотариальное заверение
                     <div class="subdropdown" id="notarialSubmenu">
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Свидетельство о рождении</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Дипломы и аттестаты</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Доверенности</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Уставные документы</div>
+                        <div class="subdropdown-item" onclick="alert('Свидетельство о рождении')">Свидетельство о рождении</div>
+                        <div class="subdropdown-item" onclick="alert('Дипломы и аттестаты')">Дипломы и аттестаты</div>
+                        <div class="subdropdown-item" onclick="alert('Доверенности')">Доверенности</div>
+                        <div class="subdropdown-item" onclick="alert('Уставные документы')">Уставные документы</div>
                     </div>
                 </div>
                 <div class="dropdown-item" id="subtitlesMenuItem">
                     🎬 Субтитры и трансляция
                     <div class="subdropdown" id="subtitlesSubmenu">
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для YouTube</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для кино</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Стенограмма интервью</div>
-                        <div class="subdropdown-item" onclick="window.location.href='404.html'">Конференции</div>
+                        <div class="subdropdown-item" onclick="alert('Субтитры для YouTube')">Субтитры для YouTube</div>
+                        <div class="subdropdown-item" onclick="alert('Субтитры для кино')">Субтитры для кино</div>
+                        <div class="subdropdown-item" onclick="alert('Стенограмма интервью')">Стенограмма интервью</div>
+                        <div class="subdropdown-item" onclick="alert('Конференции')">Конференции</div>
                     </div>
                 </div>
             </div>
@@ -755,6 +769,7 @@
             <div class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">Регистрация</div>
         </div>
         <div class="auth-form-container">
+            <!-- ФОРМА ВХОДА -->
             <div id="loginForm" class="auth-form">
                 <div class="input-group">
                     <label>📧 Email</label>
@@ -772,8 +787,9 @@
                 </div>
             </div>
 
+            <!-- ФОРМА РЕГИСТРАЦИИ С ТЕСТОМ -->
             <div id="registerForm" class="auth-form">
-                <div id="registerTestScreen" class="test-screen active">
+                <div id="registerTestScreen" class="test-screen">
                     <div class="progress-bar"><div class="progress-fill" id="regProgressFill"></div></div>
                     <div style="text-align:center; font-size:14px; color:#2A6DFF;" id="regProgressText">Слово 1 из 5</div>
                     <div class="word-card">
@@ -815,6 +831,7 @@
     </div>
 </div>
 
+<!-- ОСТАЛЬНЫЕ СЕКЦИИ (HERO, УСЛУГИ, ПРИМЕРЫ, ФОРМА, ФУТЕР) -->
 <section class="hero">
     <div class="container">
         <h1>Профессиональные переводчики<br>рядом с вами</h1>
@@ -830,12 +847,12 @@
     <div class="container">
         <h2 class="section-title">Что мы предлагаем</h2>
         <div class="services-grid">
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">📄</div><h3>Письменный перевод</h3><p>Документы, контракты, статьи, письма, диссертации</p><div class="service-price">от 500 ₽ / страница</div><div class="service-time">⏱ 1-3 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">📱</div><h3>Локализация приложений</h3><p>Адаптация интерфейсов, сторис, ASO-оптимизация</p><div class="service-price">от 1500 ₽ / час</div><div class="service-time">⏱ от 3 дней</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">⚖️</div><h3>Нотариальное заверение</h3><p>Переводы с печатью, подписью, для суда и госорганов</p><div class="service-price">от 800 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">🎬</div><h3>Субтитры и трансляция</h3><p>Видео, подкасты, конференции, YouTube, онлайн-встречи</p><div class="service-price">от 200 ₽ / минута</div><div class="service-time">⏱ от 1 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">✍️</div><h3>Редкость и редактура</h3><p>Проверка, вычитка, адаптация под носителей языка</p><div class="service-price">от 300 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">⏱️</div><h3>Срочный перевод 24/7</h3><p>Экспресс-перевод любой сложности в режиме нон-стоп</p><div class="service-price">от 1000 ₽ / страница</div><div class="service-time">⚡ от 2 часов</div></div>
+            <div class="service-card" onclick="alert('Письменный перевод')"><div class="service-icon">📄</div><h3>Письменный перевод</h3><p>Документы, контракты, статьи, письма, диссертации</p><div class="service-price">от 500 ₽ / страница</div><div class="service-time">⏱ 1-3 дня</div></div>
+            <div class="service-card" onclick="alert('Локализация приложений')"><div class="service-icon">📱</div><h3>Локализация приложений</h3><p>Адаптация интерфейсов, сторис, ASO-оптимизация</p><div class="service-price">от 1500 ₽ / час</div><div class="service-time">⏱ от 3 дней</div></div>
+            <div class="service-card" onclick="alert('Нотариальное заверение')"><div class="service-icon">⚖️</div><h3>Нотариальное заверение</h3><p>Переводы с печатью, подписью, для суда и госорганов</p><div class="service-price">от 800 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
+            <div class="service-card" onclick="alert('Субтитры и трансляция')"><div class="service-icon">🎬</div><h3>Субтитры и трансляция</h3><p>Видео, подкасты, конференции, YouTube, онлайн-встречи</p><div class="service-price">от 200 ₽ / минута</div><div class="service-time">⏱ от 1 дня</div></div>
+            <div class="service-card" onclick="alert('Редкость и редактура')"><div class="service-icon">✍️</div><h3>Редкость и редактура</h3><p>Проверка, вычитка, адаптация под носителей языка</p><div class="service-price">от 300 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
+            <div class="service-card" onclick="alert('Срочный перевод 24/7')"><div class="service-icon">⏱️</div><h3>Срочный перевод 24/7</h3><p>Экспресс-перевод любой сложности в режиме нон-стоп</p><div class="service-price">от 1000 ₽ / страница</div><div class="service-time">⚡ от 2 часов</div></div>
         </div>
     </div>
 </section>
@@ -844,9 +861,9 @@
     <div class="container">
         <h2 class="section-title">Лучшие переводчики платформы</h2>
         <div class="examples-grid">
-            <div class="translator-card" onclick="window.location.href='404.html'"><div class="avatar">А</div><h3>Анна Петрова</h3><div class="specialization" style="color:#2A6DFF; font-size:14px;">Юридический перевод (en/ru)</div><div class="rating" style="color:#FBBF24;">★★★★★</div><div class="desc" style="font-size:13px; color:#6B7280;">Более 200 заверенных переводов</div></div>
-            <div class="translator-card" onclick="window.location.href='404.html'"><div class="avatar">М</div><h3>Максим Иванов</h3><div class="specialization" style="color:#2A6DFF; font-size:14px;">IT и локализация (en/ru)</div><div class="rating" style="color:#FBBF24;">★★★★☆</div><div class="desc" style="font-size:13px; color:#6B7280;">Перевел 15 мобильных приложений</div></div>
-            <div class="translator-card" onclick="window.location.href='404.html'"><div class="avatar">Е</div><h3>Елена Смирнова</h3><div class="specialization" style="color:#2A6DFF; font-size:14px;">Медицинский перевод (de/ru)</div><div class="rating" style="color:#FBBF24;">★★★★★</div><div class="desc" style="font-size:13px; color:#6B7280;">Кандидат филологических наук</div></div>
+            <div class="translator-card" onclick="alert('Анна Петрова')"><div class="avatar">А</div><h3>Анна Петрова</h3><div class="specialization" style="color:#2A6DFF; font-size:14px;">Юридический перевод (en/ru)</div><div class="rating" style="color:#FBBF24;">★★★★★</div><div class="desc" style="font-size:13px; color:#6B7280;">Более 200 заверенных переводов</div></div>
+            <div class="translator-card" onclick="alert('Максим Иванов')"><div class="avatar">М</div><h3>Максим Иванов</h3><div class="specialization" style="color:#2A6DFF; font-size:14px;">IT и локализация (en/ru)</div><div class="rating" style="color:#FBBF24;">★★★★☆</div><div class="desc" style="font-size:13px; color:#6B7280;">Перевел 15 мобильных приложений</div></div>
+            <div class="translator-card" onclick="alert('Елена Смирнова')"><div class="avatar">Е</div><h3>Елена Смирнова</h3><div class="specialization" style="color:#2A6DFF; font-size:14px;">Медицинский перевод (de/ru)</div><div class="rating" style="color:#FBBF24;">★★★★★</div><div class="desc" style="font-size:13px; color:#6B7280;">Кандидат филологических наук</div></div>
         </div>
     </div>
 </section>
@@ -855,7 +872,7 @@
     <div class="container">
         <h2>Присоединяйтесь к сообществу переводчиков</h2>
         <p>Обменивайтесь опытом, находите клиентов и развивайтесь вместе с нами</p>
-        <button class="btn-community" onclick="window.location.href='404.html'">Стать частью сообщества →</button>
+        <button class="btn-community" onclick="alert('Сообщество переводчиков')">Стать частью сообщества →</button>
     </div>
 </section>
 
@@ -870,7 +887,7 @@
                 <div class="form-group"><label>Языковая пара</label><select id="orderLang"><option>Русский → Английский</option><option>Английский → Русский</option><option>Немецкий → Русский</option></select></div>
                 <div class="form-group"><label>Примечание</label><textarea id="orderNote" rows="2" placeholder="Опишите задачу"></textarea></div>
                 <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')" style="border:2px dashed #CBD5E1; border-radius:12px; padding:15px; text-align:center; cursor:pointer;">📎 Нажмите или перетащите файл (до 5 МБ)</div>
-                <button class="btn-submit" onclick="window.location.href='404.html'">Отправить заявку</button>
+                <button class="btn-submit" onclick="alert('Заявка отправлена! С вами свяжутся.')">Отправить заявку</button>
             </div>
             <div class="form-card">
                 <h3>👋 Стать переводчиком</h3>
@@ -880,7 +897,7 @@
                 <div class="form-group"><label>Специализация</label><select id="translatorSpec"><option>Письменный перевод</option><option>Устный перевод</option><option>Локализация</option></select></div>
                 <div class="form-group"><label>Примечание</label><textarea id="translatorNote" rows="2" placeholder="Ваш опыт, сертификаты, достижения"></textarea></div>
                 <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')" style="border:2px dashed #CBD5E1; border-radius:12px; padding:15px; text-align:center; cursor:pointer;">📎 Загрузить резюме или примеры работ</div>
-                <button class="btn-submit" onclick="window.location.href='404.html'">Отправить заявку</button>
+                <button class="btn-submit" onclick="alert('Заявка отправлена! Мы свяжемся с вами.')">Отправить заявку</button>
             </div>
         </div>
     </div>
@@ -890,7 +907,7 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-col"><h4>🌐 TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='index.html'">📘</span><span onclick="window.location.href='index.html'">🐦</span><span onclick="window.location.href='index.html'">📷</span><span onclick="window.location.href='index.html'">💼</span></div></div>
-            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='about.html'" style="cursor:pointer">О создателе</p><p onclick="window.location.href='privacy.html'" style="cursor:pointer">Политика конфиденциальности</p><p onclick="window.location.href='404.html'" style="cursor:pointer">Доставка и оплата</p><p onclick="window.location.href='404.html'" style="cursor:pointer">Частые вопросы</p></div>
+            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='about.html'" style="cursor:pointer">О создателе</p><p onclick="window.location.href='privacy.html'" style="cursor:pointer">Политика конфиденциальности</p><p onclick="alert('Доставка и оплата')" style="cursor:pointer">Доставка и оплата</p><p onclick="alert('Частые вопросы')" style="cursor:pointer">Частые вопросы</p></div>
             <div class="footer-col"><h4>Партнёры</h4><p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p><p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p></div>
             <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
         </div>
@@ -903,9 +920,35 @@
     const burgerBtn = document.getElementById('burgerBtn');
     const menu = document.getElementById('menu');
     const servicesMenuItem = document.getElementById('servicesMenuItem');
-    const servicesDropdown = document.getElementById('servicesDropdown');
     
-    // Переменные для теста регистрации
+    if (burgerBtn) {
+        burgerBtn.addEventListener('click', () => {
+            menu.classList.toggle('open');
+        });
+    }
+
+    // ДЛЯ ТЕЛЕФОНА: клик по "Услуги" открывает/закрывает выпадающее меню
+    if (servicesMenuItem) {
+        servicesMenuItem.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.preventDefault();
+                servicesMenuItem.classList.toggle('active');
+            }
+        });
+    }
+
+    // ДЛЯ ТЕЛЕФОНА: клик по пунктам первого уровня открывает второй уровень
+    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            if (window.innerWidth <= 768) {
+                e.stopPropagation();
+                item.classList.toggle('active');
+            }
+        });
+    });
+
+    // ===== ВХОД/РЕГИСТРАЦИЯ =====
     let users = JSON.parse(localStorage.getItem('translingo_users')) || [];
     let testWords = [];
     let currentWordIndex = 0;
@@ -913,7 +956,7 @@
     let testLocked = false;
     let selectedAnswer = null;
     let correctCount = 0;
-    
+
     const allWords = [
         { word: "ПЕРЕВОД", correct: "translation", options: ["translation", "interpretation", "localization", "transliteration"] },
         { word: "ПЕРЕВОДЧИК", correct: "translator", options: ["translator", "interpreter", "linguist", "polyglot"] },
@@ -927,72 +970,6 @@
         { word: "ПИСЬМЕННЫЙ", correct: "written", options: ["written", "textual", "literal", "documentary"] }
     ];
 
-    // Бургер меню
-    if (burgerBtn) {
-        burgerBtn.addEventListener('click', () => {
-            menu.classList.toggle('open');
-        });
-    }
-
-    // Для телефона: клик по "Услуги" открывает выпадающий список
-    if (servicesMenuItem) {
-        servicesMenuItem.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                servicesMenuItem.classList.toggle('active');
-            }
-        });
-    }
-
-    // Для телефона: клик по пунктам первого уровня открывает второй уровень
-    const dropdownItems = document.querySelectorAll('.dropdown-item');
-    dropdownItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.stopPropagation();
-                item.classList.toggle('active');
-            }
-        });
-    });
-
-    function scrollToServices() {
-        document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Модальное окно
-    function openAuthModal(tab = 'login') {
-        document.getElementById('authModal').classList.add('active');
-        switchAuthTab(tab);
-        if (tab === 'register') {
-            resetRegisterTest();
-        }
-    }
-
-    function closeAuthModal() {
-        document.getElementById('authModal').classList.remove('active');
-    }
-
-    function switchAuthTab(tab) {
-        const loginTab = document.querySelector('.auth-tab[data-tab="login"]');
-        const registerTab = document.querySelector('.auth-tab[data-tab="register"]');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        
-        if (tab === 'login') {
-            loginTab.classList.add('active');
-            registerTab.classList.remove('active');
-            loginForm.classList.add('active');
-            registerForm.classList.remove('active');
-        } else {
-            registerTab.classList.add('active');
-            loginTab.classList.remove('active');
-            registerForm.classList.add('active');
-            loginForm.classList.remove('active');
-            resetRegisterTest();
-        }
-    }
-
-    // Функции теста
     function getRandomWords(count) {
         const shuffled = [...allWords];
         for (let i = shuffled.length - 1; i > 0; i--) {
@@ -1256,6 +1233,7 @@
     window.closeAuthModal = closeAuthModal;
     window.switchAuthTab = switchAuthTab;
     window.scrollToServices = scrollToServices;
+    window.resetRegisterTest = resetRegisterTest;
 </script>
 
 </body>
