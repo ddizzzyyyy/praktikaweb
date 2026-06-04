@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>TransLingo — платформа переводчиков</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="images/png" href="logo123.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>TransLingo — Политика конфиденциальности</title>
+    <link rel="icon" type="image/png" href="images/logo123.png">
     <style>
         * {
             margin: 0;
@@ -14,1779 +14,228 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #FFFFFF;
-            color: #1A1A1A;
+            background: linear-gradient(135deg, #F0F4FF 0%, #E8EDF8 100%);
+            min-height: 100vh;
             width: 100%;
             margin: 0 auto;
+            position: relative;
             overflow-x: hidden;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(30px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes scaleIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-25px); }
-        }
-
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes moodFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .header {
-            width: 1920px;
-            height: 80px;
-            background: white;
-            border-bottom: 1px solid #E5E7EB;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding-left: 100px;
-            animation: fadeInUp 0.5s ease;
-            z-index: 100;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            position: absolute;
-            left: 100px;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: translateY(-50%) scale(1.02);
-        }
-
-        .logo img {
-            height: 45px;
-            width: auto;
-        }
-
-        .logo-text {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2A6DFF;
-        }
-
-        .menu {
-            position: absolute;
-            left: 400px;
-            top: 32px;
-            display: flex;
-            gap: 40px;
-        }
-
-        .menu-item {
-            position: relative;
-            cursor: pointer;
-            font-size: 16px;
-            color: #4B5563;
-            transition: all 0.3s;
-            padding: 8px 0;
-        }
-
-        .menu-item:hover {
-            color: #2A6DFF;
-            transform: translateY(-2px);
-        }
-
-        .dropdown {
-            position: absolute;
-            top: 35px;
-            left: -20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            min-width: 220px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            z-index: 1001;
-            border: 1px solid #E5E7EB;
-            transform: translateY(-10px);
-        }
-
-        .menu-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-item {
-            position: relative;
-            padding: 12px 20px;
-            font-size: 14px;
-            color: #4B5563;
-            transition: all 0.2s;
-            border-bottom: 1px solid #F0F2F5;
-        }
-
-        .dropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .dropdown-item:hover {
-            background: #F8FAFF;
-            color: #2A6DFF;
-            padding-left: 25px;
-        }
-
-        .subdropdown {
-            position: absolute;
-            left: 100%;
-            top: 0;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-            min-width: 200px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            border: 1px solid #E5E7EB;
-            transform: translateX(-10px);
-            z-index: 1002;
-        }
-
-        .dropdown-item:hover .subdropdown {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-        }
-
-        .subdropdown-item {
-            padding: 10px 18px;
-            font-size: 13px;
-            color: #6B7280;
-            transition: all 0.2s;
-            border-bottom: 1px solid #F0F2F5;
-            cursor: pointer;
-        }
-
-        .subdropdown-item:last-child {
-            border-bottom: none;
-        }
-
-        .subdropdown-item:hover {
-            background: #F8FAFF;
-            color: #2A6DFF;
-            padding-left: 25px;
-        }
-
-        .auth-buttons {
-            position: absolute;
-            right: 220px;
-            top: 20px;
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-login {
-            width: 100px;
-            height: 40px;
-            background: transparent;
-            border: 1px solid #2A6DFF;
-            border-radius: 8px;
-            color: #2A6DFF;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-login:hover {
-            background: #2A6DFF;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
-        }
-
-        .btn-register {
-            width: 120px;
-            height: 40px;
-            background: #2A6DFF;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-register:hover {
-            background: #1A4FCC;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
-        }
-
-        .auth-modal {
-            display: none;
+        .bg-shapes {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.7);
-            backdrop-filter: blur(8px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .auth-modal.active {
-            display: flex;
-            animation: fadeInUp 0.3s ease;
-        }
-
-        .auth-card {
-            background: linear-gradient(145deg, #FFFFFF 0%, #F8FAFF 100%);
-            border-radius: 48px;
-            width: 600px;
-            max-width: 90%;
-            padding: 0;
-            position: relative;
-            animation: scaleIn 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
-            box-shadow: 0 40px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(42,109,255,0.1) inset;
-            overflow: hidden;
-        }
-
-        .auth-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #2A6DFF, #00D4FF, #2A6DFF);
-            background-size: 200% 100%;
-            animation: shimmer 3s infinite linear;
-        }
-
-        .auth-close {
-            position: absolute;
-            top: 24px;
-            right: 28px;
-            width: 36px;
-            height: 36px;
-            background: #F0F4FF;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            cursor: pointer;
-            color: #2A6DFF;
-            transition: all 0.3s;
-            z-index: 10;
-        }
-
-        .auth-close:hover {
-            background: #2A6DFF;
-            color: white;
-            transform: rotate(90deg);
-        }
-
-        .auth-header {
-            background: linear-gradient(135deg, #2A6DFF 0%, #1A4FCC 100%);
-            padding: 32px 40px;
-            text-align: center;
-        }
-
-        .auth-header h2 {
-            color: white;
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        .auth-header p {
-            color: rgba(255,255,255,0.8);
-            font-size: 14px;
-            margin-top: 8px;
-        }
-
-        .auth-tabs {
-            display: flex;
-            margin: 24px 40px 0 40px;
-            gap: 8px;
-            background: #F0F4FF;
-            padding: 6px;
-            border-radius: 60px;
-        }
-
-        .auth-tab {
-            flex: 1;
-            text-align: center;
-            padding: 12px 0;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 50px;
-            transition: all 0.3s;
-            color: #6B7280;
-        }
-
-        .auth-tab.active {
-            background: #2A6DFF;
-            color: white;
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
-        }
-
-        .auth-form-container {
-            padding: 32px 40px 40px 40px;
-        }
-
-        .auth-form {
-            display: none;
-            animation: slideInRight 0.3s ease;
-        }
-
-        .auth-form.active {
-            display: block;
-        }
-
-        .input-group {
-            margin-bottom: 24px;
-            position: relative;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            color: #374151;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 16px 18px;
-            border: 2px solid #E5E7EB;
-            border-radius: 24px;
-            font-size: 15px;
-            transition: all 0.3s;
-            background: white;
-            font-family: inherit;
-        }
-
-        .input-group input:focus {
-            outline: none;
-            border-color: #2A6DFF;
-            box-shadow: 0 0 0 4px rgba(42,109,255,0.1);
-            transform: translateY(-2px);
-        }
-
-        .input-group .input-icon {
-            position: absolute;
-            right: 18px;
-            bottom: 16px;
-            font-size: 20px;
-            color: #CBD5E1;
             pointer-events: none;
+            z-index: 0;
         }
 
-        .auth-btn {
-            width: 100%;
-            background: linear-gradient(135deg, #2A6DFF 0%, #1A4FCC 100%);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 40px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            margin-top: 16px;
-            transition: all 0.3s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .bg-shape {
+            position: absolute;
+            background: linear-gradient(135deg, rgba(42,109,255,0.05), rgba(0,212,255,0.05));
+            border-radius: 50%;
+            filter: blur(60px);
         }
 
-        .auth-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(42,109,255,0.4);
+        .shape-1 { width: 500px; height: 500px; top: -200px; right: -100px; }
+        .shape-2 { width: 400px; height: 400px; bottom: -150px; left: -100px; }
+        .shape-3 { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        .auth-switch {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 14px;
-            color: #6B7280;
+        .privacy-card {
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            border-radius: 64px;
+            padding: 60px 55px;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.2), 0 0 0 1px rgba(42,109,255,0.1) inset;
+            border: 1px solid rgba(255,255,255,0.5);
         }
 
-        .auth-switch span {
-            color: #2A6DFF;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        .error-message {
-            color: #EF4444;
-            font-size: 11px;
-            margin-top: 6px;
-            display: block;
-            padding-left: 16px;
-        }
-
-        .test-screen {
-            display: none;
-        }
-
-        .test-screen.active {
-            display: block;
-        }
-
-        .progress {
-            margin-bottom: 25px;
-        }
-
-        .progress-text {
-            font-size: 13px;
-            color: #2A6DFF;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: #E5E7EB;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #2A6DFF, #00D4FF);
-            border-radius: 10px;
-            transition: width 0.5s ease;
-        }
-
-        .word-card {
-            background: linear-gradient(135deg, #F8FAFF, #F0F4FF);
-            border-radius: 48px;
-            padding: 35px 20px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(42,109,255,0.15);
-        }
-
-        .question-label {
-            font-size: 12px;
-            color: #2A6DFF;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .word {
-            font-size: 48px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1A1A1A, #2A6DFF);
+        h1 {
+            font-size: 40px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-        }
-
-        .lang-direction {
-            font-size: 13px;
-            color: #6B7280;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .lang-direction span {
-            background: #F0F4FF;
-            padding: 4px 12px;
-            border-radius: 40px;
-            font-size: 11px;
-            font-weight: 600;
-            color: #2A6DFF;
-        }
-
-        .attempts {
-            font-size: 13px;
-            color: #EF4444;
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-
-        .options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .option {
-            background: #F9FAFB;
-            border: 2px solid #E5E7EB;
-            border-radius: 60px;
-            padding: 14px 16px;
-            color: #1A1A1A;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            font-weight: 500;
-            font-size: 15px;
-        }
-
-        .option:hover {
-            background: #F0F4FF;
-            border-color: #2A6DFF;
-            transform: translateY(-2px);
-        }
-
-        .option-correct {
-            background: #D1FAE5;
-            border-color: #10B981;
-            color: #065F46;
-        }
-
-        .option-wrong {
-            background: #FEE2E2;
-            border-color: #EF4444;
-            color: #991B1B;
-        }
-
-        .check-btn {
-            background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
-            border: none;
-            border-radius: 60px;
-            padding: 16px;
-            width: 100%;
-            color: white;
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .check-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(42,109,255,0.3);
-        }
-
-        .feedback {
-            font-size: 13px;
-            margin-top: 20px;
-            min-height: 40px;
-            font-weight: 500;
-        }
-
-        .feedback.correct { color: #10B981; }
-        .feedback.wrong { color: #EF4444; }
-
-        .register-fields {
-            display: none;
-        }
-
-        .register-fields.active {
-            display: block;
-        }
-
-        .hero {
-            background: url('images/back.jpg') center center/cover no-repeat;
-            position: relative;
-            padding: 120px 0;
+            margin-bottom: 15px;
             text-align: center;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.5);
-        }
-
-        .hero .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h1 {
-            font-size: 56px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.6s ease;
-        }
-
-        .hero p {
-            font-size: 20px;
-            color: rgba(255,255,255,0.95);
+        .last-updated {
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 14px;
             margin-bottom: 40px;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
-            animation: fadeInUp 0.6s ease 0.1s backwards;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #E5E7EB;
         }
 
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            animation: fadeInUp 0.6s ease 0.2s backwards;
-        }
-
-        .btn-large {
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 500;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-blue {
-            background: #2A6DFF;
-            border: none;
-            color: white;
-        }
-
-        .btn-blue:hover {
-            background: #1A4FCC;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(42,109,255,0.3);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid white;
-            color: white;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        .services {
-            padding: 80px 0;
-            background: #FFFFFF;
+        .section {
+            margin-bottom: 35px;
         }
 
         .section-title {
-            text-align: center;
-            font-size: 36px;
-            font-weight: bold;
-            margin-bottom: 60px;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .service-card {
-            background: #F9FAFB;
-            border-radius: 16px;
-            padding: 30px 24px;
-            text-align: center;
-            transition: all 0.4s;
-            border: 1px solid #F0F2F5;
-            cursor: pointer;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .service-card:nth-child(1) { animation-delay: 0s; }
-        .service-card:nth-child(2) { animation-delay: 0.1s; }
-        .service-card:nth-child(3) { animation-delay: 0.2s; }
-        .service-card:nth-child(4) { animation-delay: 0.3s; }
-        .service-card:nth-child(5) { animation-delay: 0.4s; }
-        .service-card:nth-child(6) { animation-delay: 0.5s; }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-            border-color: #2A6DFF;
-        }
-
-        .service-icon {
-            width: 64px;
-            height: 64px;
-            background: #E0E7FF;
-            border-radius: 50%;
+            font-size: 22px;
+            font-weight: 700;
+            color: #2A6DFF;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 28px;
-            transition: all 0.3s;
+            gap: 12px;
         }
 
-        .service-card:hover .service-icon {
-            transform: scale(1.1);
-            background: #2A6DFF;
+        .section-content {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #4B5563;
+            padding-left: 36px;
         }
 
-        .service-card h3 {
-            font-size: 20px;
-            margin-bottom: 12px;
-            color: #1A1A1A;
-        }
-
-        .service-card p {
-            font-size: 14px;
-            color: #6B7280;
-            line-height: 1.5;
-            margin-bottom: 16px;
-        }
-
-        .service-price {
-            font-size: 18px;
-            font-weight: bold;
-            color: #2A6DFF;
-            margin-bottom: 8px;
-        }
-
-        .service-time {
-            font-size: 12px;
-            color: #10B981;
-            background: #D1FAE5;
+        .badge {
+            background: #F0F4FF;
             display: inline-block;
             padding: 4px 12px;
             border-radius: 20px;
-            transition: all 0.3s;
+            font-size: 12px;
+            color: #2A6DFF;
+            font-weight: 600;
+            margin-right: 10px;
         }
 
-        .service-card:hover .service-time {
-            transform: scale(1.05);
-        }
-
-        .examples {
+        .developer-note {
             background: #F8FAFF;
-            padding: 80px 0;
-        }
-
-        .examples-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .translator-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
+            border-radius: 28px;
+            padding: 25px;
+            margin-top: 40px;
             text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: all 0.4s;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
-        }
-
-        .translator-card:nth-child(1) { animation-delay: 0s; }
-        .translator-card:nth-child(2) { animation-delay: 0.1s; }
-        .translator-card:nth-child(3) { animation-delay: 0.2s; }
-
-        .translator-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-
-        .avatar {
-            width: 100px;
-            height: 100px;
-            background: #2A6DFF;
-            border-radius: 50%;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: white;
-            transition: all 0.3s;
-        }
-
-        .translator-card:hover .avatar {
-            transform: scale(1.05);
-            background: #1A4FCC;
-        }
-
-        .community {
-            text-align: center;
-            padding: 80px 0;
-            background: linear-gradient(135deg, #1A1A2E 0%, #16213E 100%);
-            color: white;
-        }
-
-        .community h2 {
-            font-size: 36px;
-            margin-bottom: 20px;
-            animation: fadeInUp 0.5s ease;
-        }
-
-        .community p {
-            font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            animation: fadeInUp 0.5s ease 0.1s backwards;
-        }
-
-        .btn-community {
-            background: #2A6DFF;
-            border: none;
-            padding: 14px 40px;
-            font-size: 16px;
-            border-radius: 40px;
-            color: white;
-            cursor: pointer;
-            transition: all 0.3s;
-            animation: fadeInUp 0.5s ease 0.2s backwards;
-        }
-
-        .btn-community:hover {
-            background: #1A4FCC;
-            transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .form-section {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .form-card {
-            background: #F9FAFB;
-            border-radius: 24px;
-            padding: 40px;
             border: 1px solid #E5E7EB;
-            transition: all 0.3s;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
         }
 
-        .form-card:nth-child(1) { animation-delay: 0s; }
-        .form-card:nth-child(2) { animation-delay: 0.1s; }
-
-        .form-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            margin-bottom: 8px;
-            color: #374151;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #D1D5DB;
-            border-radius: 10px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: all 0.2s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2A6DFF;
-            box-shadow: 0 0 0 3px rgba(42,109,255,0.1);
-            transform: translateY(-1px);
-        }
-
-        .file-zone {
-            border: 2px dashed #CBD5E1;
-            border-radius: 12px;
-            padding: 30px;
-            text-align: center;
-            color: #6B7280;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .file-zone:hover {
-            border-color: #2A6DFF;
-            background: #F0F4FF;
-            transform: scale(1.02);
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: #2A6DFF;
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            margin-top: 10px;
-            transition: all 0.3s;
-        }
-
-        .btn-submit:hover {
-            background: #1A4FCC;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
-        }
-
-        .footer {
-            background: #111827;
-            color: #9CA3AF;
-            padding: 60px 0 40px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-col h4 {
-            color: white;
-            font-size: 16px;
-            margin-bottom: 20px;
-        }
-
-        .footer-col p, .footer-col a {
-            font-size: 14px;
-            color: #9CA3AF;
-            text-decoration: none;
-            line-height: 1.8;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .footer-col a:hover, .footer-col p:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 16px;
-            margin-top: 16px;
-        }
-
-        .social-icons span {
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .social-icons span:hover {
-            transform: translateY(-3px) scale(1.1);
-            color: white;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid #1F2937;
-            font-size: 13px;
-        }
-
-        .error-page {
-            width: 1920px;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #F0F4FF 0%, #E8EDF8 100%);
-            display: flex;
+        .back-btn {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
+            gap: 10px;
+            background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
+            color: white;
+            text-decoration: none;
+            padding: 14px 36px;
+            border-radius: 60px;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 30px;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 35px;
+            font-size: 12px;
+            color: #9CA3AF;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 15px;
+            }
+            .privacy-card {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            .section-title {
+                font-size: 18px;
+            }
+            .section-content {
+                font-size: 13px;
+                padding-left: 20px;
+            }
+            .badge {
+                font-size: 10px;
+                padding: 3px 8px;
+            }
         }
     </style>
 </head>
 <body>
-
-<div class="header">
-    <div class="logo" onclick="goHome()">
-        <img src="images/logo123.png" alt="TransLingo">
-        <span class="logo-text">TransLingo</span>
+    <div class="bg-shapes">
+        <div class="bg-shape shape-1"></div>
+        <div class="bg-shape shape-2"></div>
+        <div class="bg-shape shape-3"></div>
     </div>
-    <div class="menu">
-        <div class="menu-item" onclick="goHome()">Главная</div>
-        <div class="menu-item">
-            Услуги
-            <div class="dropdown">
-                <div class="dropdown-item">
-                    📄 Письменный перевод →
-                    <div class="subdropdown">
-                        <div class="subdropdown-item" onclick="show404()">Технический перевод</div>
-                        <div class="subdropdown-item" onclick="show404()">Юридический перевод</div>
-                        <div class="subdropdown-item" onclick="show404()">Медицинский перевод</div>
-                        <div class="subdropdown-item" onclick="show404()">Экономический перевод</div>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    🎤 Устный перевод →
-                    <div class="subdropdown">
-                        <div class="subdropdown-item" onclick="show404()">Последовательный</div>
-                        <div class="subdropdown-item" onclick="show404()">Синхронный</div>
-                        <div class="subdropdown-item" onclick="show404()">Переговоры</div>
-                        <div class="subdropdown-item" onclick="show404()">Сопровождение</div>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    💻 Локализация →
-                    <div class="subdropdown">
-                        <div class="subdropdown-item" onclick="show404()">Локализация ПО</div>
-                        <div class="subdropdown-item" onclick="show404()">Локализация игр</div>
-                        <div class="subdropdown-item" onclick="show404()">Локализация сайтов</div>
-                        <div class="subdropdown-item" onclick="show404()">Локализация приложений</div>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    ✅ Нотариальное заверение →
-                    <div class="subdropdown">
-                        <div class="subdropdown-item" onclick="show404()">Свидетельство о рождении</div>
-                        <div class="subdropdown-item" onclick="show404()">Дипломы и аттестаты</div>
-                        <div class="subdropdown-item" onclick="show404()">Доверенности</div>
-                        <div class="subdropdown-item" onclick="show404()">Уставные документы</div>
-                    </div>
-                </div>
-                <div class="dropdown-item">
-                    🎬 Субтитры и трансляция →
-                    <div class="subdropdown">
-                        <div class="subdropdown-item" onclick="show404()">Субтитры для YouTube</div>
-                        <div class="subdropdown-item" onclick="show404()">Субтитры для кино</div>
-                        <div class="subdropdown-item" onclick="show404()">Стенограмма интервью</div>
-                        <div class="subdropdown-item" onclick="show404()">Конференции</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="menu-item" onclick="window.location.href='about.html'">О себе</div>
-        <div class="menu-item" onclick="window.location.href='gallery.html'">Галерея</div>
-        <div class="menu-item" onclick="showContacts()">Контакты</div>
-    </div>
-    <div id="authButtonsContainer" class="auth-buttons">
-        <button class="btn-login" onclick="openAuthModal('login')">Вход</button>
-        <button class="btn-register" onclick="openAuthModal('register')">Регистрация</button>
-    </div>
-</div>
 
-<div id="authModal" class="auth-modal">
-    <div class="auth-card">
-        <div class="auth-close" onclick="closeAuthModal()">✕</div>
-        <div class="auth-header">
-            <h2>🌐 TransLingo</h2>
-            <p>Добро пожаловать в сообщество переводчиков</p>
-        </div>
-        <div class="auth-tabs">
-            <div class="auth-tab" data-tab="login" onclick="switchAuthTab('login')">Вход</div>
-            <div class="auth-tab" data-tab="register" onclick="switchAuthTab('register')">Регистрация</div>
-        </div>
-        <div class="auth-form-container">
-           
-            <div id="loginForm" class="auth-form">
-                <div class="input-group">
-                    <label>📧 Email</label>
-                    <input type="email" id="loginEmail" placeholder="your@email.com">
-                    <span class="input-icon">✉️</span>
-                    <span class="error-message" id="loginEmailError"></span>
-                </div>
-                <div class="input-group">
-                    <label>🔒 Пароль</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••">
-                    <span class="input-icon">🔑</span>
-                    <span class="error-message" id="loginPasswordError"></span>
-                </div>
-                <button class="auth-btn" onclick="handleLogin()">Войти в аккаунт →</button>
-                <div class="auth-switch">
-                    Нет аккаунта? <span onclick="switchAuthTab('register')">Создать</span>
-                </div>
-            </div>
-
-   
-            <div id="registerForm" class="auth-form">
-                <div id="registerTestScreen" class="test-screen active">
-                    <div class="progress">
-                        <div class="progress-text" id="regProgressText">Слово 1 из 5</div>
-                        <div class="progress-bar"><div class="progress-fill" id="regProgressFill"></div></div>
-                    </div>
-                    <div class="word-card">
-                        <div class="question-label">СЛОВО ДЛЯ ПЕРЕВОДА</div>
-                        <div class="word" id="regWord">---</div>
-                        <div class="lang-direction">
-                            <span>🇷🇺 РУССКИЙ</span> → <span>🇬🇧 АНГЛИЙСКИЙ</span>
-                        </div>
-                    </div>
-                    <div class="attempts" id="regAttemptsText">✨ Осталось ошибок: 3</div>
-                    <div class="options" id="regOptionsContainer"></div>
-                    <button class="check-btn" id="regCheckBtn">🔓 ПРОВЕРИТЬ ПЕРЕВОД</button>
-                    <div class="feedback" id="regFeedback"></div>
-                </div>
-
-                <div id="registerFieldsScreen" class="register-fields">
-                    <div class="input-group">
-                        <label>👤 Имя</label>
-                        <input type="text" id="regName" placeholder="Иван Петров">
-                        <span class="input-icon">😊</span>
-                        <span class="error-message" id="regNameError"></span>
-                    </div>
-                    <div class="input-group">
-                        <label>📧 Email</label>
-                        <input type="email" id="regEmail" placeholder="your@email.com">
-                        <span class="input-icon">✉️</span>
-                        <span class="error-message" id="regEmailError"></span>
-                    </div>
-                    <div class="input-group">
-                        <label>🔒 Пароль</label>
-                        <input type="password" id="regPassword" placeholder="минимум 4 символа">
-                        <span class="input-icon">🔑</span>
-                        <span class="error-message" id="regPasswordError"></span>
-                    </div>
-                    <div class="input-group">
-                        <label>✅ Подтверждение</label>
-                        <input type="password" id="regConfirm" placeholder="повторите пароль">
-                        <span class="input-icon">✓</span>
-                        <span class="error-message" id="regConfirmError"></span>
-                    </div>
-                    <button class="auth-btn" onclick="finalizeRegistration()">✨ ЗАВЕРШИТЬ РЕГИСТРАЦИЮ</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<section class="hero">
     <div class="container">
-        <h1>Профессиональные переводчики<br>рядом с вами</h1>
-        <p>Найдите эксперта для перевода документов, сайтов и приложений за 5 минут</p>
-        <div class="hero-buttons">
-            <button class="btn-large btn-blue" onclick="scrollToServices()">Найти переводчика →</button>
-            <button class="btn-large btn-outline" onclick="openAuthModal('register')">Стать переводчиком</button>
-        </div>
-    </div>
-</section>
+        <div class="privacy-card">
+            <h1>🔒 Политика конфиденциальности</h1>
+            <div class="last-updated">📅 Последнее обновление: 1 июня 2026 г.</div>
 
-<section class="services" id="services">
-    <div class="container">
-        <h2 class="section-title">Что мы предлагаем</h2>
-        <div class="services-grid">
-            <div class="service-card" onclick="show404()"><div class="service-icon">📄</div><h3>Письменный перевод</h3><p>Документы, контракты, статьи, письма, диссертации</p><div class="service-price">от 500 ₽ / страница</div><div class="service-time">⏱ 1-3 дня</div></div>
-            <div class="service-card" onclick="show404()"><div class="service-icon">📱</div><h3>Локализация приложений</h3><p>Адаптация интерфейсов, сторис, ASO-оптимизация</p><div class="service-price">от 1500 ₽ / час</div><div class="service-time">⏱ от 3 дней</div></div>
-            <div class="service-card" onclick="show404()"><div class="service-icon">⚖️</div><h3>Нотариальное заверение</h3><p>Переводы с печатью, подписью, для суда и госорганов</p><div class="service-price">от 800 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
-            <div class="service-card" onclick="show404()"><div class="service-icon">🎬</div><h3>Субтитры и трансляция</h3><p>Видео, подкасты, конференции, YouTube, онлайн-встречи</p><div class="service-price">от 200 ₽ / минута</div><div class="service-time">⏱ от 1 дня</div></div>
-            <div class="service-card" onclick="show404()"><div class="service-icon">✍️</div><h3>Редкость и редактура</h3><p>Проверка, вычитка, адаптация под носителей языка</p><div class="service-price">от 300 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
-            <div class="service-card" onclick="show404()"><div class="service-icon">⏱️</div><h3>Срочный перевод 24/7</h3><p>Экспресс-перевод любой сложности в режиме нон-стоп</p><div class="service-price">от 1000 ₽ / страница</div><div class="service-time">⚡ от 2 часов</div></div>
-        </div>
-    </div>
-</section>
-
-<section class="examples">
-    <div class="container">
-        <h2 class="section-title">Лучшие переводчики платформы</h2>
-        <div class="examples-grid">
-            <div class="translator-card" onclick="show404()"><div class="avatar">А</div><h3>Анна Петрова</h3><div class="specialization">Юридический перевод (en/ru)</div><div class="rating">★★★★★</div><div class="desc">Более 200 заверенных переводов</div></div>
-            <div class="translator-card" onclick="show404()"><div class="avatar">М</div><h3>Максим Иванов</h3><div class="specialization">IT и локализация (en/ru)</div><div class="rating">★★★★☆</div><div class="desc">Перевел 15 мобильных приложений</div></div>
-            <div class="translator-card" onclick="show404()"><div class="avatar">Е</div><h3>Елена Смирнова</h3><div class="specialization">Медицинский перевод (de/ru)</div><div class="rating">★★★★★</div><div class="desc">Кандидат филологических наук</div></div>
-        </div>
-    </div>
-</section>
-
-<section class="community">
-    <div class="container">
-        <h2>Присоединяйтесь к сообществу переводчиков</h2>
-        <p>Обменивайтесь опытом, находите клиентов и развивайтесь вместе с нами</p>
-        <button class="btn-community" onclick="show404()">Стать частью сообщества →</button>
-    </div>
-</section>
-
-<section class="form-section">
-    <div class="container">
-        <div class="form-grid">
-            <div class="form-card">
-                <h3>📝 Заказать перевод</h3>
-                <div class="form-group"><label>Имя</label><input type="text" id="orderName" placeholder="Иван"></div>
-                <div class="form-group"><label>Фамилия</label><input type="text" id="orderSurname" placeholder="Иванов"></div>
-                <div class="form-group"><label>Email</label><input type="email" id="orderEmail" placeholder="ivan@example.com"></div>
-                <div class="form-group"><label>Языковая пара</label><select id="orderLang"><option>Русский → Английский</option><option>Английский → Русский</option><option>Немецкий → Русский</option></select></div>
-                <div class="form-group"><label>Примечание</label><textarea id="orderNote" rows="3" placeholder="Опишите задачу"></textarea></div>
-                <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')">📎 Нажмите или перетащите файл (до 5 МБ)</div>
-                <button class="btn-submit" onclick="submitOrder()">Отправить заявку</button>
-            </div>
-            <div class="form-card">
-                <h3>👋 Стать переводчиком</h3>
-                <div class="form-group"><label>Имя</label><input type="text" id="translatorName" placeholder="Имя"></div>
-                <div class="form-group"><label>Фамилия</label><input type="text" id="translatorSurname" placeholder="Фамилия"></div>
-                <div class="form-group"><label>Email</label><input type="email" id="translatorEmail" placeholder="translator@example.com"></div>
-                <div class="form-group"><label>Специализация</label><select id="translatorSpec"><option>Письменный перевод</option><option>Устный перевод</option><option>Локализация</option></select></div>
-                <div class="form-group"><label>Примечание</label><textarea id="translatorNote" rows="3" placeholder="Ваш опыт, сертификаты, достижения"></textarea></div>
-                <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')">📎 Загрузить резюме или примеры работ</div>
-                <button class="btn-submit" onclick="submitTranslator()">Отправить заявку</button>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col"><h4>🌐 TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="showContacts()">📘</span><span onclick="showContacts()">🐦</span><span onclick="showContacts()">📷</span><span onclick="showContacts()">💼</span></div></div>
-            <div class="footer-col">
-                <h4>О нас</h4>
-                <p onclick="window.location.href='about.html'" style="cursor:pointer">О создателе</p>
-                <p onclick="window.location.href='privacy.html'" style="cursor:pointer">Политика конфиденциальности</p>
-                <p onclick="showContacts()" style="cursor:pointer">Доставка и оплата</p>
-                <p onclick="showContacts()" style="cursor:pointer">Частые вопросы</p>
-                <p onclick="window.location.href='sitemap.html'" style="cursor:pointer">🗺️ Карта сайта</p>
-            </div>
-            <div class="footer-col">
-                <h4>Партнёры</h4>
-                <p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p>
-                <p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p>
-            </div>
-            <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
-        </div>
-        <div class="copyright">© 2026 TransLingo. Все права защищены.</div>
-    </div>
-</footer>
-
-<script>
-    let users = JSON.parse(localStorage.getItem('translingo_users')) || [];
-    let pendingRegistration = null;
-
-    const allWords = [
-        { word: "ПЕРЕВОД", correct: "translation", options: ["translation", "interpretation", "localization", "transliteration"] },
-        { word: "ПЕРЕВОДЧИК", correct: "translator", options: ["translator", "interpreter", "linguist", "polyglot"] },
-        { word: "ЯЗЫК", correct: "language", options: ["language", "dialect", "speech", "tongue"] },
-        { word: "ТОЧНОСТЬ", correct: "accuracy", options: ["accuracy", "precision", "correctness", "exactness"] },
-        { word: "КАЧЕСТВО", correct: "quality", options: ["quality", "standard", "excellence", "perfection"] },
-        { word: "ЛОКАЛИЗАЦИЯ", correct: "localization", options: ["localization", "adaptation", "customization", "translation"] },
-        { word: "РЕДАКТУРА", correct: "editing", options: ["editing", "proofreading", "revision", "correction"] },
-        { word: "СУБТИТРЫ", correct: "subtitles", options: ["subtitles", "captions", "transcript", "lyrics"] },
-        { word: "УСТНЫЙ", correct: "oral", options: ["oral", "spoken", "verbal", "voice"] },
-        { word: "ПИСЬМЕННЫЙ", correct: "written", options: ["written", "textual", "literal", "documentary"] }
-    ];
-
-    let testWords = [];
-    let currentWordIndex = 0;
-    let mistakesLeft = 3;
-    let testLocked = false;
-    let selectedAnswer = null;
-    let correctCount = 0;
-
-    function getRandomWords(count) {
-        const shuffled = [...allWords];
-        for (let i = shuffled.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-        }
-        return shuffled.slice(0, count);
-    }
-
-    function shuffleArray(arr) {
-        for (let i = arr.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
-    }
-
-    function resetRegisterTest() {
-        testWords = getRandomWords(5);
-        currentWordIndex = 0;
-        mistakesLeft = 3;
-        correctCount = 0;
-        testLocked = false;
-        selectedAnswer = null;
-        
-        document.getElementById('registerTestScreen').style.display = 'block';
-        document.getElementById('registerFieldsScreen').classList.remove('active');
-        renderRegisterWord();
-    }
-
-    function updateRegisterProgress() {
-        const percent = (currentWordIndex / testWords.length) * 100;
-        const fill = document.getElementById('regProgressFill');
-        const text = document.getElementById('regProgressText');
-        const attemptsSpan = document.getElementById('regAttemptsText');
-        if (fill) fill.style.width = percent + '%';
-        if (text) text.innerHTML = `Слово ${currentWordIndex + 1} из ${testWords.length}`;
-        if (attemptsSpan) attemptsSpan.innerHTML = `✨ Осталось ошибок: ${mistakesLeft}`;
-    }
-
-    function renderRegisterWord() {
-        if (currentWordIndex >= testWords.length) {
-            finishTestSuccess();
-            return;
-        }
-        
-        const word = testWords[currentWordIndex];
-        const wordDiv = document.getElementById('regWord');
-        if (wordDiv) wordDiv.textContent = word.word;
-        
-        const shuffledOptions = shuffleArray([...word.options]);
-        const container = document.getElementById('regOptionsContainer');
-        if (container) {
-            container.innerHTML = '';
-            const letters = ['А', 'Б', 'В', 'Г'];
-            shuffledOptions.forEach((opt, idx) => {
-                const optionDiv = document.createElement('div');
-                optionDiv.className = 'option';
-                optionDiv.setAttribute('data-value', opt);
-                optionDiv.innerHTML = `<span style="font-weight:700;margin-right:8px;">${letters[idx]}</span> ${opt}`;
-                optionDiv.onclick = () => selectRegisterOption(opt);
-                container.appendChild(optionDiv);
-            });
-        }
-        
-        document.querySelectorAll('#regOptionsContainer .option').forEach(opt => {
-            opt.classList.remove('option-correct', 'option-wrong');
-        });
-        
-        const feedbackDiv = document.getElementById('regFeedback');
-        if (feedbackDiv) {
-            feedbackDiv.innerHTML = '';
-            feedbackDiv.className = 'feedback';
-        }
-        selectedAnswer = null;
-        updateRegisterProgress();
-    }
-
-    function selectRegisterOption(option) {
-        if (testLocked) return;
-        selectedAnswer = option;
-        document.querySelectorAll('#regOptionsContainer .option').forEach(opt => {
-            opt.classList.remove('option-correct', 'option-wrong');
-        });
-        const selectedDiv = Array.from(document.querySelectorAll('#regOptionsContainer .option')).find(
-            opt => opt.getAttribute('data-value') === option
-        );
-        if (selectedDiv) selectedDiv.classList.add('option-correct');
-    }
-
-    function finishTestSuccess() {
-        document.getElementById('registerTestScreen').style.display = 'none';
-        document.getElementById('registerFieldsScreen').classList.add('active');
-        const feedbackDiv = document.getElementById('regFeedback');
-        if (feedbackDiv) {
-            feedbackDiv.innerHTML = '✅ ТЫ ПРОШЁЛ ТЕСТ! Теперь заполни данные для регистрации';
-            feedbackDiv.className = 'feedback correct';
-        }
-    }
-
-    function checkRegisterAnswer() {
-        if (testLocked) return;
-        
-        if (!selectedAnswer) {
-            const feedbackDiv = document.getElementById('regFeedback');
-            if (feedbackDiv) {
-                feedbackDiv.innerHTML = '❌ Выбери вариант перевода';
-                feedbackDiv.className = 'feedback wrong';
-            }
-            setTimeout(() => {
-                if (feedbackDiv && feedbackDiv.innerHTML === '❌ Выбери вариант перевода') {
-                    feedbackDiv.innerHTML = '';
-                }
-            }, 2000);
-            return;
-        }
-        
-        const word = testWords[currentWordIndex];
-        const isCorrect = (selectedAnswer.toLowerCase() === word.correct.toLowerCase());
-        const feedbackDiv = document.getElementById('regFeedback');
-        
-        if (isCorrect) {
-            correctCount++;
-            currentWordIndex++;
-            renderRegisterWord();
-            if (feedbackDiv) {
-                feedbackDiv.innerHTML = '✅ ПРАВИЛЬНО! Следующее слово...';
-                feedbackDiv.className = 'feedback correct';
-            }
-            setTimeout(() => {
-                if (feedbackDiv && feedbackDiv.innerHTML === '✅ ПРАВИЛЬНО! Следующее слово...') {
-                    feedbackDiv.innerHTML = '';
-                }
-            }, 1500);
-        } else {
-            mistakesLeft--;
-            updateRegisterProgress();
-            if (feedbackDiv) {
-                feedbackDiv.innerHTML = `❌ НЕПРАВИЛЬНО. Правильный ответ: ${word.correct}`;
-                feedbackDiv.className = 'feedback wrong';
-            }
-            
-            const wrongDiv = Array.from(document.querySelectorAll('#regOptionsContainer .option')).find(
-                opt => opt.getAttribute('data-value') === selectedAnswer
-            );
-            if (wrongDiv) wrongDiv.classList.add('option-wrong');
-            
-            const correctDiv = Array.from(document.querySelectorAll('#regOptionsContainer .option')).find(
-                opt => opt.getAttribute('data-value').toLowerCase() === word.correct.toLowerCase()
-            );
-            if (correctDiv) correctDiv.classList.add('option-correct');
-            
-            if (mistakesLeft === 0) {
-                testLocked = true;
-                if (feedbackDiv) feedbackDiv.innerHTML = '❌ ПОПЫТКИ ЗАКОНЧИЛИСЬ. Обнови страницу и попробуй снова.';
-                setTimeout(() => location.reload(), 3000);
-            } else {
-                testLocked = true;
-                setTimeout(() => {
-                    testLocked = false;
-                    renderRegisterWord();
-                }, 2000);
-            }
-        }
-    }
-
-    document.getElementById('regCheckBtn')?.addEventListener('click', checkRegisterAnswer);
-
-    function finalizeRegistration() {
-        const name = document.getElementById('regName').value.trim();
-        const email = document.getElementById('regEmail').value.trim();
-        const password = document.getElementById('regPassword').value;
-        const confirm = document.getElementById('regConfirm').value;
-        let isValid = true;
-
-        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-        
-        if (!name) {
-            document.getElementById('regNameError').textContent = 'Введите имя';
-            isValid = false;
-        } else if (name.length < 2) {
-            document.getElementById('regNameError').textContent = 'Имя должно содержать минимум 2 символа';
-            isValid = false;
-        }
-        if (!email) {
-            document.getElementById('regEmailError').textContent = 'Введите email';
-            isValid = false;
-        } else if (!email.includes('@')) {
-            document.getElementById('regEmailError').textContent = 'Введите корректный email';
-            isValid = false;
-        }
-        if (!password) {
-            document.getElementById('regPasswordError').textContent = 'Введите пароль';
-            isValid = false;
-        } else if (password.length < 4) {
-            document.getElementById('regPasswordError').textContent = 'Пароль должен содержать минимум 4 символа';
-            isValid = false;
-        }
-        if (password !== confirm) {
-            document.getElementById('regConfirmError').textContent = 'Пароли не совпадают';
-            isValid = false;
-        }
-
-        if (isValid) {
-            if (users.some(u => u.email === email)) {
-                document.getElementById('regEmailError').textContent = 'Пользователь с таким email уже существует';
-                return;
-            }
-            users.push({ name, email, password });
-            localStorage.setItem('translingo_users', JSON.stringify(users));
-            alert('✅ Регистрация успешна! Теперь войдите в аккаунт.');
-            closeAuthModal();
-            switchAuthTab('login');
-            document.getElementById('loginEmail').value = email;
-            document.getElementById('loginPassword').value = '';
-            resetRegisterTest();
-        }
-    }
-
-    window.finalizeRegistration = finalizeRegistration;
-
-    function scrollToServices() {
-        document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    function showContacts() {
-        alert('📞 Свяжитесь с нами:\n\n📱 Телефон: +375(29)111-11-11\n📧 Email: hello@translingo.com\n\n🌐 Или заполните форму ниже!');
-    }
-
-    function goHome() {
-        location.reload();
-    }
-
-    function show404() {
-        document.body.innerHTML = `
-            <div class="error-page">
-                <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#F0F4FF,#E8EDF8);display:flex;align-items:center;justify-content:center;z-index:9999;">
-                    <div style="background:rgba(255,255,255,0.98);border-radius:64px;padding:55px 45px;max-width:750px;width:90%;text-align:center;box-shadow:0 30px 60px -20px rgba(0,0,0,0.2);">
-                        <div style="font-size:70px;margin-bottom:10px;animation:moodFloat 2s ease-in-out infinite;" id="moodEmoji">😤</div>
-                        <div style="font-size:120px;font-weight:800;background:linear-gradient(135deg,#2A6DFF,#1A4FCC,#00D4FF);background-size:200% 200%;-webkit-background-clip:text;background-clip:text;color:transparent;margin:15px 0 10px;letter-spacing:12px;animation:gradientShift 3s infinite;">404</div>
-                        <div style="color:#6B7280;font-size:14px;margin-bottom:20px;">Страница потерялась в переводе</div>
-                        <div style="background:linear-gradient(135deg,#F8FAFF,#F0F4FF);border-radius:40px;padding:28px 24px;margin:30px 0;font-size:18px;font-weight:600;text-align:center;border:1px solid rgba(42,109,255,0.2);position:relative;" id="speechBubble">"Я НЕ БУДУ ПЕРЕВОДИТЬСЯ!"</div>
-                        <div style="margin:25px 0;">
-                            <div style="display:flex;justify-content:space-between;margin-bottom:10px;"><span>✨ Прогресс примирения</span><span id="progressPercent">0%</span></div>
-                            <div style="width:100%;height:10px;background:#E5E7EB;border-radius:20px;overflow:hidden;"><div style="width:0%;height:100%;background:linear-gradient(90deg,#2A6DFF,#00D4FF);transition:width 0.5s;" id="progressFill"></div></div>
-                        </div>
-                        <input type="text" id="pleaInput" placeholder='Например: "пожалуйста, вернись" или "умоляю"' style="width:100%;padding:18px 24px;border-radius:80px;border:2px solid #E5E7EB;font-size:16px;margin-bottom:16px;">
-                        <button id="pleaBtn" style="width:100%;margin-top:0;padding:16px 28px;border-radius:80px;background:linear-gradient(135deg,#2A6DFF,#1A4FCC);color:white;border:none;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;">🙏 Уговорить страницу</button>
-                        <div style="display:flex;justify-content:space-between;align-items:center;margin:20px 0;padding:15px 0;border-top:1px solid #F0F2F5;border-bottom:1px solid #F0F2F5;">
-                            <span style="background:#F0F4FF;padding:8px 18px;border-radius:40px;font-weight:600;color:#2A6DFF;" id="attemptCounter">🔥 0 / 5 попыток</span>
-                            <span id="responseMessage" style="font-size:14px;color:#10B981;">💬 Напиши "пожалуйста"...</span>
-                        </div>
-                        <div style="display:flex;gap:16px;justify-content:center;">
-                            <button id="backBtn" style="padding:14px 32px;border-radius:60px;background:linear-gradient(135deg,#2A6DFF,#1A4FCC);color:white;border:none;font-weight:600;cursor:pointer;opacity:0;transform:scale(0.8);pointer-events:none;">🏠 Вернуться на главную</button>
-                            <button id="complaintBtn" style="padding:14px 28px;border-radius:60px;background:transparent;border:2px solid #EF4444;color:#EF4444;font-weight:600;cursor:pointer;">✍️ Пожаловаться</button>
-                        </div>
-                        <div id="complaintBox" style="margin-top:25px;padding:16px 20px;background:#FEF2F2;border-radius:28px;font-size:13px;color:#EF4444;text-align:center;display:none;">📝 Жалоба отправлена. Страница её проигнорировала 😅</div>
-                        <div style="margin-top:25px;text-align:center;font-size:12px;color:#9CA3AF;">💡 Напиши "пожалуйста" 5 раз, и страница сдастся</div>
-                    </div>
+            <div class="section">
+                <div class="section-title"><span>📊</span> Какие данные мы собираем</div>
+                <div class="section-content">
+                    <ul>
+                        <li><span class="badge">👤</span> Имя, фамилия и контактные данные (email, телефон)</li>
+                        <li><span class="badge">📋</span> Информация о профиле (специализация, опыт работы, языки)</li>
+                        <li><span class="badge">📦</span> Данные об использовании платформы (заказы, отзывы, сообщения)</li>
+                        <li><span class="badge">💻</span> Технические данные (IP-адрес, тип браузера, устройство)</li>
+                    </ul>
                 </div>
-                <style>
-                    @keyframes moodFloat { 0%,100% { transform:translateY(0) rotate(0deg); } 50% { transform:translateY(-10px) rotate(5deg); } }
-                    @keyframes gradientShift { 0% { background-position:0% 50%; } 50% { background-position:100% 50%; } 100% { background-position:0% 50%; } }
-                    .btn-back.revealed { opacity:1 !important; transform:scale(1) !important; pointer-events:auto !important; }
-                </style>
             </div>
-        `;
 
-        let attempts = 0;
-        const MAX_ATTEMPTS = 5;
-        const pleaKeywords = ['пожалуйста', 'умоляю', 'прошу', 'please', 'pls', 'ну пожалуйста'];
+            <div class="section">
+                <div class="section-title"><span>🔐</span> Как мы используем ваши данные</div>
+                <div class="section-content">
+                    <ul>
+                        <li>Для предоставления услуг платформы и связи с вами</li>
+                        <li>Для улучшения работы сайта и персонализации контента</li>
+                        <li>Для обеспечения безопасности и предотвращения мошенничества</li>
+                        <li>Для отправки уведомлений и новостей (с вашего согласия)</li>
+                    </ul>
+                </div>
+            </div>
 
-        function updateProgress() {
-            const percent = (attempts / MAX_ATTEMPTS) * 100;
-            const fill = document.getElementById('progressFill');
-            const percentSpan = document.getElementById('progressPercent');
-            const counter = document.getElementById('attemptCounter');
-            if (fill) fill.style.width = percent + '%';
-            if (percentSpan) percentSpan.innerHTML = Math.floor(percent) + '%';
-            if (counter) counter.innerHTML = '🔥 ' + attempts + ' / 5 попыток';
-        }
+            <div class="section">
+                <div class="section-title"><span>🛡️</span> Защита данных</div>
+                <div class="section-content">
+                    <p>Мы принимаем все необходимые меры для защиты вашей личной информации от несанкционированного доступа, изменения, раскрытия или уничтожения. Все данные передаются по защищённому соединению и хранятся на надёжных серверах.</p>
+                </div>
+            </div>
 
-        function updateMoodAndBubble(message, emoji) {
-            const mood = document.getElementById('moodEmoji');
-            const bubble = document.getElementById('speechBubble');
-            if (mood) mood.innerHTML = emoji;
-            if (bubble) bubble.innerHTML = '"' + message + '"';
-        }
+            <div class="section">
+                <div class="section-title"><span>📧</span> Ваши права</div>
+                <div class="section-content">
+                    <p>Вы имеете право на доступ к своим данным, их исправление или удаление. Для этого свяжитесь с нами по email: <strong style="color:#2A6DFF;">privacy@translingo.com</strong></p>
+                </div>
+            </div>
 
-        function checkPlea(msg) {
-            return pleaKeywords.some(k => msg.toLowerCase().includes(k));
-        }
+            <div class="section">
+                <div class="section-title"><span>📅</span> Изменения политики</div>
+                <div class="section-content">
+                    <p>Мы можем обновлять эту политику время от времени. О всех изменениях мы будем уведомлять вас через сайт или по email.</p>
+                </div>
+            </div>
 
-        document.getElementById('pleaBtn').onclick = function() {
-            const input = document.getElementById('pleaInput');
-            const msg = input.value.trim();
-            const response = document.getElementById('responseMessage');
-            if (!msg) {
-                if (response) { response.innerHTML = '😒 Страница не заметила попытку...'; response.style.color = '#EF4444'; }
-                setTimeout(() => { if (response && attempts < MAX_ATTEMPTS) { response.innerHTML = '💬 Напиши "пожалуйста"...'; response.style.color = '#6B7280'; } }, 2000);
-                return;
-            }
-            if (!checkPlea(msg) && attempts < MAX_ATTEMPTS) {
-                if (response) { response.innerHTML = '🙄 Напишите "пожалуйста" или "умоляю"!'; response.style.color = '#EF4444'; }
-                updateMoodAndBubble("НЕПРАВИЛЬНОЕ СЛОВО!", "😤");
-                input.value = '';
-                setTimeout(() => { if (response && attempts < MAX_ATTEMPTS) { response.innerHTML = '💬 Напиши "пожалуйста"...'; response.style.color = '#6B7280'; } }, 2000);
-                return;
-            }
-            if (attempts >= MAX_ATTEMPTS) {
-                if (response) { response.innerHTML = '🔓 Кнопка уже доступна! Нажми "Вернуться на главную"'; response.style.color = '#10B981'; }
-                return;
-            }
-            attempts++;
-            updateProgress();
-            if (attempts === MAX_ATTEMPTS) {
-                updateMoodAndBubble("Ты серьёзно? Ладно... забирай кнопку!", "😌");
-                if (response) { response.innerHTML = '🎉 Страница сдалась! Кнопка появилась!'; response.style.color = '#10B981'; }
-                const backBtn = document.getElementById('backBtn');
-                if (backBtn) backBtn.classList.add('revealed');
-            } else {
-                const angry = ['НЕТ. И НЕ ПРОСИ.', 'ТЫ ЧЁ, НЕ СЛЫШИШЬ? НЕТ!', 'ПЕРЕСТАНЬ! Я УХОЖУ...', 'ТЫ МЕНЯ ЗАДОЛБАЛ(А)...'];
-                const moods = ['😤', '😠', '😫', '😩'];
-                updateMoodAndBubble(angry[attempts - 1], moods[attempts - 1]);
-                if (response) { response.innerHTML = 'Попытка ' + attempts + '/' + MAX_ATTEMPTS; response.style.color = '#2A6DFF'; }
-                setTimeout(() => { if (response && attempts < MAX_ATTEMPTS) { response.innerHTML = '💬 Продолжай уговаривать...'; response.style.color = '#6B7280'; } }, 2500);
-            }
-            input.value = '';
-        };
+            <div class="developer-note">
+                <p>👨‍💻 <strong>Информация о разработчике</strong></p>
+                <p>Данный сайт был разработан в учебных целях студентом <strong>Барановичского Технологического Колледжа Белкоопсоюза</strong>, <strong>Савелием</strong>, в рамках учебной практики по специальности «Разработка и сопровождение программного обеспечения».</p>
+            </div>
 
-        document.getElementById('complaintBtn').onclick = function() {
-            const box = document.getElementById('complaintBox');
-            if (box) box.style.display = 'block';
-            setTimeout(() => { if (box) box.style.display = 'none'; }, 3000);
-        };
+            <div style="text-align: center;">
+                <a href="index.html" class="back-btn">← Вернуться на главную</a>
+            </div>
 
-        document.getElementById('backBtn').onclick = function() {
-            location.reload();
-        };
-    }
-
-    function submitOrder() {
-        const name = document.getElementById('orderName').value;
-        if (!name) {
-            alert('Пожалуйста, заполните имя');
-            return;
-        }
-        show404();
-    }
-
-    function submitTranslator() {
-        const name = document.getElementById('translatorName').value;
-        if (!name) {
-            alert('Пожалуйста, заполните имя');
-            return;
-        }
-        show404();
-    }
-
-    function openAuthModal(tab = 'login') {
-        document.getElementById('authModal').classList.add('active');
-        switchAuthTab(tab);
-    }
-
-    function closeAuthModal() {
-        document.getElementById('authModal').classList.remove('active');
-        clearAuthErrors();
-    }
-
-    function switchAuthTab(tab) {
-        const loginTab = document.querySelector('.auth-tab[data-tab="login"]');
-        const registerTab = document.querySelector('.auth-tab[data-tab="register"]');
-        const loginForm = document.getElementById('loginForm');
-        const registerForm = document.getElementById('registerForm');
-        
-        if (tab === 'login') {
-            if (loginTab) loginTab.classList.add('active');
-            if (registerTab) registerTab.classList.remove('active');
-            if (loginForm) loginForm.classList.add('active');
-            if (registerForm) registerForm.classList.remove('active');
-        } else {
-            if (registerTab) registerTab.classList.add('active');
-            if (loginTab) loginTab.classList.remove('active');
-            if (registerForm) registerForm.classList.add('active');
-            if (loginForm) loginForm.classList.remove('active');
-            resetRegisterTest();
-        }
-        clearAuthErrors();
-    }
-
-    function clearAuthErrors() {
-        document.querySelectorAll('.error-message').forEach(el => el.textContent = '');
-        document.querySelectorAll('.input-group input').forEach(el => {
-            el.style.borderColor = '#E5E7EB';
-        });
-    }
-
-    function showFieldError(elementId, message) {
-        const errorSpan = document.getElementById(elementId);
-        if (errorSpan) {
-            errorSpan.textContent = message;
-            const input = errorSpan.previousElementSibling;
-            if (input) input.style.borderColor = '#EF4444';
-        }
-    }
-
-    function handleLogin() {
-        const email = document.getElementById('loginEmail').value.trim();
-        const password = document.getElementById('loginPassword').value;
-        
-        let isValid = true;
-        clearAuthErrors();
-        
-        if (!email) {
-            showFieldError('loginEmailError', 'Введите email');
-            isValid = false;
-        } else if (!email.includes('@')) {
-            showFieldError('loginEmailError', 'Введите корректный email');
-            isValid = false;
-        }
-        if (!password) {
-            showFieldError('loginPasswordError', 'Введите пароль');
-            isValid = false;
-        }
-        
-        if (isValid) {
-            const user = users.find(u => u.email === email && u.password === password);
-            if (user) {
-                closeAuthModal();
-                localStorage.setItem('translingo_current_user', JSON.stringify(user));
-                alert('✅ Добро пожаловать, ' + user.name + '!');
-            } else {
-                showFieldError('loginEmailError', 'Неверный email или пароль');
-            }
-        }
-    }
-
-    document.getElementById('authModal').addEventListener('click', function(e) {
-        if (e.target === this) closeAuthModal();
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && document.getElementById('authModal')?.classList.contains('active')) {
-            closeAuthModal();
-        }
-    });
-</script>
-
+            <div class="footer-note">
+                TransLingo — защита ваших данных — наш приоритет
+            </div>
+        </div>
+    </div>
 </body>
 </html>
