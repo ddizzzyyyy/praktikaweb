@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>404 — Страница бастует | TransLingo</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="images/logo123.png">
     <style>
         * {
@@ -21,12 +21,13 @@
             justify-content: center;
             width: 100%;
             margin: 0 auto;
+            position: relative;
         }
 
         .container {
             max-width: 750px;
             width: 100%;
-            padding: 40px;
+            padding: 40px 20px;
         }
 
         .protest-card {
@@ -143,6 +144,8 @@
             padding: 15px 0;
             border-top: 1px solid #F0F2F5;
             border-bottom: 1px solid #F0F2F5;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .attempt-counter {
@@ -209,12 +212,47 @@
             cursor: pointer;
         }
 
-        .secret-tip:hover {
-            color: #2A6DFF;
-        }
-
         .hidden {
             display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+            .protest-card {
+                padding: 30px 20px;
+            }
+            .error-code {
+                font-size: 70px;
+                letter-spacing: 6px;
+            }
+            .mood-emoji {
+                font-size: 50px;
+            }
+            .speech-bubble {
+                padding: 20px 15px;
+                font-size: 14px;
+            }
+            .plea-input {
+                padding: 14px 18px;
+                font-size: 14px;
+            }
+            .btn-plea {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+            .attempt-counter {
+                font-size: 12px;
+                padding: 5px 12px;
+            }
+            .response-message {
+                font-size: 12px;
+            }
+            .btn-back, .btn-complaint {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
@@ -263,145 +301,148 @@
     </div>
 
     <script>
-        let attempts = 0;
-        const MAX_ATTEMPTS = 5;
+        (function() {
+            let attempts = 0;
+            const MAX_ATTEMPTS = 5;
 
-        const elements = {
-            progressFill: document.getElementById('progressFill'),
-            progressPercent: document.getElementById('progressPercent'),
-            attemptCounter: document.getElementById('attemptCounter'),
-            responseMessage: document.getElementById('responseMessage'),
-            moodEmoji: document.getElementById('moodEmoji'),
-            speechBubble: document.getElementById('speechBubble'),
-            backBtn: document.getElementById('backBtn'),
-            pleaBtn: document.getElementById('pleaBtn'),
-            pleaInput: document.getElementById('pleaInput'),
-            complaintBtn: document.getElementById('complaintBtn'),
-            secretTip: document.getElementById('secretTip')
-        };
+            function updateUI() {
+                const percent = (attempts / MAX_ATTEMPTS) * 100;
+                const fill = document.getElementById('progressFill');
+                const percentSpan = document.getElementById('progressPercent');
+                const counter = document.getElementById('attemptCounter');
+                const response = document.getElementById('responseMessage');
+                const mood = document.getElementById('moodEmoji');
+                const bubble = document.getElementById('speechBubble');
 
-        function updateUI() {
-            const percent = (attempts / MAX_ATTEMPTS) * 100;
-            if (elements.progressFill) elements.progressFill.style.width = percent + '%';
-            if (elements.progressPercent) elements.progressPercent.innerHTML = Math.floor(percent) + '%';
-            if (elements.attemptCounter) elements.attemptCounter.innerHTML = '🔥 ' + attempts + ' / 5 попыток';
+                if (fill) fill.style.width = percent + '%';
+                if (percentSpan) percentSpan.innerHTML = Math.floor(percent) + '%';
+                if (counter) counter.innerHTML = '🔥 ' + attempts + ' / 5 попыток';
 
-            if (attempts === MAX_ATTEMPTS) {
-                if (elements.moodEmoji) elements.moodEmoji.innerHTML = '😌';
-                if (elements.speechBubble) elements.speechBubble.innerHTML = '"Ты серьёзно? Ладно... забирай кнопку!"';
-                if (elements.responseMessage) {
-                    elements.responseMessage.innerHTML = '🎉 Страница сдалась! Кнопка появилась!';
-                    elements.responseMessage.style.color = '#10B981';
+                if (attempts === MAX_ATTEMPTS) {
+                    if (mood) mood.innerHTML = '😌';
+                    if (bubble) bubble.innerHTML = '"Ты серьёзно? Ладно... забирай кнопку!"';
+                    if (response) {
+                        response.innerHTML = '🎉 Страница сдалась! Кнопка появилась!';
+                        response.style.color = '#10B981';
+                    }
+                    const backBtn = document.getElementById('backBtn');
+                    if (backBtn) backBtn.classList.remove('hidden');
+                } else if (attempts > 0) {
+                    const angryMessages = ['НЕТ. И НЕ ПРОСИ.', 'ТЫ ЧЁ, НЕ СЛЫШИШЬ? НЕТ!', 'ПЕРЕСТАНЬ! Я УХОЖУ...', 'ТЫ МЕНЯ ЗАДОЛБАЛ(А)...'];
+                    const angryEmojis = ['😤', '😠', '😫', '😩'];
+                    if (mood) mood.innerHTML = angryEmojis[attempts - 1];
+                    if (bubble) bubble.innerHTML = '"' + angryMessages[attempts - 1] + '"';
                 }
-                if (elements.backBtn) {
-                    elements.backBtn.classList.remove('hidden');
-                }
-            } else if (attempts > 0) {
-                const angryMessages = ['НЕТ. И НЕ ПРОСИ.', 'ТЫ ЧЁ, НЕ СЛЫШИШЬ? НЕТ!', 'ПЕРЕСТАНЬ! Я УХОЖУ...', 'ТЫ МЕНЯ ЗАДОЛБАЛ(А)...'];
-                const angryEmojis = ['😤', '😠', '😫', '😩'];
-                if (elements.moodEmoji) elements.moodEmoji.innerHTML = angryEmojis[attempts - 1];
-                if (elements.speechBubble) elements.speechBubble.innerHTML = '"' + angryMessages[attempts - 1] + '"';
             }
-        }
 
-        function checkPlea(msg) {
-            const keywords = ['пожалуйста', 'умоляю', 'прошу', 'please', 'pls', 'ну пожалуйста'];
-            return keywords.some(k => msg.toLowerCase().includes(k));
-        }
+            function checkPlea(msg) {
+                const keywords = ['пожалуйста', 'умоляю', 'прошу', 'please', 'pls', 'ну пожалуйста'];
+                return keywords.some(k => msg.toLowerCase().includes(k));
+            }
 
-        if (elements.pleaBtn) {
-            elements.pleaBtn.onclick = function() {
-                const plea = elements.pleaInput ? elements.pleaInput.value.trim() : '';
-                
-                if (!plea) {
-                    if (elements.responseMessage) {
-                        elements.responseMessage.innerHTML = '😒 Страница не заметила попытку...';
-                        elements.responseMessage.style.color = '#EF4444';
-                    }
-                    setTimeout(() => {
-                        if (elements.responseMessage && attempts < MAX_ATTEMPTS) {
-                            elements.responseMessage.innerHTML = '💬 Напиши "пожалуйста"...';
-                            elements.responseMessage.style.color = '#6B7280';
+            const pleaBtn = document.getElementById('pleaBtn');
+            const pleaInput = document.getElementById('pleaInput');
+            const responseMsg = document.getElementById('responseMessage');
+
+            if (pleaBtn) {
+                pleaBtn.onclick = function() {
+                    const plea = pleaInput ? pleaInput.value.trim() : '';
+                    
+                    if (!plea) {
+                        if (responseMsg) {
+                            responseMsg.innerHTML = '😒 Страница не заметила попытку...';
+                            responseMsg.style.color = '#EF4444';
                         }
-                    }, 2000);
-                    return;
-                }
-
-                const isGood = checkPlea(plea);
-
-                if (!isGood && attempts < MAX_ATTEMPTS) {
-                    if (elements.responseMessage) {
-                        elements.responseMessage.innerHTML = '🙄 Напишите "пожалуйста" или "умоляю"!';
-                        elements.responseMessage.style.color = '#EF4444';
+                        setTimeout(() => {
+                            if (responseMsg && attempts < MAX_ATTEMPTS) {
+                                responseMsg.innerHTML = '💬 Напиши "пожалуйста"...';
+                                responseMsg.style.color = '#6B7280';
+                            }
+                        }, 2000);
+                        return;
                     }
-                    if (elements.moodEmoji) elements.moodEmoji.innerHTML = '😤';
-                    if (elements.speechBubble) elements.speechBubble.innerHTML = '"НЕПРАВИЛЬНОЕ СЛОВО!"';
-                    if (elements.pleaInput) elements.pleaInput.value = '';
-                    setTimeout(() => {
-                        if (elements.responseMessage && attempts < MAX_ATTEMPTS) {
-                            elements.responseMessage.innerHTML = '💬 Напиши "пожалуйста"...';
-                            elements.responseMessage.style.color = '#6B7280';
-                        }
-                        if (elements.speechBubble && attempts < MAX_ATTEMPTS) {
-                            elements.speechBubble.innerHTML = '"Я НЕ БУДУ ПЕРЕВОДИТЬСЯ!"';
-                        }
-                    }, 2000);
-                    return;
-                }
 
-                if (attempts >= MAX_ATTEMPTS) {
-                    if (elements.responseMessage) {
-                        elements.responseMessage.innerHTML = '🔓 Кнопка уже доступна! Нажми "Вернуться на главную"';
-                        elements.responseMessage.style.color = '#10B981';
+                    const isGood = checkPlea(plea);
+
+                    if (!isGood && attempts < MAX_ATTEMPTS) {
+                        if (responseMsg) {
+                            responseMsg.innerHTML = '🙄 Напишите "пожалуйста" или "умоляю"!';
+                            responseMsg.style.color = '#EF4444';
+                        }
+                        const mood = document.getElementById('moodEmoji');
+                        const bubble = document.getElementById('speechBubble');
+                        if (mood) mood.innerHTML = '😤';
+                        if (bubble) bubble.innerHTML = '"НЕПРАВИЛЬНОЕ СЛОВО!"';
+                        if (pleaInput) pleaInput.value = '';
+                        setTimeout(() => {
+                            if (responseMsg && attempts < MAX_ATTEMPTS) {
+                                responseMsg.innerHTML = '💬 Напиши "пожалуйста"...';
+                                responseMsg.style.color = '#6B7280';
+                            }
+                            if (bubble && attempts < MAX_ATTEMPTS) {
+                                bubble.innerHTML = '"Я НЕ БУДУ ПЕРЕВОДИТЬСЯ!"';
+                            }
+                        }, 2000);
+                        return;
                     }
-                    return;
-                }
 
-                attempts++;
-                updateUI();
-
-                if (attempts < MAX_ATTEMPTS) {
-                    if (elements.responseMessage) {
-                        elements.responseMessage.innerHTML = 'Попытка ' + attempts + '/' + MAX_ATTEMPTS;
-                        elements.responseMessage.style.color = '#2A6DFF';
-                    }
-                    setTimeout(() => {
-                        if (elements.responseMessage && attempts < MAX_ATTEMPTS) {
-                            elements.responseMessage.innerHTML = '💬 Продолжай уговаривать...';
-                            elements.responseMessage.style.color = '#6B7280';
+                    if (attempts >= MAX_ATTEMPTS) {
+                        if (responseMsg) {
+                            responseMsg.innerHTML = '🔓 Кнопка уже доступна! Нажми "Вернуться на главную"';
+                            responseMsg.style.color = '#10B981';
                         }
-                    }, 2000);
-                }
-                
-                if (elements.pleaInput) elements.pleaInput.value = '';
-            };
-        }
+                        return;
+                    }
 
-        if (elements.complaintBtn) {
-            elements.complaintBtn.onclick = function() {
-                alert('📝 Жалоба отправлена. Страница её проигнорировала 😅');
-            };
-        }
+                    attempts++;
+                    updateUI();
 
-        if (elements.backBtn) {
-            elements.backBtn.onclick = function() {
-                window.location.href = 'index.html';
-            };
-        }
+                    if (attempts < MAX_ATTEMPTS) {
+                        if (responseMsg) {
+                            responseMsg.innerHTML = 'Попытка ' + attempts + '/' + MAX_ATTEMPTS;
+                            responseMsg.style.color = '#2A6DFF';
+                        }
+                        setTimeout(() => {
+                            if (responseMsg && attempts < MAX_ATTEMPTS) {
+                                responseMsg.innerHTML = '💬 Продолжай уговаривать...';
+                                responseMsg.style.color = '#6B7280';
+                            }
+                        }, 2000);
+                    }
+                    
+                    if (pleaInput) pleaInput.value = '';
+                };
+            }
 
-        if (elements.secretTip) {
-            elements.secretTip.onclick = function() {
-                alert('🤫 Секрет: Напиши "пожалуйста" 5 раз!');
-            };
-        }
+            const complaintBtn = document.getElementById('complaintBtn');
+            if (complaintBtn) {
+                complaintBtn.onclick = function() {
+                    alert('📝 Жалоба отправлена. Страница её проигнорировала 😅');
+                };
+            }
 
-        if (elements.pleaInput) {
-            elements.pleaInput.onkeypress = function(e) {
-                if (e.key === 'Enter') {
-                    if (elements.pleaBtn) elements.pleaBtn.click();
-                }
-            };
-        }
+            const backBtn = document.getElementById('backBtn');
+            if (backBtn) {
+                backBtn.onclick = function() {
+                    window.location.href = 'index.html';
+                };
+            }
+
+            const secretTip = document.getElementById('secretTip');
+            if (secretTip) {
+                secretTip.onclick = function() {
+                    alert('🤫 Секрет: Напиши "пожалуйста" 5 раз!');
+                };
+            }
+
+            if (pleaInput) {
+                pleaInput.onkeypress = function(e) {
+                    if (e.key === 'Enter') {
+                        if (pleaBtn) pleaBtn.click();
+                    }
+                };
+            }
+        })();
     </script>
 </body>
 </html>
