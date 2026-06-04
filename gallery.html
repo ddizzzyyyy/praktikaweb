@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>TransLingo — Галерея переводов</title>
+    <link rel="icon" type="image/png" href="logo123.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #FFFFFF;
+            color: #1A1A1A;
+            width: 1920px;
+            margin: 0 auto;
+            overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            width: 1920px;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #E5E7EB;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 100px;
+            animation: fadeInUp 0.5s ease;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            position: absolute;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-50%) scale(1.02);
+        }
+
+        .logo img {
+            height: 45px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2A6DFF;
+        }
+
+        .menu {
+            position: absolute;
+            left: 400px;
+            top: 32px;
+            display: flex;
+            gap: 40px;
+        }
+
+        .menu-item {
+            cursor: pointer;
+            font-size: 16px;
+            color: #4B5563;
+            transition: all 0.3s;
+            padding: 8px 0;
+        }
+
+        .menu-item:hover {
+            color: #2A6DFF;
+            transform: translateY(-2px);
+        }
+
+        .auth-buttons {
+            position: absolute;
+            right: 220px;
+            top: 20px;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-login {
+            width: 100px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid #2A6DFF;
+            border-radius: 8px;
+            color: #2A6DFF;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-login:hover {
+            background: #2A6DFF;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
+        }
+
+        .btn-register {
+            width: 120px;
+            height: 40px;
+            background: #2A6DFF;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-register:hover {
+            background: #1A4FCC;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
+        }
+
+        .page-title {
+            text-align: center;
+            margin: 60px 0 40px;
+        }
+
+        .page-title h1 {
+            font-size: 48px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .page-title p {
+            font-size: 18px;
+            color: #6B7280;
+            margin-top: 10px;
+            animation: fadeInUp 0.6s ease 0.1s backwards;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-card {
+            background: white;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
+        }
+
+        .gallery-card:nth-child(1) { animation-delay: 0s; }
+        .gallery-card:nth-child(2) { animation-delay: 0.1s; }
+        .gallery-card:nth-child(3) { animation-delay: 0.2s; }
+        .gallery-card:nth-child(4) { animation-delay: 0.3s; }
+        .gallery-card:nth-child(5) { animation-delay: 0.4s; }
+        .gallery-card:nth-child(6) { animation-delay: 0.5s; }
+
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .gallery-img {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .gallery-img .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(42,109,255,0.8), rgba(26,79,204,0.8));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s;
+        }
+
+        .gallery-card:hover .gallery-img .overlay {
+            opacity: 1;
+        }
+
+        .gallery-img .overlay span {
+            font-size: 40px;
+            color: white;
+        }
+
+        .gallery-content {
+            padding: 24px;
+        }
+
+        .gallery-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #1A1A1A;
+        }
+
+        .gallery-content p {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .gallery-tag {
+            display: inline-block;
+            background: #F0F4FF;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #2A6DFF;
+        }
+
+        .footer {
+            background: #111827;
+            color: #9CA3AF;
+            padding: 60px 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p, .footer-col a {
+            font-size: 14px;
+            color: #9CA3AF;
+            text-decoration: none;
+            line-height: 1.8;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .footer-col a:hover, .footer-col p:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .social-icons span {
+            font-size: 24px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-icons span:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid #1F2937;
+            font-size: 13px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo" onclick="window.location.href='site.html'">
+        <img src="images/logo123.png" alt="TransLingo">
+        <span class="logo-text">TransLingo</span>
+    </div>
+    <div class="menu">
+        <div class="menu-item" onclick="window.location.href='site.html'">Главная</div>
+        <div class="menu-item" onclick="window.location.href='site.html'">Услуги</div>
+        <div class="menu-item" onclick="window.location.href='site.html'">О нас</div>
+        <div class="menu-item" style="color:#2A6DFF; font-weight:600;">Галерея</div>
+        <div class="menu-item" onclick="window.location.href='site.html'">Контакты</div>
+    </div>
+    <div class="auth-buttons">
+        <button class="btn-login" onclick="window.location.href='site.html'">Вход</button>
+        <button class="btn-register" onclick="window.location.href='site.html'">Регистрация</button>
+    </div>
+</div>
+
+<div class="container">
+    <div class="page-title">
+        <h1>📸 ГАЛЕРЕЯ ПЕРЕВОДОВ</h1>
+        <p>Примеры наших работ — качество, которому доверяют</p>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/tech.png'); background-size: cover; background-position: center;">
+                <div class="overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-content">
+                <h3>Техническая документация</h3>
+                <p>Перевод руководства по эксплуатации промышленного оборудования с немецкого на русский. 120 страниц, 3 дня.</p>
+                <span class="gallery-tag">📄 Технический перевод</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/med.jpg'); background-size: cover; background-position: center;">
+                <div class="overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-content">
+                <h3>Медицинская документация</h3>
+                <p>Перевод клинических исследований и инструкций к препаратам с английского на русский. 80 страниц, 2 дня.</p>
+                <span class="gallery-tag">⚕️ Медицинский перевод</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/ur.png'); background-size: cover; background-position: center;">
+                <div class="overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-content">
+                <h3>Юридический контракт</h3>
+                <p>Перевод международного договора с нотариальным заверением. 45 страниц, 1 день.</p>
+                <span class="gallery-tag">⚖️ Юридический перевод</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/loc.png'); background-size: cover; background-position: center;">
+                <div class="overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-content">
+                <h3>Локализация приложения</h3>
+                <p>Адаптация мобильного приложения под русскоязычных пользователей. 5000 строк кода, 1 неделя.</p>
+                <span class="gallery-tag">📱 Локализация</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/sub.jpg'); background-size: cover; background-position: center;">
+                <div class="overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-content">
+                <h3>Субтитры для YouTube</h3>
+                <p>Перевод и создание субтитров для образовательного канала. 15 видео, 120 минут.</p>
+                <span class="gallery-tag">🎬 Субтитры</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/re.jpg'); background-size: cover; background-position: center;">
+                <div class="overlay"><span>🔍</span></div>
+            </div>
+            <div class="gallery-content">
+                <h3>Ребрендинг сайта</h3>
+                <p>Перевод и адаптация международного сайта под русский рынок. 12 страниц, 2 дня.</p>
+                <span class="gallery-tag">💻 Веб-локализация</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-col"><h4>🌐 TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='site.html'">📘</span><span onclick="window.location.href='site.html'">🐦</span><span onclick="window.location.href='site.html'">📷</span><span onclick="window.location.href='site.html'">💼</span></div></div>
+            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='site.html'" style="cursor:pointer">О компании<br>Портфолио<br>Доставка и оплата<br>Частые вопросы</p></div>
+            <div class="footer-col">
+                <h4>Партнёры</h4>
+                <p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p>
+                <p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p>
+            </div>
+            <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
+        </div>
+        <div class="copyright">© 2026 TransLingo. Все права защищены.</div>
+    </div>
+</footer>
+
+</body>
+</html>
