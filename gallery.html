@@ -2,9 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>TransLingo — Галерея переводов</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="logo123.png">
+    <link rel="icon" type="image/png" href="images/logo123.png">
     <style>
         * {
             margin: 0;
@@ -14,16 +14,11 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #FFFFFF;
+            background: #F8FAFF;
             color: #1A1A1A;
             width: 100%;
             margin: 0 auto;
             overflow-x: hidden;
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .container {
@@ -33,17 +28,14 @@
         }
 
         .header {
-            width: 1920px;
+            width: 100%;
             height: 80px;
             background: white;
             border-bottom: 1px solid #E5E7EB;
-            position: relative;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            padding-left: 100px;
-            animation: fadeInUp 0.5s ease;
-            z-index: 100;
+            justify-content: space-between;
+            padding: 0 20px;
         }
 
         .logo {
@@ -51,15 +43,6 @@
             align-items: center;
             gap: 12px;
             cursor: pointer;
-            position: absolute;
-            left: 100px;
-            top: 50%;
-            transform: translateY(-50%);
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: translateY(-50%) scale(1.02);
         }
 
         .logo img {
@@ -74,9 +57,6 @@
         }
 
         .menu {
-            position: absolute;
-            left: 400px;
-            top: 32px;
             display: flex;
             gap: 40px;
         }
@@ -86,59 +66,35 @@
             font-size: 16px;
             color: #4B5563;
             transition: all 0.3s;
-            padding: 8px 0;
         }
 
         .menu-item:hover {
             color: #2A6DFF;
-            transform: translateY(-2px);
         }
 
         .auth-buttons {
-            position: absolute;
-            right: 220px;
-            top: 20px;
             display: flex;
             gap: 12px;
         }
 
-        .btn-login {
-            width: 100px;
-            height: 40px;
-            background: transparent;
-            border: 1px solid #2A6DFF;
+        .btn-login, .btn-register {
+            padding: 8px 20px;
             border-radius: 8px;
-            color: #2A6DFF;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
-        .btn-login:hover {
-            background: #2A6DFF;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
+        .btn-login {
+            background: transparent;
+            border: 1px solid #2A6DFF;
+            color: #2A6DFF;
         }
 
         .btn-register {
-            width: 120px;
-            height: 40px;
             background: #2A6DFF;
             border: none;
-            border-radius: 8px;
             color: white;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .btn-register:hover {
-            background: #1A4FCC;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
         }
 
         .page-title {
@@ -153,14 +109,12 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: fadeInUp 0.6s ease;
         }
 
         .page-title p {
             font-size: 18px;
             color: #6B7280;
             margin-top: 10px;
-            animation: fadeInUp 0.6s ease 0.1s backwards;
         }
 
         .gallery-grid {
@@ -177,16 +131,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
             transition: all 0.4s;
             cursor: pointer;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
         }
-
-        .gallery-card:nth-child(1) { animation-delay: 0s; }
-        .gallery-card:nth-child(2) { animation-delay: 0.1s; }
-        .gallery-card:nth-child(3) { animation-delay: 0.2s; }
-        .gallery-card:nth-child(4) { animation-delay: 0.3s; }
-        .gallery-card:nth-child(5) { animation-delay: 0.4s; }
-        .gallery-card:nth-child(6) { animation-delay: 0.5s; }
 
         .gallery-card:hover {
             transform: translateY(-10px);
@@ -230,7 +175,6 @@
         .gallery-content h3 {
             font-size: 20px;
             margin-bottom: 8px;
-            color: #1A1A1A;
         }
 
         .gallery-content p {
@@ -275,12 +219,6 @@
             text-decoration: none;
             line-height: 1.8;
             cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .footer-col a:hover, .footer-col p:hover {
-            color: white;
-            transform: translateX(5px);
         }
 
         .social-icons {
@@ -292,12 +230,6 @@
         .social-icons span {
             font-size: 24px;
             cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .social-icons span:hover {
-            transform: translateY(-3px) scale(1.1);
-            color: white;
         }
 
         .copyright {
@@ -306,19 +238,53 @@
             border-top: 1px solid #1F2937;
             font-size: 13px;
         }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-wrap: wrap;
+                height: auto;
+                padding: 15px;
+                gap: 15px;
+            }
+            .menu {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .page-title h1 {
+                font-size: 32px;
+            }
+            .page-title p {
+                font-size: 14px;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            .social-icons {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="logo" onclick="window.location.href='site.html'">
+    <div class="logo" onclick="window.location.href='index.html'">
         <img src="images/logo123.png" alt="TransLingo">
         <span class="logo-text">TransLingo</span>
     </div>
     <div class="menu">
         <div class="menu-item" onclick="window.location.href='index.html'">Главная</div>
         <div class="menu-item" onclick="window.location.href='index.html'">Услуги</div>
-        <div class="menu-item" onclick="window.location.href='index.html'">О нас</div>
+        <div class="menu-item" onclick="window.location.href='about.html'">О себе</div>
         <div class="menu-item" style="color:#2A6DFF; font-weight:600;">Галерея</div>
         <div class="menu-item" onclick="window.location.href='index.html'">Контакты</div>
     </div>
@@ -335,7 +301,7 @@
     </div>
 
     <div class="gallery-grid">
-        <div class="gallery-card" onclick="window.location.href='index.html'">
+        <div class="gallery-card" onclick="window.location.href='404.html'">
             <div class="gallery-img" style="background-image: url('images/tech.png'); background-size: cover; background-position: center;">
                 <div class="overlay"><span>🔍</span></div>
             </div>
@@ -346,7 +312,7 @@
             </div>
         </div>
 
-        <div class="gallery-card" onclick="window.location.href='index.html'">
+        <div class="gallery-card" onclick="window.location.href='404.html'">
             <div class="gallery-img" style="background-image: url('images/med.jpg'); background-size: cover; background-position: center;">
                 <div class="overlay"><span>🔍</span></div>
             </div>
@@ -357,7 +323,7 @@
             </div>
         </div>
 
-        <div class="gallery-card" onclick="window.location.href='index.html'">
+        <div class="gallery-card" onclick="window.location.href='404.html'">
             <div class="gallery-img" style="background-image: url('images/ur.png'); background-size: cover; background-position: center;">
                 <div class="overlay"><span>🔍</span></div>
             </div>
@@ -368,7 +334,7 @@
             </div>
         </div>
 
-        <div class="gallery-card" onclick="window.location.href='index.html'">
+        <div class="gallery-card" onclick="window.location.href='404.html'">
             <div class="gallery-img" style="background-image: url('images/loc.png'); background-size: cover; background-position: center;">
                 <div class="overlay"><span>🔍</span></div>
             </div>
@@ -379,7 +345,7 @@
             </div>
         </div>
 
-        <div class="gallery-card" onclick="window.location.href='index.html'">
+        <div class="gallery-card" onclick="window.location.href='404.html'">
             <div class="gallery-img" style="background-image: url('images/sub.jpg'); background-size: cover; background-position: center;">
                 <div class="overlay"><span>🔍</span></div>
             </div>
@@ -390,7 +356,7 @@
             </div>
         </div>
 
-        <div class="gallery-card" onclick="window.location.href='index.html'">
+        <div class="gallery-card" onclick="window.location.href='404.html'">
             <div class="gallery-img" style="background-image: url('images/re.jpg'); background-size: cover; background-position: center;">
                 <div class="overlay"><span>🔍</span></div>
             </div>
@@ -406,13 +372,9 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col"><h4>🌐 TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='index.html'">📘</span><span onclick="window.location.href='site.html'">🐦</span><span onclick="window.location.href='site.html'">📷</span><span onclick="window.location.href='site.html'">💼</span></div></div>
-            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='index.html'" style="cursor:pointer">О компании<br>Портфолио<br>Доставка и оплата<br>Частые вопросы</p></div>
-            <div class="footer-col">
-                <h4>Партнёры</h4>
-                <p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p>
-                <p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p>
-            </div>
+            <div class="footer-col"><h4>🌐 TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='index.html'">📘</span><span onclick="window.location.href='index.html'">🐦</span><span onclick="window.location.href='index.html'">📷</span><span onclick="window.location.href='index.html'">💼</span></div></div>
+            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='about.html'" style="cursor:pointer">О создателе</p><p onclick="window.location.href='privacy.html'" style="cursor:pointer">Политика конфиденциальности</p><p onclick="window.location.href='index.html'" style="cursor:pointer">Доставка и оплата</p><p onclick="window.location.href='index.html'" style="cursor:pointer">Частые вопросы</p></div>
+            <div class="footer-col"><h4>Партнёры</h4><p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p><p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p></div>
             <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
         </div>
         <div class="copyright">© 2026 TransLingo. Все права защищены.</div>
