@@ -18,85 +18,43 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 1920px;
+            width: 100%;
             margin: 0 auto;
             position: relative;
-            overflow-x: hidden;
         }
-
-        .bg-shapes {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .bg-shape {
-            position: absolute;
-            background: linear-gradient(135deg, rgba(42,109,255,0.05), rgba(0,212,255,0.05));
-            border-radius: 50%;
-            filter: blur(60px);
-        }
-
-        .shape-1 { width: 500px; height: 500px; top: -200px; right: -100px; }
-        .shape-2 { width: 400px; height: 400px; bottom: -150px; left: -100px; }
-        .shape-3 { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 
         .container {
             max-width: 750px;
             width: 100%;
             padding: 40px;
-            position: relative;
-            z-index: 10;
         }
 
         .protest-card {
             background: rgba(255,255,255,0.98);
-            backdrop-filter: blur(10px);
             border-radius: 64px;
             padding: 55px 45px;
-            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.2), 0 0 0 1px rgba(42,109,255,0.1) inset;
-            transition: all 0.3s ease;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.2);
             border: 1px solid rgba(255,255,255,0.5);
         }
 
         .card-header {
             text-align: center;
-            position: relative;
         }
 
         .mood-emoji {
             font-size: 70px;
             display: inline-block;
-            animation: moodFloat 2s ease-in-out infinite;
-            filter: drop-shadow(0 10px 20px rgba(42,109,255,0.2));
-        }
-
-        @keyframes moodFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(5deg); }
         }
 
         .error-code {
             font-size: 120px;
             font-weight: 800;
             background: linear-gradient(135deg, #2A6DFF, #1A4FCC, #00D4FF);
-            background-size: 200% 200%;
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin: 15px 0 10px;
             letter-spacing: 12px;
-            animation: gradientShift 3s infinite;
-        }
-
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         .subtitle {
@@ -110,41 +68,11 @@
             border-radius: 40px;
             padding: 28px 24px;
             margin: 30px 0;
-            position: relative;
             color: #1A1A1A;
             font-size: 18px;
             font-weight: 600;
             text-align: center;
             border: 1px solid rgba(42,109,255,0.2);
-            box-shadow: 0 10px 25px -10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        .speech-bubble::before {
-            content: '';
-            position: absolute;
-            top: -16px;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 12px solid transparent;
-            border-bottom-color: #F0F4FF;
-        }
-
-        .speech-bubble::after {
-            content: '';
-            position: absolute;
-            top: -18px;
-            left: 50%;
-            transform: translateX(-50%);
-            border: 13px solid transparent;
-            border-bottom-color: rgba(42,109,255,0.2);
-            z-index: -1;
-        }
-
-        .bubble-icon {
-            font-size: 24px;
-            margin-right: 10px;
-            vertical-align: middle;
         }
 
         .progress-section {
@@ -172,29 +100,7 @@
             width: 0%;
             background: linear-gradient(90deg, #2A6DFF, #00D4FF);
             border-radius: 20px;
-            transition: width 0.5s cubic-bezier(0.34, 1.2, 0.64, 1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .progress-fill::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        .input-group {
-            margin: 30px 0;
+            transition: width 0.5s;
         }
 
         .plea-input {
@@ -204,20 +110,12 @@
             border: 2px solid #E5E7EB;
             font-size: 16px;
             font-family: inherit;
-            transition: all 0.3s;
             background: white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         .plea-input:focus {
             outline: none;
             border-color: #2A6DFF;
-            box-shadow: 0 0 0 4px rgba(42,109,255,0.1);
-            transform: translateY(-2px);
-        }
-
-        .plea-input::placeholder {
-            color: #9CA3AF;
         }
 
         .btn-plea {
@@ -228,19 +126,13 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             border: none;
             background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
         }
 
         .btn-plea:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 25px rgba(42,109,255,0.35);
+            transform: translateY(-2px);
         }
 
         .stats-row {
@@ -260,15 +152,11 @@
             background: #F0F4FF;
             padding: 8px 18px;
             border-radius: 40px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .response-message {
             font-size: 14px;
             font-weight: 500;
-            transition: all 0.3s;
         }
 
         .button-group {
@@ -284,18 +172,13 @@
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
             border: none;
             color: white;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
         }
 
         .btn-back:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(42,109,255,0.3);
+            transform: translateY(-2px);
         }
 
         .btn-complaint {
@@ -304,19 +187,14 @@
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
             background: transparent;
             border: 2px solid #EF4444;
             color: #EF4444;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .btn-complaint:hover {
             background: #EF4444;
             color: white;
-            transform: translateY(-3px);
         }
 
         .secret-tip {
@@ -324,55 +202,19 @@
             text-align: center;
             font-size: 12px;
             color: #9CA3AF;
-            opacity: 0.6;
-            transition: opacity 0.3s;
             cursor: pointer;
         }
 
         .secret-tip:hover {
-            opacity: 1;
             color: #2A6DFF;
         }
 
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1F2937;
-            color: white;
-            padding: 12px 24px;
-            border-radius: 60px;
-            font-size: 14px;
-            z-index: 200;
-            opacity: 0;
-            transition: opacity 0.3s;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-
-        .toast.show {
-            opacity: 1;
-        }
-
-        @keyframes bounceReveal {
-            0% { transform: scale(0.8); opacity: 0; }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
-        .btn-back.revealed {
-            animation: bounceReveal 0.6s cubic-bezier(0.34, 1.2, 0.64, 1);
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
-    <div class="bg-shapes">
-        <div class="bg-shape shape-1"></div>
-        <div class="bg-shape shape-2"></div>
-        <div class="bg-shape shape-3"></div>
-    </div>
-
     <div class="container">
         <div class="protest-card">
             <div class="card-header">
@@ -382,7 +224,7 @@
             </div>
 
             <div class="speech-bubble" id="speechBubble">
-                <span class="bubble-icon">🗣️</span> "Я НЕ БУДУ ПЕРЕВОДИТЬСЯ!"
+                "Я НЕ БУДУ ПЕРЕВОДИТЬСЯ!"
             </div>
 
             <div class="progress-section">
@@ -396,128 +238,84 @@
             </div>
 
             <div class="input-group">
-                <input type="text" class="plea-input" id="pleaInput" placeholder='Например: "пожалуйста, вернись" или "умоляю"' autocomplete="off">
-                <button class="btn-plea" id="pleaBtn">
-                    <span>🙏</span> Уговорить страницу
-                </button>
+                <input type="text" class="plea-input" id="pleaInput" placeholder='Например: "пожалуйста, вернись" или "умоляю"'>
+                <button class="btn-plea" id="pleaBtn">🙏 Уговорить страницу</button>
             </div>
 
             <div class="stats-row">
-                <div class="attempt-counter" id="attemptCounter">
-                    🔥 0 / 5 попыток
-                </div>
-                <div id="responseMessage" class="response-message" style="color: #6B7280;">
-                    💬 Напиши "пожалуйста"...
-                </div>
+                <div class="attempt-counter" id="attemptCounter">🔥 0 / 5 попыток</div>
+                <div id="responseMessage" class="response-message" style="color: #6B7280;">💬 Напиши "пожалуйста"...</div>
             </div>
 
             <div class="button-group">
-                <button class="btn-complaint" id="complaintBtn">
-                    <span>✍️</span> Пожаловаться
-                </button>
+                <button class="btn-complaint" id="complaintBtn">✍️ Пожаловаться</button>
             </div>
 
-            <div id="backBtnContainer" style="text-align: center; margin-top: 25px; display: none;">
-                <button class="btn-back" id="backBtn">
-                    <span>🏠</span> Вернуться на главную
-                </button>
+            <div id="backBtnContainer" class="hidden" style="text-align: center; margin-top: 25px;">
+                <button class="btn-back" id="backBtn">🏠 Вернуться на главную</button>
             </div>
 
-            <div class="complaint-box" id="complaintBox" style="display: none;">
-                📝 Жалоба отправлена. Страница её проигнорировала 😅
-            </div>
-
-            <div class="secret-tip" id="secretTip">
-                💡 Напиши "пожалуйста" 5 раз, и страница сдастся
-            </div>
+            <div class="secret-tip" id="secretTip">💡 Напиши "пожалуйста" 5 раз, и страница сдастся</div>
         </div>
     </div>
 
-    <div id="toast" class="toast"></div>
-
     <script>
-        // Ждём полной загрузки страницы
-        document.addEventListener('DOMContentLoaded', function() {
+        (function() {
             let attempts = 0;
             const MAX_ATTEMPTS = 5;
-
-            function showToast(message, isSuccess = false) {
-                const toast = document.getElementById('toast');
-                if (!toast) return;
-                toast.textContent = message;
-                toast.style.background = isSuccess ? '#10B981' : '#1F2937';
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                }, 2500);
-            }
 
             function updateUI() {
                 const percent = (attempts / MAX_ATTEMPTS) * 100;
                 const fill = document.getElementById('progressFill');
                 const percentSpan = document.getElementById('progressPercent');
                 const counter = document.getElementById('attemptCounter');
-                const responseDiv = document.getElementById('responseMessage');
-                const moodEmoji = document.getElementById('moodEmoji');
-                const speechBubble = document.getElementById('speechBubble');
-                
+                const response = document.getElementById('responseMessage');
+                const mood = document.getElementById('moodEmoji');
+                const bubble = document.getElementById('speechBubble');
+
                 if (fill) fill.style.width = percent + '%';
                 if (percentSpan) percentSpan.innerHTML = Math.floor(percent) + '%';
                 if (counter) counter.innerHTML = '🔥 ' + attempts + ' / 5 попыток';
-                
+
                 if (attempts === MAX_ATTEMPTS) {
-                    if (moodEmoji) moodEmoji.innerHTML = '😌';
-                    if (speechBubble) speechBubble.innerHTML = '<span class="bubble-icon">🗣️</span> "Ты серьёзно? Ладно... забирай кнопку!"';
-                    if (responseDiv) {
-                        responseDiv.innerHTML = '🎉 Страница сдалась! Кнопка появилась!';
-                        responseDiv.style.color = '#10B981';
+                    if (mood) mood.innerHTML = '😌';
+                    if (bubble) bubble.innerHTML = '"Ты серьёзно? Ладно... забирай кнопку!"';
+                    if (response) {
+                        response.innerHTML = '🎉 Страница сдалась! Кнопка появилась!';
+                        response.style.color = '#10B981';
                     }
-                    
                     const backContainer = document.getElementById('backBtnContainer');
-                    if (backContainer) {
-                        backContainer.style.display = 'block';
-                    }
-                    
-                    const backBtn = document.getElementById('backBtn');
-                    if (backBtn) {
-                        backBtn.classList.add('revealed');
-                    }
+                    if (backContainer) backContainer.classList.remove('hidden');
                 } else if (attempts > 0) {
-                    const angryMessages = [
-                        'НЕТ. И НЕ ПРОСИ.',
-                        'ТЫ ЧЁ, НЕ СЛЫШИШЬ? НЕТ!',
-                        'ПЕРЕСТАНЬ! Я УХОЖУ...',
-                        'ТЫ МЕНЯ ЗАДОЛБАЛ(А)...'
-                    ];
+                    const angryMessages = ['НЕТ. И НЕ ПРОСИ.', 'ТЫ ЧЁ, НЕ СЛЫШИШЬ? НЕТ!', 'ПЕРЕСТАНЬ! Я УХОЖУ...', 'ТЫ МЕНЯ ЗАДОЛБАЛ(А)...'];
                     const angryEmojis = ['😤', '😠', '😫', '😩'];
-                    if (moodEmoji) moodEmoji.innerHTML = angryEmojis[attempts - 1];
-                    if (speechBubble) speechBubble.innerHTML = '<span class="bubble-icon">🗣️</span> "' + angryMessages[attempts - 1] + '"';
+                    if (mood) mood.innerHTML = angryEmojis[attempts - 1];
+                    if (bubble) bubble.innerHTML = '"' + angryMessages[attempts - 1] + '"';
                 }
             }
 
-            function checkPlea(message) {
+            function checkPlea(msg) {
                 const keywords = ['пожалуйста', 'умоляю', 'прошу', 'please', 'pls', 'ну пожалуйста'];
-                const lowerMsg = message.toLowerCase();
-                return keywords.some(k => lowerMsg.includes(k));
+                return keywords.some(k => msg.toLowerCase().includes(k));
             }
 
             const pleaBtn = document.getElementById('pleaBtn');
             const pleaInput = document.getElementById('pleaInput');
-            const responseDiv = document.getElementById('responseMessage');
+            const responseMsg = document.getElementById('responseMessage');
 
             if (pleaBtn) {
-                pleaBtn.addEventListener('click', function() {
+                pleaBtn.onclick = function() {
                     const plea = pleaInput ? pleaInput.value.trim() : '';
                     
                     if (!plea) {
-                        if (responseDiv) {
-                            responseDiv.innerHTML = '😒 Страница не заметила попытку...';
-                            responseDiv.style.color = '#EF4444';
+                        if (responseMsg) {
+                            responseMsg.innerHTML = '😒 Страница не заметила попытку...';
+                            responseMsg.style.color = '#EF4444';
                         }
                         setTimeout(() => {
-                            if (responseDiv && attempts < MAX_ATTEMPTS) {
-                                responseDiv.innerHTML = '💬 Напиши "пожалуйста"...';
-                                responseDiv.style.color = '#6B7280';
+                            if (responseMsg && attempts < MAX_ATTEMPTS) {
+                                responseMsg.innerHTML = '💬 Напиши "пожалуйста"...';
+                                responseMsg.style.color = '#6B7280';
                             }
                         }, 2000);
                         return;
@@ -526,86 +324,85 @@
                     const isGood = checkPlea(plea);
 
                     if (!isGood && attempts < MAX_ATTEMPTS) {
-                        if (responseDiv) {
-                            responseDiv.innerHTML = '🙄 Напишите "пожалуйста" или "умоляю"!';
-                            responseDiv.style.color = '#EF4444';
+                        if (responseMsg) {
+                            responseMsg.innerHTML = '🙄 Напишите "пожалуйста" или "умоляю"!';
+                            responseMsg.style.color = '#EF4444';
                         }
-                        const moodEmoji = document.getElementById('moodEmoji');
-                        const speechBubble = document.getElementById('speechBubble');
-                        if (moodEmoji) moodEmoji.innerHTML = '😤';
-                        if (speechBubble) speechBubble.innerHTML = '<span class="bubble-icon">🗣️</span> "НЕПРАВИЛЬНОЕ СЛОВО!"';
+                        const mood = document.getElementById('moodEmoji');
+                        const bubble = document.getElementById('speechBubble');
+                        if (mood) mood.innerHTML = '😤';
+                        if (bubble) bubble.innerHTML = '"НЕПРАВИЛЬНОЕ СЛОВО!"';
                         if (pleaInput) pleaInput.value = '';
                         setTimeout(() => {
-                            if (responseDiv && attempts < MAX_ATTEMPTS) {
-                                responseDiv.innerHTML = '💬 Напиши "пожалуйста"...';
-                                responseDiv.style.color = '#6B7280';
+                            if (responseMsg && attempts < MAX_ATTEMPTS) {
+                                responseMsg.innerHTML = '💬 Напиши "пожалуйста"...';
+                                responseMsg.style.color = '#6B7280';
                             }
-                            if (speechBubble && attempts < MAX_ATTEMPTS) {
-                                speechBubble.innerHTML = '<span class="bubble-icon">🗣️</span> "Я НЕ БУДУ ПЕРЕВОДИТЬСЯ!"';
+                            if (bubble && attempts < MAX_ATTEMPTS) {
+                                bubble.innerHTML = '"Я НЕ БУДУ ПЕРЕВОДИТЬСЯ!"';
                             }
                         }, 2000);
                         return;
                     }
 
                     if (attempts >= MAX_ATTEMPTS) {
-                        if (responseDiv) {
-                            responseDiv.innerHTML = '🔓 Кнопка уже доступна! Нажми "Вернуться на главную"';
-                            responseDiv.style.color = '#10B981';
+                        if (responseMsg) {
+                            responseMsg.innerHTML = '🔓 Кнопка уже доступна! Нажми "Вернуться на главную"';
+                            responseMsg.style.color = '#10B981';
                         }
                         return;
                     }
 
                     attempts++;
                     updateUI();
-                    showToast('Попытка ' + attempts + '/' + MAX_ATTEMPTS, false);
-                    if (pleaInput) pleaInput.value = '';
-                    
+
                     if (attempts < MAX_ATTEMPTS) {
+                        if (responseMsg) {
+                            responseMsg.innerHTML = 'Попытка ' + attempts + '/' + MAX_ATTEMPTS;
+                            responseMsg.style.color = '#2A6DFF';
+                        }
                         setTimeout(() => {
-                            if (responseDiv && attempts < MAX_ATTEMPTS) {
-                                responseDiv.innerHTML = '💬 Продолжай уговаривать...';
-                                responseDiv.style.color = '#6B7280';
+                            if (responseMsg && attempts < MAX_ATTEMPTS) {
+                                responseMsg.innerHTML = '💬 Продолжай уговаривать...';
+                                responseMsg.style.color = '#6B7280';
                             }
                         }, 2000);
                     }
-                });
+                    
+                    if (pleaInput) pleaInput.value = '';
+                };
             }
 
             const complaintBtn = document.getElementById('complaintBtn');
             if (complaintBtn) {
-                complaintBtn.addEventListener('click', function() {
-                    const box = document.getElementById('complaintBox');
-                    if (box) box.style.display = 'block';
-                    showToast('📝 Жалоба отправлена (бесполезно)', false);
-                    setTimeout(() => {
-                        if (box) box.style.display = 'none';
-                    }, 3000);
-                });
+                complaintBtn.onclick = function() {
+                    alert('📝 Жалоба отправлена. Страница её проигнорировала 😅');
+                };
             }
 
             const backBtn = document.getElementById('backBtn');
             if (backBtn) {
-                backBtn.addEventListener('click', function() {
+                backBtn.onclick = function() {
                     window.location.href = 'site.html';
-                });
-            }
-
-            if (pleaInput) {
-                pleaInput.addEventListener('keypress', function(e) {
-                    if (e.key === 'Enter') {
-                        const btn = document.getElementById('pleaBtn');
-                        if (btn) btn.click();
-                    }
-                });
+                };
             }
 
             const secretTip = document.getElementById('secretTip');
             if (secretTip) {
-                secretTip.addEventListener('click', function() {
-                    showToast('🤫 Секрет: Напиши "пожалуйста" 5 раз!', false);
-                });
+                secretTip.onclick = function() {
+                    alert('🤫 Секрет: Напиши "пожалуйста" 5 раз!');
+                };
             }
-        });
+
+            if (pleaInput) {
+                pleaInput.onkeypress = function(e) {
+                    if (e.key === 'Enter') {
+                        const btn = document.getElementById('pleaBtn');
+                        if (btn) btn.click();
+                    }
+                };
+            }
+        })();
     </script>
 </body>
 </html>
