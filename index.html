@@ -57,8 +57,9 @@
             color: #2A6DFF;
         }
 
+        /* ===== БУРГЕР ===== */
         .burger {
-            display: none;
+            display: flex;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
@@ -70,12 +71,112 @@
             height: 3px;
             background: #2A6DFF;
             border-radius: 3px;
+            transition: 0.3s;
         }
 
-        .menu {
+        /* Анимация бургера при открытом меню */
+        .burger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .burger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .burger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* ===== ВЫЕЗЖАЮЩЕЕ МЕНЮ (САЙДБАР) ===== */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .side-menu {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 300px;
+            height: 100%;
+            background: white;
+            z-index: 1002;
+            transition: 0.3s ease;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            overflow-y: auto;
+            padding: 80px 20px 30px;
+        }
+
+        .side-menu.open {
+            left: 0;
+        }
+
+        .side-menu .menu-item {
+            display: block;
+            padding: 15px 0;
+            border-bottom: 1px solid #E5E7EB;
+            font-size: 16px;
+        }
+
+        .side-menu .dropdown {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            box-shadow: none;
+            padding-left: 20px;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .side-menu .menu-item.active .dropdown {
+            display: block;
+        }
+
+        .side-menu .subdropdown {
+            position: static;
+            opacity: 1;
+            visibility: visible;
+            padding-left: 20px;
+            display: none;
+        }
+
+        .side-menu .dropdown-item.active .subdropdown {
+            display: block;
+        }
+
+        .side-menu-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 28px;
+            cursor: pointer;
+            color: #6B7280;
+        }
+
+        /* Обычное меню на ПК скрываем, используем только сайдбар */
+        .main-menu {
             display: flex;
             gap: 40px;
             align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .main-menu {
+                display: none;
+            }
         }
 
         .menu-item {
@@ -91,7 +192,8 @@
             color: #2A6DFF;
         }
 
-        .dropdown {
+        /* Выпадайки для десктопного меню */
+        .main-menu .dropdown {
             position: absolute;
             top: 35px;
             left: -20px;
@@ -106,7 +208,7 @@
             border: 1px solid #E5E7EB;
         }
 
-        .menu-item:hover .dropdown {
+        .main-menu .menu-item:hover .dropdown {
             opacity: 1;
             visibility: visible;
         }
@@ -480,7 +582,6 @@
             border: 1px solid #E5E7EB;
         }
 
-        /* АНИМАЦИЯ ПРИ НАВЕДЕНИИ НА КАРТОЧКИ УСЛУГ */
         .service-card:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
@@ -647,70 +748,18 @@
         }
 
         @media (max-width: 768px) {
-            .burger {
-                display: flex;
-            }
-
-            .menu {
-                display: none;
-                width: 100%;
-                flex-direction: column;
-                gap: 15px;
-                padding-top: 20px;
-                border-top: 1px solid #E5E7EB;
-                margin-top: 15px;
-            }
-
-            .menu.open {
-                display: flex;
-            }
-
-            .dropdown {
-                position: static;
-                box-shadow: none;
-                padding-left: 20px;
-                opacity: 1;
-                visibility: visible;
-                display: none;
-                width: 100%;
-                margin-top: 10px;
-            }
-
-            .subdropdown {
-                position: static;
-                padding-left: 20px;
-                opacity: 1;
-                visibility: visible;
-                display: none;
-            }
-
-            .menu-item.active .dropdown {
-                display: block;
-            }
-
-            .dropdown-item.active .subdropdown {
-                display: block;
-            }
-
             .services-grid, .examples-grid, .form-grid {
                 grid-template-columns: 1fr;
             }
-
             .hero h1 {
                 font-size: 32px;
             }
-
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
             }
-
             .social-icons {
                 justify-content: center;
-            }
-
-            .service-card:hover {
-                transform: translateY(-5px) scale(1.01);
             }
         }
     </style>
@@ -723,13 +772,15 @@
         <span class="logo-text">TransLingo</span>
     </div>
     
+    <!-- БУРГЕР -->
     <div class="burger" id="burgerBtn">
         <span></span>
         <span></span>
         <span></span>
     </div>
     
-    <div class="menu" id="menu">
+    <!-- ОБЫЧНОЕ МЕНЮ ДЛЯ ПК (горизонтальное) -->
+    <div class="main-menu">
         <div class="menu-item" onclick="window.location.href='index.html'">Главная</div>
         <div class="menu-item" id="servicesMenuItem">
             Услуги
@@ -791,6 +842,69 @@
         <button class="btn-login" onclick="openAuthModal('login')">Вход</button>
         <button class="btn-register" onclick="openAuthModal('register')">Регистрация</button>
     </div>
+</div>
+
+<!-- ЗАТЕМНЕНИЕ -->
+<div class="overlay" id="overlay"></div>
+
+<!-- ВЫЕЗЖАЮЩЕЕ МЕНЮ СЛЕВА -->
+<div class="side-menu" id="sideMenu">
+    <div class="side-menu-close" id="closeMenuBtn">&times;</div>
+    <div class="menu-item" onclick="window.location.href='index.html'">Главная</div>
+    <div class="menu-item" id="sideServicesMenuItem">
+        Услуги
+        <div class="dropdown" id="sideServicesDropdown">
+            <div class="dropdown-item" id="sideWrittenMenuItem">
+                📄 Письменный перевод
+                <div class="subdropdown" id="sideWrittenSubmenu">
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Технический перевод</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Юридический перевод</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Медицинский перевод</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Экономический перевод</div>
+                </div>
+            </div>
+            <div class="dropdown-item" id="sideOralMenuItem">
+                🎤 Устный перевод
+                <div class="subdropdown" id="sideOralSubmenu">
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Последовательный</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Синхронный</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Переговоры</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Сопровождение</div>
+                </div>
+            </div>
+            <div class="dropdown-item" id="sideLocalizationMenuItem">
+                💻 Локализация
+                <div class="subdropdown" id="sideLocalizationSubmenu">
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация ПО</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация игр</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация сайтов</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация приложений</div>
+                </div>
+            </div>
+            <div class="dropdown-item" id="sideNotarialMenuItem">
+                ✅ Нотариальное заверение
+                <div class="subdropdown" id="sideNotarialSubmenu">
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Свидетельство о рождении</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Дипломы и аттестаты</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Доверенности</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Уставные документы</div>
+                </div>
+            </div>
+            <div class="dropdown-item" id="sideSubtitlesMenuItem">
+                🎬 Субтитры и трансляция
+                <div class="subdropdown" id="sideSubtitlesSubmenu">
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для YouTube</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для кино</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Стенограмма интервью</div>
+                    <div class="subdropdown-item" onclick="window.location.href='404.html'">Конференции</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="menu-item" onclick="window.location.href='about.html'">О себе</div>
+    <div class="menu-item" onclick="window.location.href='gallery.html'">Галерея</div>
+    <div class="menu-item" onclick="window.location.href='privacy.html'">Контакты</div>
+    <div class="menu-item" onclick="window.location.href='kartasaita.html'">Карта сайта</div>
 </div>
 
 <div id="authModal" class="auth-modal">
@@ -949,16 +1063,50 @@
 </footer>
 
 <script>
+    // ===== ВЫЕЗЖАЮЩЕЕ МЕНЮ СЛЕВА =====
     const burgerBtn = document.getElementById('burgerBtn');
-    const menu = document.getElementById('menu');
-    const servicesMenuItem = document.getElementById('servicesMenuItem');
-    
-    if (burgerBtn) {
-        burgerBtn.addEventListener('click', () => {
-            menu.classList.toggle('open');
-        });
+    const sideMenu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+    const closeMenuBtn = document.getElementById('closeMenuBtn');
+
+    function openMenu() {
+        sideMenu.classList.add('open');
+        overlay.classList.add('active');
+        burgerBtn.classList.add('active');
+        document.body.style.overflow = 'hidden';
     }
 
+    function closeMenu() {
+        sideMenu.classList.remove('open');
+        overlay.classList.remove('active');
+        burgerBtn.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    burgerBtn.onclick = openMenu;
+    closeMenuBtn.onclick = closeMenu;
+    overlay.onclick = closeMenu;
+
+    // Выпадайки в сайдбаре
+    const sideServicesItem = document.getElementById('sideServicesMenuItem');
+    if (sideServicesItem) {
+        sideServicesItem.onclick = function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+        };
+    }
+
+    const sideDropdownItems = document.querySelectorAll('#sideMenu .dropdown-item');
+    sideDropdownItems.forEach(item => {
+        item.onclick = function(e) {
+            e.stopPropagation();
+            this.classList.toggle('active');
+        };
+    });
+
+    // Остальной код
+    const servicesMenuItem = document.getElementById('servicesMenuItem');
+    
     if (servicesMenuItem) {
         servicesMenuItem.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
@@ -968,7 +1116,7 @@
         });
     }
 
-    const dropdownItems = document.querySelectorAll('.dropdown-item');
+    const dropdownItems = document.querySelectorAll('.main-menu .dropdown-item');
     dropdownItems.forEach(item => {
         item.addEventListener('click', (e) => {
             if (window.innerWidth <= 768) {
