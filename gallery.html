@@ -117,81 +117,199 @@
             margin-top: 10px;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-bottom: 80px;
-        }
-
-        .gallery-card {
+        /* ========== CSS СЛАЙДЕР (без JavaScript) ========== */
+        .slider-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto 80px;
             background: white;
             border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.4s;
-            cursor: pointer;
-        }
-
-        .gallery-card:hover {
-            transform: translateY(-10px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
         }
 
-        .gallery-img {
-            height: 220px;
+        .slider-wrapper {
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            scrollbar-width: none; /* скрываем скроллбар в Firefox */
+            -ms-overflow-style: none; /* скрываем скроллбар в IE/Edge */
+        }
+
+        .slider-wrapper::-webkit-scrollbar {
+            display: none; /* скрываем скроллбар в Chrome/Safari */
+        }
+
+        .slider-track {
+            display: flex;
+            width: 100%;
+        }
+
+        .slider-slide {
+            min-width: 100%;
+            scroll-snap-align: start;
+            flex-shrink: 0;
+        }
+
+        .slider-img {
+            width: 100%;
+            height: 400px;
             background-size: cover;
             background-position: center;
-            position: relative;
+            background-repeat: no-repeat;
         }
 
-        .gallery-img .overlay {
+        .slider-content {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .slider-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #1A1A1A;
+        }
+
+        .slider-content p {
+            font-size: 16px;
+            color: #6B7280;
+            margin-bottom: 15px;
+            line-height: 1.5;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .slider-tag {
+            display: inline-block;
+            background: #F0F4FF;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #2A6DFF;
+        }
+
+        /* Стрелки (CSS-кнопки) */
+        .slider-arrow {
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(42,109,255,0.8), rgba(26,79,204,0.8));
+            top: 35%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            opacity: 0;
-            transition: all 0.3s;
-        }
-
-        .gallery-card:hover .gallery-img .overlay {
-            opacity: 1;
-        }
-
-        .gallery-img .overlay span {
-            font-size: 40px;
-            color: white;
-        }
-
-        .gallery-content {
-            padding: 24px;
-        }
-
-        .gallery-content h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-        }
-
-        .gallery-content p {
-            font-size: 14px;
-            color: #6B7280;
-            margin-bottom: 12px;
-            line-height: 1.4;
-        }
-
-        .gallery-tag {
-            display: inline-block;
-            background: #F0F4FF;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
+            font-size: 28px;
+            font-weight: bold;
             color: #2A6DFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            z-index: 10;
+            cursor: pointer;
+            text-decoration: none;
+            user-select: none;
+        }
+
+        .slider-arrow:hover {
+            background: #2A6DFF;
+            color: white;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .arrow-left {
+            left: 20px;
+        }
+
+        .arrow-right {
+            right: 20px;
+        }
+
+        /* Точки (индикаторы) - активная подсвечивается через target */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #D1D5DB;
+            border-radius: 50%;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        /* Подсветка активной точки через якоря */
+        .slider-container:has(#slide1:target) .dot-1,
+        .slider-container:has(#slide2:target) .dot-2,
+        .slider-container:has(#slide3:target) .dot-3,
+        .slider-container:has(#slide4:target) .dot-4,
+        .slider-container:has(#slide5:target) .dot-5,
+        .slider-container:has(#slide6:target) .dot-6 {
+            background: #2A6DFF;
+            width: 28px;
+            border-radius: 10px;
+        }
+
+        /* По умолчанию активна первая точка (если нет target) */
+        .slider-container:not(:has(:target)) .dot-1 {
+            background: #2A6DFF;
+            width: 28px;
+            border-radius: 10px;
+        }
+
+        .dot {
+            cursor: pointer;
+        }
+
+        .dot:hover {
+            background: #2A6DFF;
+            opacity: 0.6;
+        }
+
+        .counter {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: #9CA3AF;
+        }
+
+        /* Якоря для навигации (скрытые) */
+        .slide-anchor {
+            display: none;
+        }
+
+        /* Стили для ссылок-стрелок, которые работают без JS */
+        .nav-link {
+            position: absolute;
+            top: 35%;
+            width: 50px;
+            height: 50px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #2A6DFF;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s;
+            z-index: 10;
+            text-decoration: none;
+        }
+
+        .nav-link:hover {
+            background: #2A6DFF;
+            color: white;
+            transform: scale(1.05);
         }
 
         .footer {
@@ -259,9 +377,20 @@
             .page-title p {
                 font-size: 14px;
             }
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+            .slider-img {
+                height: 250px;
+            }
+            .slider-content h3 {
+                font-size: 22px;
+            }
+            .slider-content p {
+                font-size: 14px;
+            }
+            .nav-link, .slider-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 22px;
+                top: 30%;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -296,88 +425,106 @@
 
 <div class="container">
     <div class="page-title">
-        <h1>📸 ГАЛЕРЕЯ ПЕРЕВОДОВ</h1>
+        <h1>ГАЛЕРЕЯ ПЕРЕВОДОВ</h1>
         <p>Примеры наших работ — качество, которому доверяют</p>
     </div>
 
-    <div class="gallery-grid">
-        <div class="gallery-card" onclick="window.location.href='404.html'">
-            <div class="gallery-img" style="background-image: url('images/tech.png'); background-size: cover; background-position: center;">
-                <div class="overlay"><span>🔍</span></div>
-            </div>
-            <div class="gallery-content">
-                <h3>Техническая документация</h3>
-                <p>Перевод руководства по эксплуатации промышленного оборудования с немецкого на русский. 120 страниц, 3 дня.</p>
-                <span class="gallery-tag">📄 Технический перевод</span>
+    <div class="slider-container">
+        <!-- Скрытые якоря для навигации -->
+        <div id="slide1" class="slide-anchor"></div>
+        <div id="slide2" class="slide-anchor"></div>
+        <div id="slide3" class="slide-anchor"></div>
+        <div id="slide4" class="slide-anchor"></div>
+        <div id="slide5" class="slide-anchor"></div>
+        <div id="slide6" class="slide-anchor"></div>
+
+        <!-- Стрелки навигации (ссылки на якоря) -->
+        <a href="#slide6" class="nav-link arrow-left" style="left:20px;">←</a>
+        <a href="#slide2" class="nav-link arrow-right" style="right:20px;">→</a>
+
+        <div class="slider-wrapper">
+            <div class="slider-track">
+                <!-- Слайд 1 -->
+                <div class="slider-slide">
+                    <div class="slider-img" style="background-image: url('images/tech.png');"></div>
+                    <div class="slider-content">
+                        <h3>Техническая документация</h3>
+                        <p>Перевод руководства по эксплуатации промышленного оборудования с немецкого на русский. 120 страниц, 3 дня.</p>
+                        <span class="slider-tag">Технический перевод</span>
+                    </div>
+                </div>
+                <!-- Слайд 2 -->
+                <div class="slider-slide">
+                    <div class="slider-img" style="background-image: url('images/med.jpg');"></div>
+                    <div class="slider-content">
+                        <h3>Медицинская документация</h3>
+                        <p>Перевод клинических исследований и инструкций к препаратам с английского на русский. 80 страниц, 2 дня.</p>
+                        <span class="slider-tag">Медицинский перевод</span>
+                    </div>
+                </div>
+                <!-- Слайд 3 -->
+                <div class="slider-slide">
+                    <div class="slider-img" style="background-image: url('images/ur.png');"></div>
+                    <div class="slider-content">
+                        <h3>Юридический контракт</h3>
+                        <p>Перевод международного договора с нотариальным заверением. 45 страниц, 1 день.</p>
+                        <span class="slider-tag">Юридический перевод</span>
+                    </div>
+                </div>
+                <!-- Слайд 4 -->
+                <div class="slider-slide">
+                    <div class="slider-img" style="background-image: url('images/loc.png');"></div>
+                    <div class="slider-content">
+                        <h3>Локализация приложения</h3>
+                        <p>Адаптация мобильного приложения под русскоязычных пользователей. 5000 строк кода, 1 неделя.</p>
+                        <span class="slider-tag">Локализация</span>
+                    </div>
+                </div>
+                <!-- Слайд 5 -->
+                <div class="slider-slide">
+                    <div class="slider-img" style="background-image: url('images/sub.jpg');"></div>
+                    <div class="slider-content">
+                        <h3>Субтитры для YouTube</h3>
+                        <p>Перевод и создание субтитров для образовательного канала. 15 видео, 120 минут.</p>
+                        <span class="slider-tag">Субтитры</span>
+                    </div>
+                </div>
+                <!-- Слайд 6 -->
+                <div class="slider-slide">
+                    <div class="slider-img" style="background-image: url('images/re.jpg');"></div>
+                    <div class="slider-content">
+                        <h3>Ребрендинг сайта</h3>
+                        <p>Перевод и адаптация международного сайта под русский рынок. 12 страниц, 2 дня.</p>
+                        <span class="slider-tag">Веб-локализация</span>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="gallery-card" onclick="window.location.href='404.html'">
-            <div class="gallery-img" style="background-image: url('images/med.jpg'); background-size: cover; background-position: center;">
-                <div class="overlay"><span>🔍</span></div>
-            </div>
-            <div class="gallery-content">
-                <h3>Медицинская документация</h3>
-                <p>Перевод клинических исследований и инструкций к препаратам с английского на русский. 80 страниц, 2 дня.</p>
-                <span class="gallery-tag">⚕️ Медицинский перевод</span>
-            </div>
+        <!-- Точки для навигации -->
+        <div class="slider-dots">
+            <a href="#slide1" class="dot dot-1"></a>
+            <a href="#slide2" class="dot dot-2"></a>
+            <a href="#slide3" class="dot dot-3"></a>
+            <a href="#slide4" class="dot dot-4"></a>
+            <a href="#slide5" class="dot dot-5"></a>
+            <a href="#slide6" class="dot dot-6"></a>
         </div>
 
-        <div class="gallery-card" onclick="window.location.href='404.html'">
-            <div class="gallery-img" style="background-image: url('images/ur.png'); background-size: cover; background-position: center;">
-                <div class="overlay"><span>🔍</span></div>
-            </div>
-            <div class="gallery-content">
-                <h3>Юридический контракт</h3>
-                <p>Перевод международного договора с нотариальным заверением. 45 страниц, 1 день.</p>
-                <span class="gallery-tag">⚖️ Юридический перевод</span>
-            </div>
-        </div>
-
-        <div class="gallery-card" onclick="window.location.href='404.html'">
-            <div class="gallery-img" style="background-image: url('images/loc.png'); background-size: cover; background-position: center;">
-                <div class="overlay"><span>🔍</span></div>
-            </div>
-            <div class="gallery-content">
-                <h3>Локализация приложения</h3>
-                <p>Адаптация мобильного приложения под русскоязычных пользователей. 5000 строк кода, 1 неделя.</p>
-                <span class="gallery-tag">📱 Локализация</span>
-            </div>
-        </div>
-
-        <div class="gallery-card" onclick="window.location.href='404.html'">
-            <div class="gallery-img" style="background-image: url('images/sub.jpg'); background-size: cover; background-position: center;">
-                <div class="overlay"><span>🔍</span></div>
-            </div>
-            <div class="gallery-content">
-                <h3>Субтитры для YouTube</h3>
-                <p>Перевод и создание субтитров для образовательного канала. 15 видео, 120 минут.</p>
-                <span class="gallery-tag">🎬 Субтитры</span>
-            </div>
-        </div>
-
-        <div class="gallery-card" onclick="window.location.href='404.html'">
-            <div class="gallery-img" style="background-image: url('images/re.jpg'); background-size: cover; background-position: center;">
-                <div class="overlay"><span>🔍</span></div>
-            </div>
-            <div class="gallery-content">
-                <h3>Ребрендинг сайта</h3>
-                <p>Перевод и адаптация международного сайта под русский рынок. 12 страниц, 2 дня.</p>
-                <span class="gallery-tag">💻 Веб-локализация</span>
-            </div>
-        </div>
+      
+        <div class="counter">1-6 / 6</div>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col"><h4>🌐 TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='index.html'">📘</span><span onclick="window.location.href='index.html'">🐦</span><span onclick="window.location.href='index.html'">📷</span><span onclick="window.location.href='index.html'">💼</span></div></div>
+            <div class="footer-col"><h4>TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='index.html'">FB</span><span onclick="window.location.href='index.html'">TW</span><span onclick="window.location.href='index.html'">IG</span><span onclick="window.location.href='index.html'">LK</span></div></div>
             <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='about.html'" style="cursor:pointer">О создателе</p><p onclick="window.location.href='privacy.html'" style="cursor:pointer">Политика конфиденциальности</p><p onclick="window.location.href='index.html'" style="cursor:pointer">Доставка и оплата</p><p onclick="window.location.href='index.html'" style="cursor:pointer">Частые вопросы</p></div>
             <div class="footer-col"><h4>Партнёры</h4><p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p><p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p></div>
             <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
         </div>
-        <div class="copyright">© 2026 TransLingo. Все права защищены.</div>
+        <div class="copyright">(C) 2026 TransLingo. Все права защищены.</div>
     </div>
 </footer>
 
