@@ -2,9 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>TransLingo — Галерея переводов</title>
-    <link rel="icon" type="image/png" href="images/logo123.png">
+    <link rel="icon" type="image/png" href="logo123.png">
     <style>
         * {
             margin: 0;
@@ -14,11 +13,16 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #F8FAFF;
+            background-color: #FFFFFF;
             color: #1A1A1A;
-            width: 100%;
+            width: 1920px;
             margin: 0 auto;
             overflow-x: hidden;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .container {
@@ -28,14 +32,17 @@
         }
 
         .header {
-            width: 100%;
+            width: 1920px;
             height: 80px;
             background: white;
             border-bottom: 1px solid #E5E7EB;
+            position: relative;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
+            justify-content: flex-start;
+            padding-left: 100px;
+            animation: fadeInUp 0.5s ease;
+            z-index: 100;
         }
 
         .logo {
@@ -43,6 +50,15 @@
             align-items: center;
             gap: 12px;
             cursor: pointer;
+            position: absolute;
+            left: 100px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: translateY(-50%) scale(1.02);
         }
 
         .logo img {
@@ -57,6 +73,9 @@
         }
 
         .menu {
+            position: absolute;
+            left: 400px;
+            top: 32px;
             display: flex;
             gap: 40px;
         }
@@ -66,35 +85,59 @@
             font-size: 16px;
             color: #4B5563;
             transition: all 0.3s;
+            padding: 8px 0;
         }
 
         .menu-item:hover {
             color: #2A6DFF;
+            transform: translateY(-2px);
         }
 
         .auth-buttons {
+            position: absolute;
+            right: 220px;
+            top: 20px;
             display: flex;
             gap: 12px;
         }
 
-        .btn-login, .btn-register {
-            padding: 8px 20px;
+        .btn-login {
+            width: 100px;
+            height: 40px;
+            background: transparent;
+            border: 1px solid #2A6DFF;
             border-radius: 8px;
+            color: #2A6DFF;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
+            transition: all 0.3s;
         }
 
-        .btn-login {
-            background: transparent;
-            border: 1px solid #2A6DFF;
-            color: #2A6DFF;
+        .btn-login:hover {
+            background: #2A6DFF;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
         }
 
         .btn-register {
+            width: 120px;
+            height: 40px;
             background: #2A6DFF;
             border: none;
+            border-radius: 8px;
             color: white;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-register:hover {
+            background: #1A4FCC;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
         }
 
         .page-title {
@@ -109,207 +152,82 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            animation: fadeInUp 0.6s ease;
         }
 
         .page-title p {
             font-size: 18px;
             color: #6B7280;
             margin-top: 10px;
+            animation: fadeInUp 0.6s ease 0.1s backwards;
         }
 
-        /* ========== CSS СЛАЙДЕР (без JavaScript) ========== */
-        .slider-container {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto 80px;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .gallery-card {
             background: white;
             border-radius: 28px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeInUp 0.5s ease forwards;
         }
 
-        .slider-wrapper {
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            scroll-behavior: smooth;
-            scrollbar-width: none; /* скрываем скроллбар в Firefox */
-            -ms-overflow-style: none; /* скрываем скроллбар в IE/Edge */
+        .gallery-card:nth-child(1) { animation-delay: 0s; }
+        .gallery-card:nth-child(2) { animation-delay: 0.1s; }
+        .gallery-card:nth-child(3) { animation-delay: 0.2s; }
+        .gallery-card:nth-child(4) { animation-delay: 0.3s; }
+        .gallery-card:nth-child(5) { animation-delay: 0.4s; }
+        .gallery-card:nth-child(6) { animation-delay: 0.5s; }
+
+        .gallery-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
         }
 
-        .slider-wrapper::-webkit-scrollbar {
-            display: none; /* скрываем скроллбар в Chrome/Safari */
-        }
-
-        .slider-track {
-            display: flex;
-            width: 100%;
-        }
-
-        .slider-slide {
-            min-width: 100%;
-            scroll-snap-align: start;
-            flex-shrink: 0;
-        }
-
-        .slider-img {
-            width: 100%;
-            height: 400px;
+        .gallery-img {
+            height: 220px;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
         }
 
-        .slider-content {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .slider-content h3 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #1A1A1A;
-        }
-
-        .slider-content p {
-            font-size: 16px;
-            color: #6B7280;
-            margin-bottom: 15px;
-            line-height: 1.5;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .slider-tag {
-            display: inline-block;
-            background: #F0F4FF;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
-            color: #2A6DFF;
-        }
-
-        /* Стрелки (CSS-кнопки) */
-        .slider-arrow {
-            position: absolute;
-            top: 35%;
-            transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: #2A6DFF;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s;
-            z-index: 10;
-            cursor: pointer;
-            text-decoration: none;
-            user-select: none;
-        }
-
-        .slider-arrow:hover {
-            background: #2A6DFF;
-            color: white;
-            transform: translateY(-50%) scale(1.05);
-        }
-
-        .arrow-left {
-            left: 20px;
-        }
-
-        .arrow-right {
-            right: 20px;
-        }
-
-        /* Точки (индикаторы) - активная подсвечивается через target */
-        .slider-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-            margin-bottom: 30px;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            background: #D1D5DB;
-            border-radius: 50%;
-            transition: all 0.3s;
-            display: inline-block;
-        }
-
-        /* Подсветка активной точки через якоря */
-        .slider-container:has(#slide1:target) .dot-1,
-        .slider-container:has(#slide2:target) .dot-2,
-        .slider-container:has(#slide3:target) .dot-3,
-        .slider-container:has(#slide4:target) .dot-4,
-        .slider-container:has(#slide5:target) .dot-5,
-        .slider-container:has(#slide6:target) .dot-6 {
-            background: #2A6DFF;
-            width: 28px;
-            border-radius: 10px;
-        }
-
-        /* По умолчанию активна первая точка (если нет target) */
-        .slider-container:not(:has(:target)) .dot-1 {
-            background: #2A6DFF;
-            width: 28px;
-            border-radius: 10px;
-        }
-
-        .dot {
-            cursor: pointer;
-        }
-
-        .dot:hover {
-            background: #2A6DFF;
-            opacity: 0.6;
-        }
-
-        .counter {
-            text-align: center;
-            margin-top: 15px;
-            margin-bottom: 30px;
-            font-size: 14px;
-            color: #9CA3AF;
-        }
-
-        /* Якоря для навигации (скрытые) */
-        .slide-anchor {
+        /* Оверлей с лупой полностью удалён */
+        .gallery-img .overlay {
             display: none;
         }
 
-        /* Стили для ссылок-стрелок, которые работают без JS */
-        .nav-link {
-            position: absolute;
-            top: 35%;
-            width: 50px;
-            height: 50px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            font-weight: bold;
-            color: #2A6DFF;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            transition: all 0.3s;
-            z-index: 10;
-            text-decoration: none;
+        .gallery-content {
+            padding: 24px;
         }
 
-        .nav-link:hover {
-            background: #2A6DFF;
-            color: white;
-            transform: scale(1.05);
+        .gallery-content h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #1A1A1A;
+        }
+
+        .gallery-content p {
+            font-size: 14px;
+            color: #6B7280;
+            margin-bottom: 12px;
+            line-height: 1.4;
+        }
+
+        .gallery-tag {
+            display: inline-block;
+            background: #F0F4FF;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #2A6DFF;
         }
 
         .footer {
@@ -337,6 +255,12 @@
             text-decoration: none;
             line-height: 1.8;
             cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .footer-col a:hover, .footer-col p:hover {
+            color: white;
+            transform: translateX(5px);
         }
 
         .social-icons {
@@ -348,6 +272,12 @@
         .social-icons span {
             font-size: 24px;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .social-icons span:hover {
+            transform: translateY(-3px) scale(1.1);
+            color: white;
         }
 
         .copyright {
@@ -356,70 +286,25 @@
             border-top: 1px solid #1F2937;
             font-size: 13px;
         }
-
-        @media (max-width: 768px) {
-            .header {
-                flex-wrap: wrap;
-                height: auto;
-                padding: 15px;
-                gap: 15px;
-            }
-            .menu {
-                order: 3;
-                width: 100%;
-                justify-content: center;
-                flex-wrap: wrap;
-                gap: 20px;
-            }
-            .page-title h1 {
-                font-size: 32px;
-            }
-            .page-title p {
-                font-size: 14px;
-            }
-            .slider-img {
-                height: 250px;
-            }
-            .slider-content h3 {
-                font-size: 22px;
-            }
-            .slider-content p {
-                font-size: 14px;
-            }
-            .nav-link, .slider-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 22px;
-                top: 30%;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                text-align: center;
-                gap: 30px;
-            }
-            .social-icons {
-                justify-content: center;
-            }
-        }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <div class="logo" onclick="window.location.href='index.html'">
+    <div class="logo" onclick="window.location.href='site.html'">
         <img src="images/logo123.png" alt="TransLingo">
         <span class="logo-text">TransLingo</span>
     </div>
     <div class="menu">
-        <div class="menu-item" onclick="window.location.href='index.html'">Главная</div>
-        <div class="menu-item" onclick="window.location.href='index.html'">Услуги</div>
-        <div class="menu-item" onclick="window.location.href='about.html'">О себе</div>
+        <div class="menu-item" onclick="window.location.href='site.html'">Главная</div>
+        <div class="menu-item" onclick="window.location.href='site.html'">Услуги</div>
+        <div class="menu-item" onclick="window.location.href='site.html'">О нас</div>
         <div class="menu-item" style="color:#2A6DFF; font-weight:600;">Галерея</div>
-        <div class="menu-item" onclick="window.location.href='index.html'">Контакты</div>
+        <div class="menu-item" onclick="window.location.href='site.html'">Контакты</div>
     </div>
     <div class="auth-buttons">
-        <button class="btn-login" onclick="window.location.href='index.html'">Вход</button>
-        <button class="btn-register" onclick="window.location.href='index.html'">Регистрация</button>
+        <button class="btn-login" onclick="window.location.href='site.html'">Вход</button>
+        <button class="btn-register" onclick="window.location.href='site.html'">Регистрация</button>
     </div>
 </div>
 
@@ -429,99 +314,73 @@
         <p>Примеры наших работ — качество, которому доверяют</p>
     </div>
 
-    <div class="slider-container">
-        <!-- Скрытые якоря для навигации -->
-        <div id="slide1" class="slide-anchor"></div>
-        <div id="slide2" class="slide-anchor"></div>
-        <div id="slide3" class="slide-anchor"></div>
-        <div id="slide4" class="slide-anchor"></div>
-        <div id="slide5" class="slide-anchor"></div>
-        <div id="slide6" class="slide-anchor"></div>
-
-        <!-- Стрелки навигации (ссылки на якоря) -->
-        <a href="#slide6" class="nav-link arrow-left" style="left:20px;">←</a>
-        <a href="#slide2" class="nav-link arrow-right" style="right:20px;">→</a>
-
-        <div class="slider-wrapper">
-            <div class="slider-track">
-                <!-- Слайд 1 -->
-                <div class="slider-slide">
-                    <div class="slider-img" style="background-image: url('images/tech.png');"></div>
-                    <div class="slider-content">
-                        <h3>Техническая документация</h3>
-                        <p>Перевод руководства по эксплуатации промышленного оборудования с немецкого на русский. 120 страниц, 3 дня.</p>
-                        <span class="slider-tag">Технический перевод</span>
-                    </div>
-                </div>
-                <!-- Слайд 2 -->
-                <div class="slider-slide">
-                    <div class="slider-img" style="background-image: url('images/med.jpg');"></div>
-                    <div class="slider-content">
-                        <h3>Медицинская документация</h3>
-                        <p>Перевод клинических исследований и инструкций к препаратам с английского на русский. 80 страниц, 2 дня.</p>
-                        <span class="slider-tag">Медицинский перевод</span>
-                    </div>
-                </div>
-                <!-- Слайд 3 -->
-                <div class="slider-slide">
-                    <div class="slider-img" style="background-image: url('images/ur.png');"></div>
-                    <div class="slider-content">
-                        <h3>Юридический контракт</h3>
-                        <p>Перевод международного договора с нотариальным заверением. 45 страниц, 1 день.</p>
-                        <span class="slider-tag">Юридический перевод</span>
-                    </div>
-                </div>
-                <!-- Слайд 4 -->
-                <div class="slider-slide">
-                    <div class="slider-img" style="background-image: url('images/loc.png');"></div>
-                    <div class="slider-content">
-                        <h3>Локализация приложения</h3>
-                        <p>Адаптация мобильного приложения под русскоязычных пользователей. 5000 строк кода, 1 неделя.</p>
-                        <span class="slider-tag">Локализация</span>
-                    </div>
-                </div>
-                <!-- Слайд 5 -->
-                <div class="slider-slide">
-                    <div class="slider-img" style="background-image: url('images/sub.jpg');"></div>
-                    <div class="slider-content">
-                        <h3>Субтитры для YouTube</h3>
-                        <p>Перевод и создание субтитров для образовательного канала. 15 видео, 120 минут.</p>
-                        <span class="slider-tag">Субтитры</span>
-                    </div>
-                </div>
-                <!-- Слайд 6 -->
-                <div class="slider-slide">
-                    <div class="slider-img" style="background-image: url('images/re.jpg');"></div>
-                    <div class="slider-content">
-                        <h3>Ребрендинг сайта</h3>
-                        <p>Перевод и адаптация международного сайта под русский рынок. 12 страниц, 2 дня.</p>
-                        <span class="slider-tag">Веб-локализация</span>
-                    </div>
-                </div>
+    <div class="gallery-grid">
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/tech.png'); background-size: cover; background-position: center;"></div>
+            <div class="gallery-content">
+                <h3>Техническая документация</h3>
+                <p>Перевод руководства по эксплуатации промышленного оборудования с немецкого на русский. 120 страниц, 3 дня.</p>
+                <span class="gallery-tag">Технический перевод</span>
             </div>
         </div>
 
-        <!-- Точки для навигации -->
-        <div class="slider-dots">
-            <a href="#slide1" class="dot dot-1"></a>
-            <a href="#slide2" class="dot dot-2"></a>
-            <a href="#slide3" class="dot dot-3"></a>
-            <a href="#slide4" class="dot dot-4"></a>
-            <a href="#slide5" class="dot dot-5"></a>
-            <a href="#slide6" class="dot dot-6"></a>
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/med.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="gallery-content">
+                <h3>Медицинская документация</h3>
+                <p>Перевод клинических исследований и инструкций к препаратам с английского на русский. 80 страниц, 2 дня.</p>
+                <span class="gallery-tag">Медицинский перевод</span>
+            </div>
         </div>
 
-       
-        <div class="counter">1-6 / 6</div>
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/ur.png'); background-size: cover; background-position: center;"></div>
+            <div class="gallery-content">
+                <h3>Юридический контракт</h3>
+                <p>Перевод международного договора с нотариальным заверением. 45 страниц, 1 день.</p>
+                <span class="gallery-tag">Юридический перевод</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/loc.png'); background-size: cover; background-position: center;"></div>
+            <div class="gallery-content">
+                <h3>Локализация приложения</h3>
+                <p>Адаптация мобильного приложения под русскоязычных пользователей. 5000 строк кода, 1 неделя.</p>
+                <span class="gallery-tag">Локализация</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/sub.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="gallery-content">
+                <h3>Субтитры для YouTube</h3>
+                <p>Перевод и создание субтитров для образовательного канала. 15 видео, 120 минут.</p>
+                <span class="gallery-tag">Субтитры</span>
+            </div>
+        </div>
+
+        <div class="gallery-card" onclick="window.location.href='site.html'">
+            <div class="gallery-img" style="background-image: url('images/re.jpg'); background-size: cover; background-position: center;"></div>
+            <div class="gallery-content">
+                <h3>Ребрендинг сайта</h3>
+                <p>Перевод и адаптация международного сайта под русский рынок. 12 страниц, 2 дня.</p>
+                <span class="gallery-tag">Веб-локализация</span>
+            </div>
+        </div>
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col"><h4>TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='index.html'">FB</span><span onclick="window.location.href='index.html'">TW</span><span onclick="window.location.href='index.html'">IG</span><span onclick="window.location.href='index.html'">LK</span></div></div>
-            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='about.html'" style="cursor:pointer">О создателе</p><p onclick="window.location.href='privacy.html'" style="cursor:pointer">Политика конфиденциальности</p><p onclick="window.location.href='index.html'" style="cursor:pointer">Доставка и оплата</p><p onclick="window.location.href='index.html'" style="cursor:pointer">Частые вопросы</p></div>
-            <div class="footer-col"><h4>Партнёры</h4><p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p><p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p></div>
+            <div class="footer-col"><h4>TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='site.html'">FB</span><span onclick="window.location.href='site.html'">TW</span><span onclick="window.location.href='site.html'">IG</span><span onclick="window.location.href='site.html'">LK</span></div></div>
+            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='site.html'" style="cursor:pointer">О компании<br>Портфолио<br>Доставка и оплата<br>Частые вопросы</p></div>
+            <div class="footer-col">
+                <h4>Партнёры</h4>
+                <p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p>
+                <p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p>
+            </div>
             <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
         </div>
         <div class="copyright">(C) 2026 TransLingo. Все права защищены.</div>
