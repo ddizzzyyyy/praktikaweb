@@ -20,11 +20,6 @@
             overflow-x: hidden;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -41,7 +36,6 @@
             align-items: center;
             justify-content: flex-start;
             padding-left: 100px;
-            animation: fadeInUp 0.5s ease;
             z-index: 100;
         }
 
@@ -90,7 +84,6 @@
 
         .menu-item:hover {
             color: #2A6DFF;
-            transform: translateY(-2px);
         }
 
         .auth-buttons {
@@ -117,8 +110,6 @@
         .btn-login:hover {
             background: #2A6DFF;
             color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
         }
 
         .btn-register {
@@ -136,8 +127,6 @@
 
         .btn-register:hover {
             background: #1A4FCC;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(42,109,255,0.3);
         }
 
         .page-title {
@@ -152,17 +141,15 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            animation: fadeInUp 0.6s ease;
         }
 
         .page-title p {
             font-size: 18px;
             color: #6B7280;
             margin-top: 10px;
-            animation: fadeInUp 0.6s ease 0.1s backwards;
         }
 
-        /* ========== CSS СЛАЙДЕР (без JavaScript) ========== */
+        /* ========== CSS СЛАЙДЕР ========== */
         .slider-container {
             position: relative;
             max-width: 900px;
@@ -193,7 +180,6 @@
             flex-shrink: 0;
         }
 
-        /* Ссылка-обёртка для картинки */
         .slide-link {
             display: block;
             text-decoration: none;
@@ -205,11 +191,6 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            transition: transform 0.3s ease;
-        }
-
-        .slider-img:hover {
-            transform: scale(1.02);
         }
 
         .slider-content {
@@ -243,25 +224,13 @@
             color: #2A6DFF;
         }
 
-        /* Переключение слайдов через радиокнопки */
-        #slide1:checked ~ .slider-wrapper .slider-track {
-            transform: translateX(0%);
-        }
-        #slide2:checked ~ .slider-wrapper .slider-track {
-            transform: translateX(-100%);
-        }
-        #slide3:checked ~ .slider-wrapper .slider-track {
-            transform: translateX(-200%);
-        }
-        #slide4:checked ~ .slider-wrapper .slider-track {
-            transform: translateX(-300%);
-        }
-        #slide5:checked ~ .slider-wrapper .slider-track {
-            transform: translateX(-400%);
-        }
-        #slide6:checked ~ .slider-wrapper .slider-track {
-            transform: translateX(-500%);
-        }
+        /* Переключение слайдов */
+        #slide1:checked ~ .slider-wrapper .slider-track { transform: translateX(0%); }
+        #slide2:checked ~ .slider-wrapper .slider-track { transform: translateX(-100%); }
+        #slide3:checked ~ .slider-wrapper .slider-track { transform: translateX(-200%); }
+        #slide4:checked ~ .slider-wrapper .slider-track { transform: translateX(-300%); }
+        #slide5:checked ~ .slider-wrapper .slider-track { transform: translateX(-400%); }
+        #slide6:checked ~ .slider-wrapper .slider-track { transform: translateX(-500%); }
 
         /* Стрелки */
         .slider-arrow {
@@ -288,7 +257,6 @@
         .slider-arrow:hover {
             background: #2A6DFF;
             color: white;
-            transform: translateY(-50%) scale(1.05);
         }
 
         .arrow-left {
@@ -299,7 +267,7 @@
             right: 20px;
         }
 
-        /* Точки (индикаторы) */
+        /* Точки — фиксированный размер, просто заливка цветом */
         .slider-dots {
             display: flex;
             justify-content: center;
@@ -314,11 +282,11 @@
             background: #D1D5DB;
             border-radius: 50%;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.2s;
             display: inline-block;
         }
 
-        /* Подсветка активной точки */
+        /* Активная точка — просто синий цвет, без изменения размера */
         #slide1:checked ~ .slider-dots label[for="slide1"],
         #slide2:checked ~ .slider-dots label[for="slide2"],
         #slide3:checked ~ .slider-dots label[for="slide3"],
@@ -326,8 +294,6 @@
         #slide5:checked ~ .slider-dots label[for="slide5"],
         #slide6:checked ~ .slider-dots label[for="slide6"] {
             background: #2A6DFF;
-            width: 28px;
-            border-radius: 10px;
         }
 
         /* Счётчик */
@@ -377,7 +343,6 @@
 
         .footer-col a:hover, .footer-col p:hover {
             color: white;
-            transform: translateX(5px);
         }
 
         .social-icons {
@@ -393,7 +358,6 @@
         }
 
         .social-icons span:hover {
-            transform: translateY(-3px) scale(1.1);
             color: white;
         }
 
@@ -432,7 +396,6 @@
     </div>
 
     <div class="slider-container">
-        <!-- Радиокнопки для переключения слайдов -->
         <input type="radio" name="slider" id="slide1" checked>
         <input type="radio" name="slider" id="slide2">
         <input type="radio" name="slider" id="slide3">
@@ -440,13 +403,11 @@
         <input type="radio" name="slider" id="slide5">
         <input type="radio" name="slider" id="slide6">
 
-        <!-- Стрелки (label, привязанные к радиокнопкам) -->
         <label for="slide6" class="slider-arrow arrow-left">←</label>
         <label for="slide2" class="slider-arrow arrow-right">→</label>
 
         <div class="slider-wrapper">
             <div class="slider-track">
-                <!-- Слайд 1 -->
                 <div class="slider-slide">
                     <a href="images/tech.png" target="_blank" class="slide-link">
                         <div class="slider-img" style="background-image: url('images/tech.png');"></div>
@@ -457,7 +418,6 @@
                         <span class="slider-tag">Технический перевод</span>
                     </div>
                 </div>
-                <!-- Слайд 2 -->
                 <div class="slider-slide">
                     <a href="images/med.jpg" target="_blank" class="slide-link">
                         <div class="slider-img" style="background-image: url('images/med.jpg');"></div>
@@ -468,7 +428,6 @@
                         <span class="slider-tag">Медицинский перевод</span>
                     </div>
                 </div>
-                <!-- Слайд 3 -->
                 <div class="slider-slide">
                     <a href="images/ur.png" target="_blank" class="slide-link">
                         <div class="slider-img" style="background-image: url('images/ur.png');"></div>
@@ -479,7 +438,6 @@
                         <span class="slider-tag">Юридический перевод</span>
                     </div>
                 </div>
-                <!-- Слайд 4 -->
                 <div class="slider-slide">
                     <a href="images/loc.png" target="_blank" class="slide-link">
                         <div class="slider-img" style="background-image: url('images/loc.png');"></div>
@@ -490,7 +448,6 @@
                         <span class="slider-tag">Локализация</span>
                     </div>
                 </div>
-                <!-- Слайд 5 -->
                 <div class="slider-slide">
                     <a href="images/sub.jpg" target="_blank" class="slide-link">
                         <div class="slider-img" style="background-image: url('images/sub.jpg');"></div>
@@ -501,7 +458,6 @@
                         <span class="slider-tag">Субтитры</span>
                     </div>
                 </div>
-                <!-- Слайд 6 -->
                 <div class="slider-slide">
                     <a href="images/re.jpg" target="_blank" class="slide-link">
                         <div class="slider-img" style="background-image: url('images/re.jpg');"></div>
@@ -515,7 +471,6 @@
             </div>
         </div>
 
-        <!-- Точки (label для радиокнопок) -->
         <div class="slider-dots">
             <label for="slide1" class="dot"></label>
             <label for="slide2" class="dot"></label>
