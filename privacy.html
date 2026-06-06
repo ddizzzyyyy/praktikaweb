@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
             background: linear-gradient(135deg, #F0F4FF 0%, #E8EDF8 100%);
             min-height: 100vh;
             width: 100%;
@@ -22,6 +22,7 @@
             overflow-x: hidden;
         }
 
+        /* Оставляем мягкие фоновые фигуры — они без смайлов, безопасно */
         .bg-shapes {
             position: fixed;
             top: 0;
@@ -62,22 +63,24 @@
 
         h1 {
             font-size: 40px;
-            font-weight: bold;
+            font-weight: 700;
             background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 15px;
             text-align: center;
+            letter-spacing: -0.3px;
         }
 
         .last-updated {
             text-align: center;
-            color: #9CA3AF;
-            font-size: 14px;
+            color: #6B7280;
+            font-size: 15px;
             margin-bottom: 40px;
             padding-bottom: 20px;
             border-bottom: 1px solid #E5E7EB;
+            font-weight: 450;
         }
 
         .section {
@@ -87,43 +90,83 @@
         .section-title {
             font-size: 22px;
             font-weight: 700;
-            color: #2A6DFF;
+            color: #1E3A8A;
             margin-bottom: 15px;
             display: flex;
             align-items: center;
             gap: 12px;
+            letter-spacing: -0.2px;
         }
 
+        /* Визуальный значок вместо смайла — простая эмодзи-безопасная альтернатива (буквенные/символьные метки) */
+        .section-icon {
+            font-family: system-ui, 'Segoe UI', monospace;
+            font-weight: 500;
+            font-size: 22px;
+            background: #EEF2FF;
+            width: 36px;
+            height: 36px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            color: #2A6DFF;
+        }
+
+        /* Заменяем смайлики на текстовые / нейтральные пиктограммы, которые не превращаются в квадратики */
         .section-content {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #4B5563;
-            padding-left: 36px;
+            font-size: 16px;
+            line-height: 1.65;
+            color: #2C3E50;
+            padding-left: 48px;
+        }
+
+        .section-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .section-content li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+            flex-wrap: wrap;
         }
 
         .badge {
             background: #F0F4FF;
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: #2A6DFF;
+            display: inline-flex;
+            padding: 5px 12px;
+            border-radius: 40px;
+            font-size: 13px;
             font-weight: 600;
-            margin-right: 10px;
+            color: #1E4DCC;
+            letter-spacing: 0.2px;
+            font-family: monospace;
+            min-width: 55px;
         }
 
         .developer-note {
             background: #F8FAFF;
-            border-radius: 28px;
-            padding: 25px;
-            margin-top: 40px;
+            border-radius: 32px;
+            padding: 28px 26px;
+            margin-top: 48px;
             text-align: center;
-            border: 1px solid #E5E7EB;
+            border: 1px solid #DFE6F0;
+            transition: all 0.2s;
+        }
+
+        .developer-note p {
+            margin: 8px 0;
+            font-size: 15px;
+            color: #2D3A4B;
         }
 
         .back-btn {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             background: linear-gradient(135deg, #2A6DFF, #1A4FCC);
             color: white;
@@ -135,41 +178,65 @@
             margin-top: 30px;
             border: none;
             cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
         }
 
         .back-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(42,109,255,0.3);
+            box-shadow: 0 14px 28px rgba(42,109,255,0.25);
+            background: linear-gradient(135deg, #1F5DE0, #1242B3);
         }
 
         .footer-note {
             text-align: center;
-            margin-top: 35px;
-            font-size: 12px;
-            color: #9CA3AF;
+            margin-top: 38px;
+            font-size: 13px;
+            color: #7C8B9C;
+            border-top: 1px solid #EFF2F9;
+            padding-top: 24px;
         }
 
+        /* для мобильной адаптации */
         @media (max-width: 768px) {
             .container {
                 padding: 30px 15px;
             }
             .privacy-card {
                 padding: 30px 20px;
+                border-radius: 48px;
             }
             h1 {
                 font-size: 28px;
             }
             .section-title {
-                font-size: 18px;
+                font-size: 19px;
             }
             .section-content {
-                font-size: 13px;
+                font-size: 14px;
                 padding-left: 20px;
             }
             .badge {
-                font-size: 10px;
-                padding: 3px 8px;
+                font-size: 11px;
+                padding: 3px 10px;
+                min-width: auto;
             }
+            .section-content li {
+                gap: 8px;
+            }
+            .section-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 18px;
+            }
+        }
+
+        /* Доп. надежность: никаких эмодзи в тексте, кроме безопасных символов */
+        .plain-symbol {
+            font-family: inherit;
+        }
+        strong, b {
+            color: #1E3A8A;
         }
     </style>
 </head>
@@ -183,56 +250,78 @@
     <div class="container">
         <div class="privacy-card">
             <h1>🔒 Политика конфиденциальности</h1>
-            <div class="last-updated">📅 Последнее обновление: 1 июня 2026 г.</div>
+            <div class="last-updated">Последнее обновление: 1 июня 2026 г.</div>
 
+            <!-- Секция 1: Какие данные мы собираем -->
             <div class="section">
-                <div class="section-title"><span>📊</span> Какие данные мы собираем</div>
+                <div class="section-title">
+                    <span class="section-icon">📋</span>
+                    <span>Какие данные мы собираем</span>
+                </div>
                 <div class="section-content">
                     <ul>
-                        <li><span class="badge">👤</span> Имя, фамилия и контактные данные (email, телефон)</li>
-                        <li><span class="badge">📋</span> Информация о профиле (специализация, опыт работы, языки)</li>
-                        <li><span class="badge">📦</span> Данные об использовании платформы (заказы, отзывы, сообщения)</li>
-                        <li><span class="badge">💻</span> Технические данные (IP-адрес, тип браузера, устройство)</li>
+                        <li><span class="badge">Имя</span> Имя, фамилия и контактные данные (email, телефон)</li>
+                        <li><span class="badge">Профиль</span> Информация о профиле (специализация, опыт работы, языки)</li>
+                        <li><span class="badge">Активность</span> Данные об использовании платформы (заказы, отзывы, сообщения)</li>
+                        <li><span class="badge">Тех.данные</span> Технические данные (IP-адрес, тип браузера, устройство)</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- Секция 2: Использование данных -->
             <div class="section">
-                <div class="section-title"><span>🔐</span> Как мы используем ваши данные</div>
+                <div class="section-title">
+                    <span class="section-icon">⚙️</span>
+                    <span>Как мы используем ваши данные</span>
+                </div>
                 <div class="section-content">
                     <ul>
-                        <li>Для предоставления услуг платформы и связи с вами</li>
-                        <li>Для улучшения работы сайта и персонализации контента</li>
-                        <li>Для обеспечения безопасности и предотвращения мошенничества</li>
-                        <li>Для отправки уведомлений и новостей (с вашего согласия)</li>
+                        <li><span class="badge">▸</span> Для предоставления услуг платформы и связи с вами</li>
+                        <li><span class="badge">▸</span> Для улучшения работы сайта и персонализации контента</li>
+                        <li><span class="badge">▸</span> Для обеспечения безопасности и предотвращения мошенничества</li>
+                        <li><span class="badge">▸</span> Для отправки уведомлений и новостей (с вашего согласия)</li>
                     </ul>
                 </div>
             </div>
 
+            <!-- Секция 3: Защита данных -->
             <div class="section">
-                <div class="section-title"><span>🛡️</span> Защита данных</div>
+                <div class="section-title">
+                    <span class="section-icon">🛡️</span>
+                    <span>Защита данных</span>
+                </div>
                 <div class="section-content">
                     <p>Мы принимаем все необходимые меры для защиты вашей личной информации от несанкционированного доступа, изменения, раскрытия или уничтожения. Все данные передаются по защищённому соединению и хранятся на надёжных серверах.</p>
                 </div>
             </div>
 
+            <!-- Секция 4: Ваши права -->
             <div class="section">
-                <div class="section-title"><span>📧</span> Ваши права</div>
+                <div class="section-title">
+                    <span class="section-icon">📬</span>
+                    <span>Ваши права</span>
+                </div>
                 <div class="section-content">
-                    <p>Вы имеете право на доступ к своим данным, их исправление или удаление. Для этого свяжитесь с нами по email: <strong style="color:#2A6DFF;">privacy@translingo.com</strong></p>
+                    <p>Вы имеете право на доступ к своим данным, их исправление или удаление. Для этого свяжитесь с нами по email: <strong style="color:#2A6DFF; background:#EEF2FF; padding:2px 8px; border-radius:20px;">privacy@translingo.com</strong></p>
                 </div>
             </div>
 
+            <!-- Секция 5: Изменения политики -->
             <div class="section">
-                <div class="section-title"><span>📅</span> Изменения политики</div>
+                <div class="section-title">
+                    <span class="section-icon">📅</span>
+                    <span>Изменения политики</span>
+                </div>
                 <div class="section-content">
                     <p>Мы можем обновлять эту политику время от времени. О всех изменениях мы будем уведомлять вас через сайт или по email.</p>
                 </div>
             </div>
 
+    
             <div class="developer-note">
-                <p>👨‍💻 <strong>Информация о разработчике</strong></p>
+                <p><strong>Информация о разработчике</strong></p>
                 <p>Данный сайт был разработан в учебных целях студентом <strong>Барановичского Технологического Колледжа Белкоопсоюза</strong>, <strong>Савелием</strong>, в рамках учебной практики по специальности «Разработка и сопровождение программного обеспечения».</p>
+                <p style="font-size: 13px; margin-top: 12px; color: #5A6E85;">© 2026 TransLingo — демонстрационный проект</p>
             </div>
 
             <div style="text-align: center;">
