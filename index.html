@@ -57,7 +57,6 @@
             color: #2A6DFF;
         }
 
-        /* ===== БУРГЕР ===== */
         .burger {
             display: flex;
             flex-direction: column;
@@ -74,7 +73,6 @@
             transition: 0.3s;
         }
 
-        /* Анимация бургера при открытом меню */
         .burger.active span:nth-child(1) {
             transform: rotate(45deg) translate(5px, 5px);
         }
@@ -87,7 +85,6 @@
             transform: rotate(-45deg) translate(7px, -7px);
         }
 
-        /* ===== ВЫЕЗЖАЮЩЕЕ МЕНЮ (САЙДБАР) ===== */
         .overlay {
             position: fixed;
             top: 0;
@@ -166,7 +163,6 @@
             color: #6B7280;
         }
 
-        /* Обычное меню на ПК скрываем, используем только сайдбар */
         .main-menu {
             display: flex;
             gap: 40px;
@@ -192,7 +188,6 @@
             color: #2A6DFF;
         }
 
-        /* Выпадайки для десктопного меню */
         .main-menu .dropdown {
             position: absolute;
             top: 35px;
@@ -613,7 +608,8 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 15px;
-            font-size: 28px;
+            font-size: 26px;
+            font-weight: normal;
             transition: all 0.3s;
         }
 
@@ -740,6 +736,16 @@
             margin-top: 15px;
         }
 
+        .social-icons span {
+            cursor: pointer;
+            font-size: 14px;
+            color: #9CA3AF;
+        }
+
+        .social-icons span:hover {
+            color: #2A6DFF;
+        }
+
         .copyright {
             text-align: center;
             padding-top: 30px;
@@ -772,21 +778,19 @@
         <span class="logo-text">TransLingo</span>
     </div>
     
-    <!-- БУРГЕР -->
     <div class="burger" id="burgerBtn">
         <span></span>
         <span></span>
         <span></span>
     </div>
     
-    <!-- ОБЫЧНОЕ МЕНЮ ДЛЯ ПК (горизонтальное) -->
     <div class="main-menu">
         <div class="menu-item" onclick="window.location.href='index.html'">Главная</div>
         <div class="menu-item" id="servicesMenuItem">
             Услуги
             <div class="dropdown" id="servicesDropdown">
                 <div class="dropdown-item" id="writtenMenuItem">
-                    📄 Письменный перевод
+                    Письменный перевод
                     <div class="subdropdown" id="writtenSubmenu">
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Технический перевод</div>
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Юридический перевод</div>
@@ -795,7 +799,7 @@
                     </div>
                 </div>
                 <div class="dropdown-item" id="oralMenuItem">
-                    🎤 Устный перевод
+                    Устный перевод
                     <div class="subdropdown" id="oralSubmenu">
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Последовательный</div>
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Синхронный</div>
@@ -804,7 +808,7 @@
                     </div>
                 </div>
                 <div class="dropdown-item" id="localizationMenuItem">
-                    💻 Локализация
+                    Локализация
                     <div class="subdropdown" id="localizationSubmenu">
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация ПО</div>
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация игр</div>
@@ -813,7 +817,7 @@
                     </div>
                 </div>
                 <div class="dropdown-item" id="notarialMenuItem">
-                    ✅ Нотариальное заверение
+                    Нотариальное заверение
                     <div class="subdropdown" id="notarialSubmenu">
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Свидетельство о рождении</div>
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Дипломы и аттестаты</div>
@@ -822,7 +826,7 @@
                     </div>
                 </div>
                 <div class="dropdown-item" id="subtitlesMenuItem">
-                    🎬 Субтитры и трансляция
+                    Субтитры и трансляция
                     <div class="subdropdown" id="subtitlesSubmenu">
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для YouTube</div>
                         <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для кино</div>
@@ -844,18 +848,16 @@
     </div>
 </div>
 
-<!-- ЗАТЕМНЕНИЕ -->
 <div class="overlay" id="overlay"></div>
 
-<!-- ВЫЕЗЖАЮЩЕЕ МЕНЮ СЛЕВА -->
 <div class="side-menu" id="sideMenu">
-    <div class="side-menu-close" id="closeMenuBtn">&times;</div>
+    <div class="side-menu-close" id="closeMenuBtn">X</div>
     <div class="menu-item" onclick="window.location.href='index.html'">Главная</div>
     <div class="menu-item" id="sideServicesMenuItem">
         Услуги
         <div class="dropdown" id="sideServicesDropdown">
             <div class="dropdown-item" id="sideWrittenMenuItem">
-                📄 Письменный перевод
+                Письменный перевод
                 <div class="subdropdown" id="sideWrittenSubmenu">
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Технический перевод</div>
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Юридический перевод</div>
@@ -864,7 +866,7 @@
                 </div>
             </div>
             <div class="dropdown-item" id="sideOralMenuItem">
-                🎤 Устный перевод
+                Устный перевод
                 <div class="subdropdown" id="sideOralSubmenu">
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Последовательный</div>
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Синхронный</div>
@@ -873,7 +875,7 @@
                 </div>
             </div>
             <div class="dropdown-item" id="sideLocalizationMenuItem">
-                💻 Локализация
+                Локализация
                 <div class="subdropdown" id="sideLocalizationSubmenu">
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация ПО</div>
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Локализация игр</div>
@@ -882,7 +884,7 @@
                 </div>
             </div>
             <div class="dropdown-item" id="sideNotarialMenuItem">
-                ✅ Нотариальное заверение
+                Нотариальное заверение
                 <div class="subdropdown" id="sideNotarialSubmenu">
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Свидетельство о рождении</div>
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Дипломы и аттестаты</div>
@@ -891,7 +893,7 @@
                 </div>
             </div>
             <div class="dropdown-item" id="sideSubtitlesMenuItem">
-                🎬 Субтитры и трансляция
+                Субтитры и трансляция
                 <div class="subdropdown" id="sideSubtitlesSubmenu">
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для YouTube</div>
                     <div class="subdropdown-item" onclick="window.location.href='404.html'">Субтитры для кино</div>
@@ -909,9 +911,9 @@
 
 <div id="authModal" class="auth-modal">
     <div class="auth-card">
-        <div class="auth-close" onclick="closeAuthModal()">✕</div>
+        <div class="auth-close" onclick="closeAuthModal()">X</div>
         <div class="auth-header">
-            <h2>🌐 TransLingo</h2>
+            <h2>TransLingo</h2>
             <p>Добро пожаловать в сообщество переводчиков</p>
         </div>
         <div class="auth-tabs">
@@ -921,16 +923,16 @@
         <div class="auth-form-container">
             <div id="loginForm" class="auth-form">
                 <div class="input-group">
-                    <label>📧 Email</label>
+                    <label>Email</label>
                     <input type="email" id="loginEmail" placeholder="your@email.com">
                     <span class="error-message" id="loginEmailError"></span>
                 </div>
                 <div class="input-group">
-                    <label>🔒 Пароль</label>
-                    <input type="password" id="loginPassword" placeholder="••••••••">
+                    <label>Пароль</label>
+                    <input type="password" id="loginPassword" placeholder="...">
                     <span class="error-message" id="loginPasswordError"></span>
                 </div>
-                <button class="auth-btn" onclick="handleLogin()">Войти в аккаунт →</button>
+                <button class="auth-btn" onclick="handleLogin()">Войти в аккаунт -></button>
                 <div class="auth-switch" style="text-align:center; margin-top:15px;">
                     Нет аккаунта? <span onclick="switchAuthTab('register')" style="color:#2A6DFF; cursor:pointer;">Создать</span>
                 </div>
@@ -943,36 +945,36 @@
                     <div class="word-card">
                         <div class="question-label" style="font-size:12px; color:#6B7280;">СЛОВО ДЛЯ ПЕРЕВОДА</div>
                         <div class="word" id="regWord">---</div>
-                        <div style="font-size:12px; margin-top:5px;">🇷🇺 РУССКИЙ → 🇬🇧 АНГЛИЙСКИЙ</div>
+                        <div style="font-size:12px; margin-top:5px;">РУССКИЙ -> АНГЛИЙСКИЙ</div>
                     </div>
                     <div class="options" id="regOptionsContainer"></div>
-                    <div class="attempts" style="font-size:12px; color:#EF4444; text-align:center;" id="regAttemptsText">✨ Осталось ошибок: 3</div>
-                    <button class="auth-btn" id="regCheckBtn">🔓 ПРОВЕРИТЬ ПЕРЕВОД</button>
+                    <div class="attempts" style="font-size:12px; color:#EF4444; text-align:center;" id="regAttemptsText">Осталось ошибок: 3</div>
+                    <button class="auth-btn" id="regCheckBtn">ПРОВЕРИТЬ ПЕРЕВОД</button>
                     <div class="feedback" id="regFeedback" style="margin-top:10px; text-align:center; font-size:13px;"></div>
                 </div>
 
                 <div id="registerFieldsScreen" class="register-fields">
                     <div class="input-group">
-                        <label>👤 Имя</label>
+                        <label>Имя</label>
                         <input type="text" id="regName" placeholder="Иван Петров">
                         <span class="error-message" id="regNameError"></span>
                     </div>
                     <div class="input-group">
-                        <label>📧 Email</label>
+                        <label>Email</label>
                         <input type="email" id="regEmail" placeholder="your@email.com">
                         <span class="error-message" id="regEmailError"></span>
                     </div>
                     <div class="input-group">
-                        <label>🔒 Пароль</label>
+                        <label>Пароль</label>
                         <input type="password" id="regPassword" placeholder="минимум 4 символа">
                         <span class="error-message" id="regPasswordError"></span>
                     </div>
                     <div class="input-group">
-                        <label>✅ Подтверждение</label>
+                        <label>Подтверждение</label>
                         <input type="password" id="regConfirm" placeholder="повторите пароль">
                         <span class="error-message" id="regConfirmError"></span>
                     </div>
-                    <button class="auth-btn" onclick="finalizeRegistration()">✨ ЗАВЕРШИТЬ РЕГИСТРАЦИЮ</button>
+                    <button class="auth-btn" onclick="finalizeRegistration()">ЗАВЕРШИТЬ РЕГИСТРАЦИЮ</button>
                 </div>
             </div>
         </div>
@@ -984,7 +986,7 @@
         <h1>Профессиональные переводчики<br>рядом с вами</h1>
         <p>Найдите эксперта для перевода документов, сайтов и приложений за 5 минут</p>
         <div class="hero-buttons">
-            <button class="btn-large btn-blue" onclick="scrollToServices()">Найти переводчика →</button>
+            <button class="btn-large btn-blue" onclick="scrollToServices()">Найти переводчика -></button>
             <button class="btn-large btn-outline" onclick="openAuthModal('register')">Стать переводчиком</button>
         </div>
     </div>
@@ -994,13 +996,13 @@
     <div class="container">
         <h2 class="section-title">Что мы предлагаем</h2>
         <div class="services-grid">
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">📄</div><h3>Письменный перевод</h3><p>Документы, контракты, статьи, письма, диссертации</p><div class="service-price">от 500 ₽ / страница</div><div class="service-time">⏱ 1-3 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">📱</div><h3>Локализация приложений</h3><p>Адаптация интерфейсов, сторис, ASO-оптимизация</p><div class="service-price">от 1500 ₽ / час</div><div class="service-time">⏱ от 3 дней</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">⚖️</div><h3>Нотариальное заверение</h3><p>Переводы с печатью, подписью, для суда и госорганов</p><div class="service-price">от 800 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">🎬</div><h3>Субтитры и трансляция</h3><p>Видео, подкасты, конференции, YouTube, онлайн-встречи</p><div class="service-price">от 200 ₽ / минута</div><div class="service-time">⏱ от 1 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">✍️</div><h3>Редкость и редактура</h3><p>Проверка, вычитка, адаптация под носителей языка</p><div class="service-price">от 300 ₽ / страница</div><div class="service-time">⏱ 1-2 дня</div></div>
-            <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">⏱️</div><h3>Срочный перевод 24/7</h3><p>Экспресс-перевод любой сложности в режиме нон-стоп</p><div class="service-price">от 1000 ₽ / страница</div><div class="service-time">⚡ от 2 часов</div></div>
-        </div>
+    <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">I</div><h3>Письменный перевод</h3><p>Документы, контракты, статьи, письма, диссертации</p><div class="service-price">от 500 ₽ / страница</div><div class="service-time">срок: 1-3 дня</div></div>
+    <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">II</div><h3>Локализация приложений</h3><p>Адаптация интерфейсов, сторис, ASO-оптимизация</p><div class="service-price">от 1500 ₽ / час</div><div class="service-time">срок: от 3 дней</div></div>
+    <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">III</div><h3>Нотариальное заверение</h3><p>Переводы с печатью, подписью, для суда и госорганов</p><div class="service-price">от 800 ₽ / страница</div><div class="service-time">срок: 1-2 дня</div></div>
+    <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">IV</div><h3>Субтитры и трансляция</h3><p>Видео, подкасты, конференции, YouTube, онлайн-встречи</p><div class="service-price">от 200 ₽ / минута</div><div class="service-time">срок: от 1 дня</div></div>
+    <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">V</div><h3>Редактура и вычитка</h3><p>Проверка, вычитка, адаптация под носителей языка</p><div class="service-price">от 300 ₽ / страница</div><div class="service-time">срок: 1-2 дня</div></div>
+    <div class="service-card" onclick="window.location.href='404.html'"><div class="service-icon">VI</div><h3>Срочный перевод 24/7</h3><p>Экспресс-перевод любой сложности в режиме нон-стоп</p><div class="service-price">от 1000 ₽ / страница</div><div class="service-time">срок: от 2 часов</div></div>
+</div>
     </div>
 </section>
 
@@ -1019,7 +1021,7 @@
     <div class="container">
         <h2>Присоединяйтесь к сообществу переводчиков</h2>
         <p>Обменивайтесь опытом, находите клиентов и развивайтесь вместе с нами</p>
-        <button class="btn-community" onclick="window.location.href='404.html'">Стать частью сообщества →</button>
+        <button class="btn-community" onclick="window.location.href='404.html'">Стать частью сообщества -></button>
     </div>
 </section>
 
@@ -1027,23 +1029,23 @@
     <div class="container">
         <div class="form-grid">
             <div class="form-card">
-                <h3>📝 Заказать перевод</h3>
+                <h3>Заказать перевод</h3>
                 <div class="form-group"><label>Имя</label><input type="text" id="orderName" placeholder="Иван"></div>
                 <div class="form-group"><label>Фамилия</label><input type="text" id="orderSurname" placeholder="Иванов"></div>
                 <div class="form-group"><label>Email</label><input type="email" id="orderEmail" placeholder="ivan@example.com"></div>
-                <div class="form-group"><label>Языковая пара</label><select id="orderLang"><option>Русский → Английский</option><option>Английский → Русский</option><option>Немецкий → Русский</option></select></div>
+                <div class="form-group"><label>Языковая пара</label><select id="orderLang"><option>Русский -> Английский</option><option>Английский -> Русский</option><option>Немецкий -> Русский</option></select></div>
                 <div class="form-group"><label>Примечание</label><textarea id="orderNote" rows="2" placeholder="Опишите задачу"></textarea></div>
-                <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')" style="border:2px dashed #CBD5E1; border-radius:12px; padding:15px; text-align:center; cursor:pointer;">📎 Нажмите или перетащите файл (до 5 МБ)</div>
+                <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')" style="border:2px dashed #CBD5E1; border-radius:12px; padding:15px; text-align:center; cursor:pointer;">⬇ Нажмите или перетащите файл (до 5 МБ)</div>
                 <button class="btn-submit" onclick="window.location.href='404.html'">Отправить заявку</button>
             </div>
             <div class="form-card">
-                <h3>👋 Стать переводчиком</h3>
+                <h3>Стать переводчиком</h3>
                 <div class="form-group"><label>Имя</label><input type="text" id="translatorName" placeholder="Имя"></div>
                 <div class="form-group"><label>Фамилия</label><input type="text" id="translatorSurname" placeholder="Фамилия"></div>
                 <div class="form-group"><label>Email</label><input type="email" id="translatorEmail" placeholder="translator@example.com"></div>
                 <div class="form-group"><label>Специализация</label><select id="translatorSpec"><option>Письменный перевод</option><option>Устный перевод</option><option>Локализация</option></select></div>
                 <div class="form-group"><label>Примечание</label><textarea id="translatorNote" rows="2" placeholder="Ваш опыт, сертификаты, достижения"></textarea></div>
-                <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')" style="border:2px dashed #CBD5E1; border-radius:12px; padding:15px; text-align:center; cursor:pointer;">📎 Загрузить резюме или примеры работ</div>
+                <div class="file-zone" onclick="alert('Загрузка файлов временно недоступна')" style="border:2px dashed #CBD5E1; border-radius:12px; padding:15px; text-align:center; cursor:pointer;">⬇ Загрузить резюме или примеры работ</div>
                 <button class="btn-submit" onclick="window.location.href='404.html'">Отправить заявку</button>
             </div>
         </div>
@@ -1053,17 +1055,16 @@
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-col"><h4>🌐 TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='index.html'">📘</span><span onclick="window.location.href='index.html'">🐦</span><span onclick="window.location.href='index.html'">📷</span><span onclick="window.location.href='index.html'">💼</span></div></div>
+            <div class="footer-col"><h4>TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='404.html'">FB</span><span onclick="window.location.href='404.html'">TW</span><span onclick="window.location.href='404.html'">IG</span><span onclick="window.location.href='404.html'">LK</span></div></div>
             <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='about.html'" style="cursor:pointer">О создателе</p><p onclick="window.location.href='privacy.html'" style="cursor:pointer">Политика конфиденциальности</p><p onclick="window.location.href='404.html'" style="cursor:pointer">Доставка и оплата</p><p onclick="window.location.href='404.html'" style="cursor:pointer">Частые вопросы</p></div>
             <div class="footer-col"><h4>Партнёры</h4><p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p><p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p></div>
             <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
         </div>
-        <div class="copyright">© 2026 TransLingo. Все права защищены.</div>
+        <div class="copyright">(C) 2026 TransLingo. Все права защищены.</div>
     </div>
 </footer>
 
 <script>
-    // ===== ВЫЕЗЖАЮЩЕЕ МЕНЮ СЛЕВА =====
     const burgerBtn = document.getElementById('burgerBtn');
     const sideMenu = document.getElementById('sideMenu');
     const overlay = document.getElementById('overlay');
@@ -1087,7 +1088,6 @@
     closeMenuBtn.onclick = closeMenu;
     overlay.onclick = closeMenu;
 
-    // Выпадайки в сайдбаре
     const sideServicesItem = document.getElementById('sideServicesMenuItem');
     if (sideServicesItem) {
         sideServicesItem.onclick = function(e) {
@@ -1102,28 +1102,6 @@
             e.stopPropagation();
             this.classList.toggle('active');
         };
-    });
-
-    // Остальной код
-    const servicesMenuItem = document.getElementById('servicesMenuItem');
-    
-    if (servicesMenuItem) {
-        servicesMenuItem.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.preventDefault();
-                servicesMenuItem.classList.toggle('active');
-            }
-        });
-    }
-
-    const dropdownItems = document.querySelectorAll('.main-menu .dropdown-item');
-    dropdownItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            if (window.innerWidth <= 768) {
-                e.stopPropagation();
-                item.classList.toggle('active');
-            }
-        });
     });
 
     function scrollToServices() {
@@ -1222,7 +1200,7 @@
         const attemptsSpan = document.getElementById('regAttemptsText');
         if (fill) fill.style.width = percent + '%';
         if (text) text.innerHTML = `Слово ${currentWordIndex + 1} из ${testWords.length}`;
-        if (attemptsSpan) attemptsSpan.innerHTML = `✨ Осталось ошибок: ${mistakesLeft}`;
+        if (attemptsSpan) attemptsSpan.innerHTML = `Осталось ошибок: ${mistakesLeft}`;
     }
 
     function renderRegisterWord() {
@@ -1282,7 +1260,7 @@
         if (fieldsScreen) fieldsScreen.classList.add('active');
         const feedbackDiv = document.getElementById('regFeedback');
         if (feedbackDiv) {
-            feedbackDiv.innerHTML = '✅ ТЫ ПРОШЁЛ ТЕСТ! Теперь заполни данные для регистрации';
+            feedbackDiv.innerHTML = 'ТЫ ПРОШЁЛ ТЕСТ! Теперь заполни данные для регистрации';
             feedbackDiv.className = 'feedback correct';
         }
     }
@@ -1293,11 +1271,11 @@
         if (!selectedAnswer) {
             const feedbackDiv = document.getElementById('regFeedback');
             if (feedbackDiv) {
-                feedbackDiv.innerHTML = '❌ Выбери вариант перевода';
+                feedbackDiv.innerHTML = 'Выбери вариант перевода';
                 feedbackDiv.className = 'feedback wrong';
             }
             setTimeout(() => {
-                if (feedbackDiv && feedbackDiv.innerHTML === '❌ Выбери вариант перевода') {
+                if (feedbackDiv && feedbackDiv.innerHTML === 'Выбери вариант перевода') {
                     feedbackDiv.innerHTML = '';
                 }
             }, 2000);
@@ -1313,11 +1291,11 @@
             currentWordIndex++;
             renderRegisterWord();
             if (feedbackDiv) {
-                feedbackDiv.innerHTML = '✅ ПРАВИЛЬНО! Следующее слово...';
+                feedbackDiv.innerHTML = 'ПРАВИЛЬНО! Следующее слово...';
                 feedbackDiv.className = 'feedback correct';
             }
             setTimeout(() => {
-                if (feedbackDiv && feedbackDiv.innerHTML === '✅ ПРАВИЛЬНО! Следующее слово...') {
+                if (feedbackDiv && feedbackDiv.innerHTML === 'ПРАВИЛЬНО! Следующее слово...') {
                     feedbackDiv.innerHTML = '';
                 }
             }, 1500);
@@ -1325,7 +1303,7 @@
             mistakesLeft--;
             updateRegisterProgress();
             if (feedbackDiv) {
-                feedbackDiv.innerHTML = `❌ НЕПРАВИЛЬНО. Правильный ответ: ${word.correct}`;
+                feedbackDiv.innerHTML = `НЕПРАВИЛЬНО. Правильный ответ: ${word.correct}`;
                 feedbackDiv.className = 'feedback wrong';
             }
             
@@ -1341,7 +1319,7 @@
             
             if (mistakesLeft === 0) {
                 testLocked = true;
-                if (feedbackDiv) feedbackDiv.innerHTML = '❌ ПОПЫТКИ ЗАКОНЧИЛИСЬ. Обнови страницу и попробуй снова.';
+                if (feedbackDiv) feedbackDiv.innerHTML = 'ПОПЫТКИ ЗАКОНЧИЛИСЬ. Обнови страницу и попробуй снова.';
                 setTimeout(() => location.reload(), 3000);
             } else {
                 testLocked = true;
@@ -1397,7 +1375,7 @@
             }
             users.push({ name, email, password });
             localStorage.setItem('translingo_users', JSON.stringify(users));
-            alert('✅ Регистрация успешна! Теперь войдите в аккаунт.');
+            alert('Регистрация успешна! Теперь войдите в аккаунт.');
             closeAuthModal();
             switchAuthTab('login');
             document.getElementById('loginEmail').value = email;
@@ -1433,7 +1411,7 @@
             if (user) {
                 closeAuthModal();
                 localStorage.setItem('translingo_current_user', JSON.stringify(user));
-                alert('✅ Добро пожаловать, ' + user.name + '!');
+                alert('Добро пожаловать, ' + user.name + '!');
             } else {
                 document.getElementById('loginEmailError').textContent = 'Неверный email или пароль';
             }
