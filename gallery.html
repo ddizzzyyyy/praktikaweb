@@ -48,11 +48,6 @@
             left: 100px;
             top: 50%;
             transform: translateY(-50%);
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: translateY(-50%) scale(1.02);
         }
 
         .logo img {
@@ -78,7 +73,6 @@
             cursor: pointer;
             font-size: 16px;
             color: #4B5563;
-            transition: all 0.3s;
             padding: 8px 0;
         }
 
@@ -94,17 +88,18 @@
             gap: 12px;
         }
 
-        .btn-login {
-            width: 100px;
-            height: 40px;
-            background: transparent;
-            border: 1px solid #2A6DFF;
+        .btn-login, .btn-register {
+            padding: 8px 20px;
             border-radius: 8px;
-            color: #2A6DFF;
             font-size: 14px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
+        }
+
+        .btn-login {
+            background: transparent;
+            border: 1px solid #2A6DFF;
+            color: #2A6DFF;
         }
 
         .btn-login:hover {
@@ -113,16 +108,9 @@
         }
 
         .btn-register {
-            width: 120px;
-            height: 40px;
             background: #2A6DFF;
             border: none;
-            border-radius: 8px;
             color: white;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
         }
 
         .btn-register:hover {
@@ -149,7 +137,6 @@
             margin-top: 10px;
         }
 
-        /* ========== CSS СЛАЙДЕР ========== */
         .slider-container {
             position: relative;
             max-width: 900px;
@@ -160,7 +147,6 @@
             overflow: hidden;
         }
 
-        /* Скрываем радиокнопки */
         .slider-container input[type="radio"] {
             display: none;
         }
@@ -190,7 +176,6 @@
             height: 400px;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
         }
 
         .slider-content {
@@ -201,17 +186,12 @@
         .slider-content h3 {
             font-size: 28px;
             margin-bottom: 15px;
-            color: #1A1A1A;
         }
 
         .slider-content p {
             font-size: 16px;
             color: #6B7280;
             margin-bottom: 15px;
-            line-height: 1.5;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .slider-tag {
@@ -225,14 +205,14 @@
         }
 
         /* Переключение слайдов */
-        #slide1:checked ~ .slider-wrapper .slider-track { transform: translateX(0%); }
-        #slide2:checked ~ .slider-wrapper .slider-track { transform: translateX(-100%); }
-        #slide3:checked ~ .slider-wrapper .slider-track { transform: translateX(-200%); }
-        #slide4:checked ~ .slider-wrapper .slider-track { transform: translateX(-300%); }
-        #slide5:checked ~ .slider-wrapper .slider-track { transform: translateX(-400%); }
-        #slide6:checked ~ .slider-wrapper .slider-track { transform: translateX(-500%); }
+        #s1:checked ~ .slider-wrapper .slider-track { transform: translateX(0%); }
+        #s2:checked ~ .slider-wrapper .slider-track { transform: translateX(-100%); }
+        #s3:checked ~ .slider-wrapper .slider-track { transform: translateX(-200%); }
+        #s4:checked ~ .slider-wrapper .slider-track { transform: translateX(-300%); }
+        #s5:checked ~ .slider-wrapper .slider-track { transform: translateX(-400%); }
+        #s6:checked ~ .slider-wrapper .slider-track { transform: translateX(-500%); }
 
-        /* Стрелки */
+        /* Стрелки — общий стиль */
         .slider-arrow {
             position: absolute;
             top: 35%;
@@ -251,7 +231,6 @@
             transition: all 0.3s;
             z-index: 10;
             cursor: pointer;
-            user-select: none;
         }
 
         .slider-arrow:hover {
@@ -267,7 +246,7 @@
             right: 20px;
         }
 
-        /* Точки — фиксированный размер, просто заливка цветом */
+        /* Точки */
         .slider-dots {
             display: flex;
             justify-content: center;
@@ -282,35 +261,31 @@
             background: #D1D5DB;
             border-radius: 50%;
             cursor: pointer;
-            transition: background 0.2s;
             display: inline-block;
         }
 
-        /* Активная точка — просто синий цвет, без изменения размера */
-        #slide1:checked ~ .slider-dots label[for="slide1"],
-        #slide2:checked ~ .slider-dots label[for="slide2"],
-        #slide3:checked ~ .slider-dots label[for="slide3"],
-        #slide4:checked ~ .slider-dots label[for="slide4"],
-        #slide5:checked ~ .slider-dots label[for="slide5"],
-        #slide6:checked ~ .slider-dots label[for="slide6"] {
+        #s1:checked ~ .slider-dots label[for="s1"],
+        #s2:checked ~ .slider-dots label[for="s2"],
+        #s3:checked ~ .slider-dots label[for="s3"],
+        #s4:checked ~ .slider-dots label[for="s4"],
+        #s5:checked ~ .slider-dots label[for="s5"],
+        #s6:checked ~ .slider-dots label[for="s6"] {
             background: #2A6DFF;
         }
 
-        /* Счётчик */
         .counter {
             text-align: center;
-            margin-top: 15px;
-            margin-bottom: 30px;
+            margin: 15px 0 30px;
             font-size: 14px;
             color: #9CA3AF;
         }
 
-        #slide1:checked ~ .counter::before { content: "1 / 6"; }
-        #slide2:checked ~ .counter::before { content: "2 / 6"; }
-        #slide3:checked ~ .counter::before { content: "3 / 6"; }
-        #slide4:checked ~ .counter::before { content: "4 / 6"; }
-        #slide5:checked ~ .counter::before { content: "5 / 6"; }
-        #slide6:checked ~ .counter::before { content: "6 / 6"; }
+        #s1:checked ~ .counter::before { content: "1 / 6"; }
+        #s2:checked ~ .counter::before { content: "2 / 6"; }
+        #s3:checked ~ .counter::before { content: "3 / 6"; }
+        #s4:checked ~ .counter::before { content: "4 / 6"; }
+        #s5:checked ~ .counter::before { content: "5 / 6"; }
+        #s6:checked ~ .counter::before { content: "6 / 6"; }
         .counter::before { content: "1 / 6"; }
 
         .footer {
@@ -338,7 +313,6 @@
             text-decoration: none;
             line-height: 1.8;
             cursor: pointer;
-            transition: all 0.2s;
         }
 
         .footer-col a:hover, .footer-col p:hover {
@@ -354,7 +328,6 @@
         .social-icons span {
             font-size: 24px;
             cursor: pointer;
-            transition: all 0.3s;
         }
 
         .social-icons span:hover {
@@ -396,15 +369,31 @@
     </div>
 
     <div class="slider-container">
-        <input type="radio" name="slider" id="slide1" checked>
-        <input type="radio" name="slider" id="slide2">
-        <input type="radio" name="slider" id="slide3">
-        <input type="radio" name="slider" id="slide4">
-        <input type="radio" name="slider" id="slide5">
-        <input type="radio" name="slider" id="slide6">
+        <input type="radio" name="slider" id="s1" checked>
+        <input type="radio" name="slider" id="s2">
+        <input type="radio" name="slider" id="s3">
+        <input type="radio" name="slider" id="s4">
+        <input type="radio" name="slider" id="s5">
+        <input type="radio" name="slider" id="s6">
 
-        <label for="slide6" class="slider-arrow arrow-left">←</label>
-        <label for="slide2" class="slider-arrow arrow-right">→</label>
+        <!-- Стрелки с правильной логикой переключения -->
+        <label for="s6" class="slider-arrow arrow-left" id="prev1">←</label>
+        <label for="s2" class="slider-arrow arrow-right" id="next1">→</label>
+
+        <label for="s1" class="slider-arrow arrow-left" id="prev2" style="display:none;">←</label>
+        <label for="s3" class="slider-arrow arrow-right" id="next2" style="display:none;">→</label>
+
+        <label for="s2" class="slider-arrow arrow-left" id="prev3" style="display:none;">←</label>
+        <label for="s4" class="slider-arrow arrow-right" id="next3" style="display:none;">→</label>
+
+        <label for="s3" class="slider-arrow arrow-left" id="prev4" style="display:none;">←</label>
+        <label for="s5" class="slider-arrow arrow-right" id="next4" style="display:none;">→</label>
+
+        <label for="s4" class="slider-arrow arrow-left" id="prev5" style="display:none;">←</label>
+        <label for="s6" class="slider-arrow arrow-right" id="next5" style="display:none;">→</label>
+
+        <label for="s5" class="slider-arrow arrow-left" id="prev6" style="display:none;">←</label>
+        <label for="s1" class="slider-arrow arrow-right" id="next6" style="display:none;">→</label>
 
         <div class="slider-wrapper">
             <div class="slider-track">
@@ -472,33 +461,57 @@
         </div>
 
         <div class="slider-dots">
-            <label for="slide1" class="dot"></label>
-            <label for="slide2" class="dot"></label>
-            <label for="slide3" class="dot"></label>
-            <label for="slide4" class="dot"></label>
-            <label for="slide5" class="dot"></label>
-            <label for="slide6" class="dot"></label>
+            <label for="s1" class="dot"></label>
+            <label for="s2" class="dot"></label>
+            <label for="s3" class="dot"></label>
+            <label for="s4" class="dot"></label>
+            <label for="s5" class="dot"></label>
+            <label for="s6" class="dot"></label>
         </div>
 
         <div class="counter"></div>
     </div>
 </div>
 
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-col"><h4>TransLingo</h4><p>Учим переводить. Создаём сообщество. Вдохновляем на точность</p><div class="social-icons"><span onclick="window.location.href='site.html'">FB</span><span onclick="window.location.href='site.html'">TW</span><span onclick="window.location.href='site.html'">IG</span><span onclick="window.location.href='site.html'">LK</span></div></div>
-            <div class="footer-col"><h4>О нас</h4><p onclick="window.location.href='site.html'" style="cursor:pointer">О компании<br>Портфолио<br>Доставка и оплата<br>Частые вопросы</p></div>
-            <div class="footer-col">
-                <h4>Партнёры</h4>
-                <p><a href="https://bartc.by/index.php/ru/" target="_blank" style="color:#9CA3AF; text-decoration:none;">БТК: bartc.by</a></p>
-                <p><a href="mailto:btk@bks.by" style="color:#9CA3AF; text-decoration:none;">btk@bks.by</a></p>
-            </div>
-            <div class="footer-col"><h4>Контакты</h4><p>+375(29)111-11-11<br>+375(29)123-45-67<br>hello@translingo.com<br>support@translingo.com</p></div>
-        </div>
-        <div class="copyright">(C) 2026 TransLingo. Все права защищены.</div>
-    </div>
-</footer>
+<script>
+    // Простой скрипт для показа нужных стрелок (без анимаций и сложной логики)
+    function updateArrows() {
+        const slides = ['s1', 's2', 's3', 's4', 's5', 's6'];
+        let activeIndex = -1;
+        for (let i = 0; i < slides.length; i++) {
+            if (document.getElementById(slides[i]).checked) {
+                activeIndex = i;
+                break;
+            }
+        }
+        if (activeIndex === -1) return;
+        
+        // Скрываем все стрелки
+        for (let i = 1; i <= 6; i++) {
+            const prev = document.getElementById('prev' + i);
+            const next = document.getElementById('next' + i);
+            if (prev) prev.style.display = 'none';
+            if (next) next.style.display = 'none';
+        }
+        
+        // Показываем стрелки для активного слайда
+        const prevId = 'prev' + (activeIndex + 1);
+        const nextId = 'next' + (activeIndex + 1);
+        const prevEl = document.getElementById(prevId);
+        const nextEl = document.getElementById(nextId);
+        if (prevEl) prevEl.style.display = 'flex';
+        if (nextEl) nextEl.style.display = 'flex';
+    }
+    
+    // Добавляем обработчики на радиокнопки
+    for (let i = 1; i <= 6; i++) {
+        const radio = document.getElementById('s' + i);
+        if (radio) {
+            radio.addEventListener('change', updateArrows);
+        }
+    }
+    updateArrows();
+</script>
 
 </body>
 </html>
